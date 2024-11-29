@@ -50,7 +50,6 @@ exports.allData = async (req, res) => {
       res.json({
         statusCode: 404,
         message: `Error in Find Api ${err}`,
-        data: record,
       });
     }
   };

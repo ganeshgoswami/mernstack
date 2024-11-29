@@ -25,10 +25,9 @@ const AddCollection = () => {
     "Pakistan"
   ];
   const navigate = useNavigate();
-  // navigate the page other page
+  
   const { addVdata } = useContext(AdminContext);
 
-  //   const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -41,7 +40,6 @@ const AddCollection = () => {
 
   return (
     <div className="container mt-5">
-      {/* <p onClick={() => navigate("/adminHome")}>Admin User Table</p> */}
       <div className="row justify-content-center">
         <div className="col-md-6 shadow p-3 mb-5 bg-body-tertiary rounded">
           <h2 className="text-center">Add Collection</h2>

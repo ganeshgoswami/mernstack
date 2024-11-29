@@ -10,7 +10,7 @@ const AdminTable = () => {
   const [category, setCategory] = useState("");
   const [videourl, setVideourl] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; // Items per page
+  const itemsPerPage = 5; 
   const dropdow = [
     "India",
     "USA",
@@ -54,7 +54,7 @@ const AdminTable = () => {
     setVideourl(updateNewData.Videourl);
   };
 
-  // Pagination Logic
+ // page change 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentData = alldata.slice(indexOfFirstItem, indexOfLastItem);
@@ -131,7 +131,7 @@ const AdminTable = () => {
             </table>
           </div>
 
-          {/* Pagination Controls */}
+          {/* pagination button click */}
           <div className="d-flex justify-content-center flex-wrap mt-3">
             <button
               className="btn btn-light m-1"

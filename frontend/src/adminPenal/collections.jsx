@@ -5,11 +5,8 @@ import {Link} from "react-router-dom"
 const Collections = () => {
   const { alldata } = useContext(AdminContext);
 
- 
-
   return (
     <div className="container m-2">
-      {/* Display filtered products */}
       <div className="row">
         {alldata.length > 0 ? (
           alldata.map((vd, index) => (
