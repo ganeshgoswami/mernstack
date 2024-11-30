@@ -22,16 +22,18 @@ function App() {
   }, []);
 
   return (
+    <>
     <div className="App">
       {admin === "admin@gmail.com" ? <NavbarAdmin /> : <UserNavbar />}
       <Routes>
-        {/* Public Routes */}
-        <Route path="/login" element={<LoginPage />} />
+        {/* User Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/home/:cate" element={<SaprateCategory />} />
 
-        {/* Admin-only Routes */}
+        {/* Admin-only USe */}
+        <Route path="/login" element={<LoginPage />} />
+        
         <Route
           path="/addCollecion"
           element={
@@ -60,6 +62,7 @@ function App() {
       {admin === "admin@gmail.com" ? "" : <Footer />}
      
     </div>
+    </>
   );
 }
 

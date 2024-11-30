@@ -13,6 +13,11 @@ const SaprateCategory = () => {
 
   return (
     <div className="container my-4">
+      <div className="d-flex justify-content-start text-white mb-2">
+      <h3 className="me-2">{cate}</h3>
+      <h3 className="text-secondary"> {"("+ filtdata.length +")"} </h3> 
+      </div>    
+      
     <div className="row justify-content-center">
       {filtdata.length > 0 ? (
         filtdata.map((vd) => (

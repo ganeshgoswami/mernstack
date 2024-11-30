@@ -43,6 +43,15 @@ const Home = () => {
   };
 
   return (
+    <>
+    <div className="d-flex m-1 d-flex flex-wrap">
+      <h5 className="text-white">Releted : </h5>
+  {alldata.map((cat)=>(
+    <Link to={`/home/${cat.Category}`}>
+    <span className="badge text-bg-secondary d-flex align-items-center m-1">{cat.Category}</span>
+    </Link>
+  ))}
+    </div>
     <div className="container-fluid my-2">
       <div className="row justify-content-center g-3">
         {currentItems.length > 0 ? (
@@ -86,7 +95,7 @@ const Home = () => {
           onClick={handlePrevious}
           disabled={currentPage === 1}
         >
-          <i class="bi bi-arrow-left" style={{ fontSize: "24px" }}></i>
+          <i className="bi bi-arrow-left" style={{ fontSize: "24px" }}></i>
         </button>
         <span className="text-white m-3">
           Page {currentPage} of {totalPages}
@@ -97,12 +106,13 @@ const Home = () => {
           disabled={currentPage === totalPages}
         >
           <i
-            class="bi bi-arrow-right text-white"
+            className="bi bi-arrow-right text-white"
             style={{ fontSize: "24px" }}
           ></i>
         </button>
       </div>
     </div>
+    </>
   );
 };
 

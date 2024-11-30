@@ -100,9 +100,9 @@ const Footer = () => {
                 parental controls.
               </p>
               <div className="footer-icons d-flex justify-content-around fs-3">
-              <i class="bi bi-whatsapp text-white"></i>
-              <i class="bi bi-instagram text-white"></i>
-              <i class="bi bi-twitter text-white"></i>
+              <i className="bi bi-whatsapp text-white"></i>
+              <i className="bi bi-instagram text-white"></i>
+              <i className="bi bi-twitter text-white"></i>
               </div>
             </div>
           </div>

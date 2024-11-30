@@ -132,7 +132,7 @@ const AdminTable = () => {
           </div>
 
           {/* pagination button click */}
-          <div className="d-flex justify-content-center flex-wrap mt-3">
+          <div className="d-flex justify-content-center flex-wrap mt-5">
             <button
               className="btn btn-light m-1"
               onClick={handlePreviousPage}

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AdminContext } from "../adminContext/adminContext";
 import { useNavigate } from "react-router-dom";
-
+import "../css/addCollection.css";
 const AddCollection = () => {
   const [imgUrl, setImgUrl] = useState("");
   const [titel, setTitel] = useState("");
@@ -39,8 +39,8 @@ const AddCollection = () => {
   }
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
+    <div className="container-fluid">
+      <div className="row justify-content-center AddCollection-page">
         <div className="col-md-6 shadow p-3 mb-5 bg-body-tertiary rounded">
           <h2 className="text-center">Add Collection</h2>
           <form

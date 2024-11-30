@@ -3,11 +3,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { AdminContext } from "../adminContext/adminContext";
 
 const NavbarAdmin = () => {
-  const {logOutAdmin} = useContext(AdminContext);
   const navigate = useNavigate()
   const logout = () =>{
-    logOutAdmin();
-    navigate("/")
+    localStorage.removeItem("admin")
+    navigate("/login")
   }
   return (
     <nav
@@ -20,7 +19,7 @@ const NavbarAdmin = () => {
             to="/collection"
             className="nav-link text-warning me-3 fw-bold "
           >
-            Admin Panel
+            <b>Admin Panel</b>
           </NavLink>
         </div>
         <button
@@ -62,7 +61,7 @@ const NavbarAdmin = () => {
               </NavLink>
             </li>
           </ul>
-          <div className="d-flex">
+          <div className="d-flex justify-content-center">
             <button className="btn btn-sm btn-danger" onClick={()=>logout()}>Log Out</button>
           </div>
         </div>

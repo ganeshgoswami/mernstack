@@ -8,8 +8,8 @@ import {AuthAdminProvider} from "./adminContext/adminContext"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  
   <React.StrictMode>
-    
     <AuthAdminProvider>
     <BrowserRouter>
     <App />

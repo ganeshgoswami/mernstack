@@ -14,24 +14,30 @@ const LoginPage = () => {
       password,
       isAdmin: email === "admin@gmail.com", // Replace with actual admin check
     };
+    debugger
 
     if (email === "admin@gmail.com" && password == "1234") {
       localStorage.setItem("admin", JSON.stringify(email));
       navigate("/collection");
-    }else{
-        localStorage.setItem("user", JSON.stringify(""));
+    } else if (email !== "admin@gmail.com" || password !== "1234") {
+      // navigate("/login");
+      alert(" Wrong Email Id And Password")
+      
+    } else {
+      localStorage.setItem("user", JSON.stringify(""));
       navigate("/home");
     }
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
+    <div className="container-fluid">
+      <div className="row justify-content-center login-page">
         <div
-          className="col-md-6 shadow p-3 mb-5 bg-body-tertiary rounded rotate-card"
-          style={{
-            backgroundImage: "repeating-conic-gradient(green 8%, white 20%)",
-          }}
+          className="col-6 shadow p-3 mb-5 bg-body-tertiary rounded rotate-card"
+            style={{
+              backgroundImage: "repeating-conic-gradient(#803100 8%, white 20%)",
+            
+            }}
         >
           <h2 className="text-center text">Login</h2>
           <form onSubmit={handleSubmit}>
@@ -65,7 +71,7 @@ const LoginPage = () => {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-success btn-block m-3">
+            <button type="submit" className="btn btn-success btn-sm btn-block">
               Login
             </button>
           </form>
