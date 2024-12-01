@@ -8,23 +8,20 @@ import Home from "./component/home";
 import Footer from "./component/footer";
 import SaprateCategory from "./component/separateCategory";
 import NavbarAdmin from "./adminPenal/navbarAdmin";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import LoginPage from "./pages/login";
 import AdminTable from "./adminPenal/adminTable";
 import ProtectedRoute from "./secure/protectRoute" // Import the ProtectedRoute
+import { AdminContext } from "./adminContext/adminContext";
 
 function App() {
-  const [admin, setAdmin] = useState(null);
-
-  useEffect(() => {
-    const storedAdmin = JSON.parse(localStorage.getItem("admin"));
-    setAdmin(storedAdmin);
-  }, []);
+ const { admin } = useContext(AdminContext);
+ console.log(admin);
 
   return (
     <>
     <div className="App">
-      {admin === "admin@gmail.com" ? <NavbarAdmin /> : <UserNavbar />}
+      {admin ? <NavbarAdmin /> : <UserNavbar />}
       <Routes>
         {/* User Routes */}
         <Route path="/" element={<Home />} />
@@ -59,7 +56,8 @@ function App() {
           }
         />
       </Routes>
-      {admin === "admin@gmail.com" ? "" : <Footer />}
+
+      {!admin && <Footer />}
      
     </div>
     </>

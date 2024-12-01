@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/login.css";
+import { AdminContext } from "../adminContext/adminContext";
 
 const LoginPage = () => {
+  const { setAdmin } = useContext(AdminContext);
   const [email, setemail] = useState(null);
   const [password, setpassword] = useState(null);
   const navigate = useNavigate();
@@ -11,20 +13,16 @@ const LoginPage = () => {
     e.preventDefault();
     const loginData = {
       email,
-      password,
       isAdmin: email === "admin@gmail.com", // Replace with actual admin check
     };
-    debugger
 
-    if (email === "admin@gmail.com" && password == "1234") {
-      localStorage.setItem("admin", JSON.stringify(email));
+    if (email == "admin@gmail.com" && password == "1234") {
+      setAdmin(email)
       navigate("/collection");
-    } else if (email !== "admin@gmail.com" || password !== "1234") {
-      // navigate("/login");
-      alert(" Wrong Email Id And Password")
+    } else if (email != "admin@gmail.com" || password != "1234") {
+      alert("Invalid email or password")
       
     } else {
-      localStorage.setItem("user", JSON.stringify(""));
       navigate("/home");
     }
   };

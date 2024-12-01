@@ -5,10 +5,12 @@ import "../css/login.css";
 
 const Home = () => {
   const categoryData = [];
-  const { alldata = [] } = useContext(AdminContext);
+  const { alldata } = useContext(AdminContext);
+  
   alldata.map((n) =>
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
   );
+  debugger
 
   const firstVideoAndImage = [];
   if (categoryData.length > 0) {
@@ -43,7 +45,7 @@ const Home = () => {
   };
 
   return (
-    <>
+  
     <div className="container-fluid my-2">
       <div className="row justify-content-center g-3">
         {currentItems.length > 0 ? (
@@ -79,7 +81,7 @@ const Home = () => {
         )}
       </div>
 
-    {/* Pagination use with Icon  */}
+    {/* Pagination use with ICON  */}
     
       <div className="d-flex justify-content-center align-items-center mt-4">
         <button
@@ -104,7 +106,7 @@ const Home = () => {
         </button>
       </div>
     </div>
-    </>
+   
   );
 };
 

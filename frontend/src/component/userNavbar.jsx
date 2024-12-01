@@ -311,7 +311,7 @@ function UserNavbar() {
                   </li>
                   {categoryData.map((n) => (
                     <>
-                      <li>
+                      <li key={n}>
                         <hr className="dropdown-divider" />
                       </li>
                       <li onClick={() => navigate(`/home/${n}`)}>

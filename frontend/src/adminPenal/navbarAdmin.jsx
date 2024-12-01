@@ -3,9 +3,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { AdminContext } from "../adminContext/adminContext";
 
 const NavbarAdmin = () => {
+  const {setAdmin} = useContext(AdminContext)
   const navigate = useNavigate()
   const logout = () =>{
     localStorage.removeItem("admin")
+    setAdmin(null)
     navigate("/login")
   }
   return (

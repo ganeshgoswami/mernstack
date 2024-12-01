@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import "../css/login.css";
 
 const Home = () => {
+  const { alldata } = useContext(AdminContext);
   const categoryData = [];
-  const { alldata = [] } = useContext(AdminContext);
   alldata.map((n) =>
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
   );
