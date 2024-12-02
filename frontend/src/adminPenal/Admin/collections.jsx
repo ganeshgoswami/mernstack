@@ -1,14 +1,16 @@
 import React, { useContext, useState } from "react";
-import { AdminContext } from "../adminContext/adminContext";
+import { AdminContext } from "../../adminContext/adminContext";
 import { Link } from "react-router-dom";
-import "../css/login.css";
+// import "./AdminLogin/login.css";
 
 const Home = () => {
-  const { alldata } = useContext(AdminContext);
   const categoryData = [];
+  const { alldata } = useContext(AdminContext);
+  
   alldata.map((n) =>
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
   );
+  debugger
 
   const firstVideoAndImage = [];
   if (categoryData.length > 0) {
@@ -43,15 +45,7 @@ const Home = () => {
   };
 
   return (
-    <>
-    <div className="d-flex m-1 d-flex flex-wrap">
-      <h5 className="text-white">Releted : </h5>
-  {alldata.map((cat)=>(
-    <Link to={`/home/${cat.Category}`}>
-    <span className="badge text-bg-secondary d-flex align-items-center m-1">{cat.Category}</span>
-    </Link>
-  ))}
-    </div>
+  
     <div className="container-fluid my-2">
       <div className="row justify-content-center g-3">
         {currentItems.length > 0 ? (
@@ -87,7 +81,7 @@ const Home = () => {
         )}
       </div>
 
-    {/* Pagination use with Icon  */}
+    {/* Pagination use with ICON  */}
     
       <div className="d-flex justify-content-center align-items-center mt-4">
         <button
@@ -112,7 +106,7 @@ const Home = () => {
         </button>
       </div>
     </div>
-    </>
+   
   );
 };
 

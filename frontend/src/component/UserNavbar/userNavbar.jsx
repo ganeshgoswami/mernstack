@@ -1,8 +1,8 @@
 // src/Navbar.js
 import React, { useContext, useState } from "react";
-import "../css/userNavbar.css";
-import { AdminContext } from "../adminContext/adminContext";
-import "../css/SearchBar.css";
+import "../UserNavbar/userNavbar.css";
+import { AdminContext } from "../../adminContext/adminContext";
+import "../../css/SearchBar.css";
 import { useNavigate, useParams } from "react-router-dom";
 
 function UserNavbar() {

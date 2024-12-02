@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/login.css";
-import { AdminContext } from "../adminContext/adminContext";
+import "./login.css";
+import { AdminContext } from "../../adminContext/adminContext";
 
 const LoginPage = () => {
   const { setAdmin } = useContext(AdminContext);
@@ -47,6 +47,7 @@ const LoginPage = () => {
                 type="email"
                 name="email"
                 className="form-control"
+                placeholder="Enter Your Email ID"
                 value={email}
                 onChange={(e) => {
                   setemail(e.target.value);
@@ -62,6 +63,7 @@ const LoginPage = () => {
                 type="password"
                 name="password"
                 className="form-control"
+                placeholder="Enter Password"
                 value={password}
                 onChange={(e) => {
                   setpassword(e.target.value);

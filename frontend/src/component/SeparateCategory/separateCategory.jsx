@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { AdminContext } from "../adminContext/adminContext";
+import { AdminContext } from "../../adminContext/adminContext";
 import { Link, useParams } from "react-router-dom";
-import "../css/home.css"; // Add custom CSS if needed for additional styling
+import "../Home/home.css"
 
 const SaprateCategory = () => {
   const { alldata } = useContext(AdminContext);

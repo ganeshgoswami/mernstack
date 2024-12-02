@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
-import { AdminContext } from "../adminContext/adminContext";
+import { AdminContext } from "../../adminContext/adminContext";
 import { useNavigate } from "react-router-dom";
-import "../css/addCollection.css";
+import "../AddCollection/addCollection.css";
+
 const AddCollection = () => {
   const [imgUrl, setImgUrl] = useState("");
   const [titel, setTitel] = useState("");

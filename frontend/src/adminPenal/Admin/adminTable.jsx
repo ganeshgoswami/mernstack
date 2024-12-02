@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { AdminContext } from "../adminContext/adminContext";
+import { AdminContext } from "../../adminContext/adminContext";
 
 const AdminTable = () => {
   const { alldata, deletedata, edit } = useContext(AdminContext);

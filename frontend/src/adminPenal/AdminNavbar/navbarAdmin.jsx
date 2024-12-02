@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { AdminContext } from "../adminContext/adminContext";
+import { AdminContext } from "../../adminContext/adminContext";
 
 const NavbarAdmin = () => {
   const {setAdmin} = useContext(AdminContext)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const logout = () =>{
     localStorage.removeItem("admin")
     setAdmin(null)
