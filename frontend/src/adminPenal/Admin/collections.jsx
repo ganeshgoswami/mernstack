@@ -10,8 +10,6 @@ const Home = () => {
   alldata.map((n) =>
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
   );
-  debugger
-
   const firstVideoAndImage = [];
   if (categoryData.length > 0) {
     alldata.forEach((n) => {

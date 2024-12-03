@@ -8,12 +8,12 @@ const Footer = () => {
           <div className="row">
             {/* Logo */}
             <div className="col-md-4 col-sm-12 mb-3 text-center text-md-start">
-              <div className="ms-1 d-flex">
+              {/* <div className="ms-1 d-flex">
                 <h3 className="text-danger">
                   <b>X </b>
                   Master
                 </h3>
-              </div>
+              </div> */}
 
               <h6 className="footer-description">
                 Xmaster.COM is the Nr. 1 source for free VIDEOS. Millions of
@@ -99,11 +99,6 @@ const Footer = () => {
                 filtering. content and block access to this site by using
                 parental controls.
               </p>
-              <div className="footer-icons d-flex justify-content-around fs-3">
-              <i className="bi bi-whatsapp text-white"></i>
-              <i className="bi bi-instagram text-white"></i>
-              <i className="bi bi-twitter text-white"></i>
-              </div>
             </div>
           </div>
 

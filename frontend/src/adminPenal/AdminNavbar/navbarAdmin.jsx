@@ -8,7 +8,7 @@ const NavbarAdmin = () => {
   const logout = () =>{
     localStorage.removeItem("admin")
     setAdmin(null)
-    navigate("/login")
+    navigate("/admin")
   }
   return (
     <nav
