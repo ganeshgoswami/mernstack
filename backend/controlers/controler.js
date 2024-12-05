@@ -2,7 +2,7 @@ const { StoreData } = require("../models/data");
 
 exports.addCollection = async (req, res) => {
   try {
-    const { imgUrl, titel, category, videourl } = req.body;
+    const { imgUrl, titel, category, videourl,description, duration } = req.body;
     const userCheck = await StoreData.findOne({ Videourl: videourl });
  console.log(req.body)
     if (userCheck == null) {
@@ -11,9 +11,12 @@ exports.addCollection = async (req, res) => {
         Titel: titel,
         Category: category,
         Videourl: videourl,
+        Description: description,
+       Duration: duration
       });
 
       record.save();
+      console.log(req.body)
 
       res.json({
         statusCode: 202,

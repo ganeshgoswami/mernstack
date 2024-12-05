@@ -15,7 +15,7 @@ const Home = () => {
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
   );
 
-  // show releted video badge 
+  // show releted video badge
 
   alldata.forEach((item) => {
     if (!categoryData.includes(item.Category)) {
@@ -24,11 +24,11 @@ const Home = () => {
   });
 
   const handleShowMore = () => {
-    setVisibleBadges((prev) => Math.min(prev + 8, categoryData.length)); 
+    setVisibleBadges((prev) => Math.min(prev + 8, categoryData.length));
   };
 
   const handleShowLess = () => {
-    setVisibleBadges(initialLimit); 
+    setVisibleBadges(initialLimit);
   };
 
   const firstVideoAndImage = [];
@@ -70,9 +70,13 @@ const Home = () => {
   return (
     <>
       <div className="d-flex m-1 d-flex flex-wrap">
-      <h5 className="text-white">Related: </h5>
+        <h5 className="text-white">Related: </h5>
         {categoryData.slice(0, visibleBadges).map((category, index) => (
-          <Link to={`/home/${category}`} key={index}>
+          <Link
+            to={`/home/${category}`}
+            className="text-decoration-none"
+            key={index}
+          >
             <span className="badge text-bg-secondary d-flex align-items-center m-1">
               {category}
             </span>
@@ -81,25 +85,19 @@ const Home = () => {
 
         <div className="d-flex align-items-center m-1">
           {visibleBadges < categoryData.length && (
-            <button
-              className="btn text-primary"
-              onClick={handleShowMore}
-            >
-             ... Show More
+            <button className="btn text-info" onClick={handleShowMore}>
+              ... Show More
             </button>
           )}
           {visibleBadges > initialLimit && (
-            <button
-              className="btn text-danger"
-              onClick={handleShowLess}
-            >
+            <button className="btn text-danger" onClick={handleShowLess}>
               Show Less
             </button>
           )}
         </div>
       </div>
 
-      <div className="container-fluid my-2" style={{width:"90%"}}>
+      <div className="container-fluid my-2" style={{ width: "90%" }}>
         <div className="row justify-content-center g-3">
           {currentData.length > 0 ? (
             currentData.map((vd, index) => (
@@ -107,7 +105,7 @@ const Home = () => {
                 className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex flex-column align-items-center"
                 key={index}
               >
-                <Link to={`/home/${vd.Category}`} style={{width:"90%"}}>
+                <Link to={`/home/${vd.Category}`} style={{ width: "90%" }}>
                   <div className="card shadow-sm">
                     <img
                       src={vd.ImgUrl}
@@ -115,14 +113,18 @@ const Home = () => {
                       className="rounded w-100"
                       style={{ height: "120px", objectFit: "cover" }}
                     />
+                    <div className="play-icon">
+                      <i className="fa fa-play"></i>{" "}
+                      {/* FontAwesome Play Icon */}
+                    </div>
                   </div>
                 </Link>
-                <a
+                <h6
                   href="#"
                   className="text-decoration-none text-center text-white mt-2"
                 >
-                  {vd.Title || vd.Category}
-                </a>
+                  {vd.Title}
+                </h6>
               </div>
             ))
           ) : (
@@ -141,7 +143,7 @@ const Home = () => {
             className="btn btn-light m-1 text-white"
             onClick={handlePreviousPage}
             disabled={currentPage === 1}
-            style={{backgroundColor:"#8e4026"}}
+            style={{ backgroundColor: "#8e4026" }}
           >
             Previous
           </button>
@@ -170,7 +172,7 @@ const Home = () => {
             className="btn btn-light m-1 text-white"
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
-            style={{backgroundColor:"#8e4026"}}
+            style={{ backgroundColor: "#8e4026" }}
           >
             Next
           </button>

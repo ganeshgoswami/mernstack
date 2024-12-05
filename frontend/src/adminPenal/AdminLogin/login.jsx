@@ -13,15 +13,14 @@ const LoginPage = () => {
     e.preventDefault();
     const loginData = {
       email,
-      isAdmin: email === "admin@gmail.com", // Replace with actual admin check
+      isAdmin: email === "admin@gmail.com", 
     };
 
     if (email == "admin@gmail.com" && password == "1234") {
-      setAdmin(email)
+      setAdmin(email);
       navigate("/collection");
     } else if (email != "admin@gmail.com" || password != "1234") {
-      alert("Invalid email or password")
-      
+      alert("Invalid email or password");
     } else {
       navigate("/home");
     }
@@ -32,10 +31,9 @@ const LoginPage = () => {
       <div className="row justify-content-center login-page">
         <div
           className="col-6 shadow p-3 mb-5 bg-body-tertiary rounded rotate-card"
-            style={{
-              backgroundImage: "repeating-conic-gradient(#803100 8%, white 20%)",
-            
-            }}
+          style={{
+            backgroundImage: "repeating-conic-gradient(#803100 8%, white 20%)",
+          }}
         >
           <h2 className="text-center text">Login</h2>
           <form onSubmit={handleSubmit}>

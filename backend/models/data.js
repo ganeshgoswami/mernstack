@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 
 const mongoschema = mongoose.Schema({
-    ImgUrl : String,
-    Titel : String,
-    Category : String,
-    Videourl : String
+  ImgUrl: String,
+  Titel: String,
+  Category: String,
+  Videourl: String,
+  Description: String,
+  Duration: String
 });
 
 

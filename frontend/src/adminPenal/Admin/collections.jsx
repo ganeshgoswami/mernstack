@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
 import { AdminContext } from "../../adminContext/adminContext";
 import { Link } from "react-router-dom";
-// import "./AdminLogin/login.css";
 
-const Home = () => {
+const Collections = () => {
   const categoryData = [];
   const { alldata } = useContext(AdminContext);
-  
+
   alldata.map((n) =>
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
   );
@@ -25,8 +24,7 @@ const Home = () => {
   // pagination use to next and Previous
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 15; 
-
+  const itemsPerPage = 15;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -43,7 +41,6 @@ const Home = () => {
   };
 
   return (
-  
     <div className="container-fluid my-2">
       <div className="row justify-content-center g-3">
         {currentItems.length > 0 ? (
@@ -62,12 +59,9 @@ const Home = () => {
                   />
                 </div>
               </Link>
-              <a
-                href="#"
-                className="text-decoration-none text-center text-white mt-2"
-              >
-                {vd.Title || vd.Category}
-              </a>
+              <h1 className="text-decoration-none text-center text-white mt-2">
+                {vd.Title}
+              </h1>
             </div>
           ))
         ) : (
@@ -79,8 +73,8 @@ const Home = () => {
         )}
       </div>
 
-    {/* Pagination use with ICON  */}
-    
+      {/* Pagination use with ICON  */}
+
       <div className="d-flex justify-content-center align-items-center mt-4">
         <button
           className="btn btn-primary"
@@ -104,8 +98,7 @@ const Home = () => {
         </button>
       </div>
     </div>
-   
   );
 };
 
-export default Home;
+export default Collections;

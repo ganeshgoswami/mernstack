@@ -8,6 +8,9 @@ const AddCollection = () => {
   const [titel, setTitel] = useState("");
   const [category, setCategory] = useState("");
   const [videourl, setVideourl] = useState("");
+  const [description, setDescription] = useState("");
+  const [duration, setDuration] = useState("");
+
   const dropdow = [
     "India",
     "USA",
@@ -23,17 +26,23 @@ const AddCollection = () => {
     "Sri Lanka",
     "Russia",
     "Poland",
-    "Pakistan"
+    "Pakistan",
   ];
   const navigate = useNavigate();
-  
-  const { addVdata } = useContext(AdminContext);
 
+  const { addVdata } = useContext(AdminContext);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    const productData = { imgUrl, titel, category, videourl };
+    const productData = {
+      imgUrl,
+      titel,
+      category,
+      videourl,
+      description,
+      duration,
+    };
     console.log(productData);
     navigate("/collection");
     addVdata(productData);
@@ -62,7 +71,19 @@ const AddCollection = () => {
                 }}
               />
             </div>
-
+            <div className="form-group mb-3">
+              <label>Video Url</label>
+              <input
+                type="text"
+                name="videourl"
+                className="form-control"
+                placeholder="Enter Video Url"
+                value={videourl}
+                onChange={(e) => {
+                  setVideourl(e.target.value);
+                }}
+              />
+            </div>
             <div className="form-group mb-3">
               <label>Titel</label>
               <input
@@ -94,18 +115,32 @@ const AddCollection = () => {
               </select>
             </div>
             <div className="form-group mb-3">
-              <label>Video Url</label>
+              <label>Description</label>
               <input
                 type="text"
-                name="videourl"
+                name="description"
                 className="form-control"
-                placeholder="Enter Video Url"
-                value={videourl}
+                placeholder="Enter Description"
+                value={description}
                 onChange={(e) => {
-                  setVideourl(e.target.value);
+                  setDescription(e.target.value);
                 }}
               />
             </div>
+            <div className="form-group mb-3">
+              <label>Duration</label>
+              <input
+                type="text"
+                name="duration"
+                className="form-control"
+                placeholder="Enter Duration"
+                value={duration}
+                onChange={(e) => {
+                  setDuration(e.target.value);
+                }}
+              />
+            </div>
+
             <button type="submit" className="btn btn-primary btn-block">
               Add New Collection
             </button>

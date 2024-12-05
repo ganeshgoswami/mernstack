@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import "../UserNavbar/userNavbar.css";
 import { AdminContext } from "../../adminContext/adminContext";
 import "../../css/SearchBar.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function UserNavbar() {
   const { alldata } = useContext(AdminContext);
@@ -17,7 +17,6 @@ function UserNavbar() {
 
   const searchCountryName = () => {
     console.log(searchCountry);
-    // const searchData = searchCountry ? alldata.filter((filt)=> filt.Category.toUpperCase() == searchCountry.toUpperCase()) : [];
   };
 
   return (
@@ -41,11 +40,11 @@ function UserNavbar() {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="ms-1 d-flex align-middle">
-              <a className="navbar-brand" href="">
+              <Link to="/home" className="nav-link text-warning me-3 fw-bold ">
                 <h3 className="text-danger">
-                  <b>X Master</b>
+                  <b>XMaster</b>
                 </h3>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -67,8 +66,19 @@ function UserNavbar() {
             </div>
           </div>
 
-          <div className="col-2">
-            <i className="bi bi-gear text-white"></i>
+          <div className="col-2 ">
+            <div className="dropdown">
+              <i className="bi bi-gear text-white dropdown"></i>
+              <div class="dropdown-content">
+                <Link>
+                  {" "}
+                  <i class="bi bi-info-circle"></i>Help
+                </Link>
+                <Link>
+                  <i class="bi bi-chat-left"></i>Send Feedback
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -111,12 +121,11 @@ function UserNavbar() {
           </div>
           <div className="col-8 d-flex justify-content-center">
             <div className="ms-1">
-              <a className="navbar-brand d-flex" href="#">
+              <Link to="/home" className="nav-link text-warning me-3 fw-bold ">
                 <h3 className="text-danger">
-                  <b>X</b>
+                  <b>X Master</b>
                 </h3>
-                <p className="m-1">Master</p>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-2"></div>
@@ -145,21 +154,18 @@ function UserNavbar() {
                 <div className="accordion-body">
                   <ul style={{ listStyle: "None" }}>
                     <li>
-                      <a className="dropdown-item" href="/#">
-                        Popular
-                      </a>
+                      {/* <Link className="dropdown-item">Popular</Link> */}
+                      Popular
                       <hr />
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
-                        Letest Video
-                      </a>
+                      {/* <Link className="dropdown-item">Letest Video</Link> */}
+                      Letest Video
                       <hr />
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
-                        Red Alert
-                      </a>
+                      {/* <Link className="dropdown-item">  Red Alert</Link> */}
+                      Red Alert
                       <hr />
                     </li>
                   </ul>
@@ -202,10 +208,8 @@ function UserNavbar() {
                           aria-label="Close"
                           key={n}
                         >
-                          <a className="dropdown-item" href="">
-                            {n}
-                            <hr />
-                          </a>
+                          {n}
+                          <hr />
                         </li>
                       </>
                     ))}
@@ -234,10 +238,8 @@ function UserNavbar() {
                 <div className="accordion-body">
                   <ul style={{ listStyle: "None" }}>
                     <li>
-                      <a className="dropdown-item" href="#">
-                        Update Soon
-                        <hr />
-                      </a>
+                      Update Soon
+                      <hr />
                     </li>
                   </ul>
                 </div>
@@ -248,66 +250,57 @@ function UserNavbar() {
       </div>
       {/* side navbar finish */}
 
-      {/* dropdown with navbar start */}
+      {/*navbar with dropdown start */}
       <div className="navbar navbar-expand-lg bg-dark-subtle p-0 dropDownHide">
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Videos
-                </a>
+                </Link>
+
                 <ul
-                  className="dropdown-menu"
-                  style={{ maxHeight: "150px", overflowY: "auto" }}
+                  className="dropdown-menu dropdown-content"
+                  style={{ maxHeight: "190px", overflowY: "auto" }}
                 >
                   <li>
-                    <a className="dropdown-item" href="/home/Popular">
-                      Popular
-                    </a>
+                    <Link className="dropdown-item">Popular</Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/home/Letest">
-                      Letest Video
-                    </a>
+                    <Link className="dropdown-item">Letest Video</Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Red Alert
-                    </a>
+                    <Link className="dropdown-item">Red Alert</Link>
                   </li>
                 </ul>
               </li>
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Category
-                </a>
+                </Link>
                 <ul
-                  className="dropdown-menu"
+                  className="dropdown-menu dropdown-content"
                   style={{ maxHeight: "400px", overflowY: "auto" }}
                 >
                   <li onClick={() => navigate(`/home`)}>
-                    <a className="dropdown-item" href="">
-                      All
-                    </a>
+                    <Link className="dropdown-item">All</Link>
                   </li>
                   {categoryData.map((n) => (
                     <>
@@ -315,47 +308,30 @@ function UserNavbar() {
                         <hr className="dropdown-divider" />
                       </li>
                       <li onClick={() => navigate(`/home/${n}`)}>
-                        <a className="dropdown-item" href="">
-                          {n}
-                        </a>
+                        <Link className="dropdown-item">{n}</Link>
                       </li>
                     </>
                   ))}
                 </ul>
               </li>
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   New Addition
-                </a>
-                <ul className="dropdown-menu">
+                </Link>
+                <ul className="dropdown-menu dropdown-content">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Update Soon
-                    </a>
+                    <Link className="dropdown-item">Update Soon</Link>
                   </li>
                 </ul>
               </li>
-              {/* <li className="nav-item ms-3">
-                <a className="nav-link" href="">
-                  [ A - Z ]
-                </a>
-              </li>
-              <li className="nav-item ms-3">
-                <a className="nav-link" href="">
-                  [ Z - A ]
-                </a>
-              </li> */}
             </ul>
           </div>
         </div>
-
-        <div></div>
       </div>
       {/* dropdown with navbar Finish */}
     </>

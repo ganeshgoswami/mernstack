@@ -13,6 +13,7 @@ import { AdminContext } from "./adminContext/adminContext";
 import LoginPage from "./adminPenal/AdminLogin/login";
 import Footer from "./component/Footer/footer";
 import AddCollection from "./adminPenal/AddCollection/addCollection";
+import PlayVideoSeprate from "./component/playVideo/playVideoSeprate";
 
 function App() {
   const { admin } = useContext(AdminContext);
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/home/:cate" element={<SaprateCategory />} />
+          <Route path="/playVideo/:id" element={<PlayVideoSeprate />} />
 
           <Route
             path="/addCollecion"

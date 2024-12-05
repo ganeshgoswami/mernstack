@@ -3,7 +3,6 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 export const AdminContext = createContext();
 
-
 export const AuthAdminProvider = ({ children }) => {
   const [alldata, setalldata] = useState([]);
   const [admin, setAdmin] = useState(null);

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AdminContext } from "../../adminContext/adminContext";
-
+import "../AdminLogin/login.css";
 const AdminTable = () => {
   const { alldata, deletedata, edit } = useContext(AdminContext);
   const [deleteVideoName, setDeleteVideoName] = useState(null);
@@ -10,7 +10,7 @@ const AdminTable = () => {
   const [category, setCategory] = useState("");
   const [videourl, setVideourl] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; 
+  const itemsPerPage = 5;
   const dropdow = [
     "India",
     "USA",
@@ -26,7 +26,7 @@ const AdminTable = () => {
     "Sri Lanka",
     "Russia",
     "Poland",
-    "Pakistan"
+    "Pakistan",
   ];
 
   const searchIdForDelete = (id) => {
@@ -54,7 +54,7 @@ const AdminTable = () => {
     setVideourl(updateNewData.Videourl);
   };
 
- // page change 
+  // page change
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentData = alldata.slice(indexOfFirstItem, indexOfLastItem);
@@ -164,92 +164,160 @@ const AdminTable = () => {
         <p>No data available.</p>
       )}
 
-        {/* delete Modal to Delete data */}
+      {/* delete Modal to Delete data */}
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h4>Are You Sure , Delete This Video</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={()=>deleteVideo(deleteVideoName._id)}>Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-{/* Edit data With Modal  */}
-
-<div className="modal fade" id="editData" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h1 className="modal-title fs-5" id="exampleModalLabel">New message</h1>
-        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
-      </div>
-      <div className="modal-body">
-        <form>
-          <div className="mb-3">
-            <label htmlFor="recipient-name" className="col-form-label">Image Url</label>
-            <input type="text" className="form-control" id="recipient-name"   value={imgUrl}
-                onChange={(e) => {
-                  setImgUrl(e.target.value);
-                }}/>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="recipient-name" className="col-form-label">Titel</label>
-            <input type="text" className="form-control" id="recipient-name"   value={titel}
-                onChange={(e) => {
-                  setTitel(e.target.value);
-                }} />
-          </div>
-          <div className="mb-3">
-              <label>Category</label>
-             <select
-              name="category"
-               id=""
-               value={category}
-               className="form-control"
-               onChange={(e) => {
-                setCategory(e.target.value);
-              }}
-               >
-               <option value="" disabled>Choose Category</option>
-               {
-                dropdow.map((vl)=>
-                    <option value={vl}>{vl}</option>
-                )
-               }
-               </select>
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Delete
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
-          <div className="mb-3">
-            <label htmlFor="recipient-name" className="col-form-label">Video Url</label>
-            <input type="text" className="form-control" id="recipient-name" value={videourl}
-                onChange={(e) => {
-                    setVideourl(e.target.value);
-                }}/>
+            <div class="modal-body">
+              <h4>Are You Sure , Delete This Video</h4>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                onClick={() => deleteVideo(deleteVideoName._id)}
+              >
+                Delete
+              </button>
+            </div>
           </div>
-        
-        </form>
+        </div>
       </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={(e) => handelUpdateVideo(updatedData._id, e)}>Update</button>
+
+      {/* Edit data With Modal  */}
+
+      <div
+        className="modal fade"
+        id="editData"
+        tabIndex={-1}
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
+                New message
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              />
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <label htmlFor="recipient-name" className="col-form-label">
+                    Image Url
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="recipient-name"
+                    value={imgUrl}
+                    onChange={(e) => {
+                      setImgUrl(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="recipient-name" className="col-form-label">
+                    Titel
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="recipient-name"
+                    value={titel}
+                    onChange={(e) => {
+                      setTitel(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label>Category</label>
+                  <select
+                    name="category"
+                    id=""
+                    value={category}
+                    className="form-control"
+                    onChange={(e) => {
+                      setCategory(e.target.value);
+                    }}
+                  >
+                    <option value="" disabled>
+                      Choose Category
+                    </option>
+                    {dropdow.map((vl) => (
+                      <option value={vl}>{vl}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="recipient-name" className="col-form-label">
+                    Video Url
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="recipient-name"
+                    value={videourl}
+                    onChange={(e) => {
+                      setVideourl(e.target.value);
+                    }}
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-bs-dismiss="modal"
+                onClick={(e) => handelUpdateVideo(updatedData._id, e)}
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
     </div>
   );
 };
-
 export default AdminTable;
-
-
-  

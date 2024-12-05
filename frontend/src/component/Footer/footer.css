@@ -18,12 +18,12 @@
     color: #f1f1f1;
   }
   
-  .footer-links a {
+  .footer-links Link {
     color: #b0b0b0;
     text-decoration: none;
   }
   
-  .footer-links a:hover {
+  .footer-links Link:hover {
     color: #ffffff;
   }
   
