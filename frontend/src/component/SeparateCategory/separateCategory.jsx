@@ -25,16 +25,15 @@ const SaprateCategory = () => {
               key={vd._id}
             >
               <div className="position-relative">
-                <Link to={`/playVideo/${vd._id}`}>
+                <Link to={`/playVideo/${vd._id}`} className="text-decoration-none">
                   <img
                     src={vd.ImgUrl}
                     alt={vd.Title} // Use the title or name property from your data
-                    className="card-img-top img-fluid rounded"
-                    style={{ maxWidth: "100%", height: "auto" }}
+                    className="rounded w-100"
+                    style={{ height: "130px", objectFit: "cover" }}
                   />
-                  <PlayVideoSeprate filtdata={filtdata}  />
+                <h4 className="text-white">{vd.Titel}</h4>
                 </Link>
-                <h1 className="text-decoration-none text-white">{vd.Titel}</h1>
               </div>
             </div>
           ))

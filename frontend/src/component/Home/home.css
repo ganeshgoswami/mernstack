@@ -1,15 +1,31 @@
-/* src/css/Home.css */
-/* .card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-  }
-  
+.card {
+  position: relative;
+  overflow: hidden;
+}
 
-  .card-title {
-    font-size: 0.5rem;
-    font-weight: 500;
-  }
-   */
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-   /* Style the dropdown container */
-  
+.time-overonImg {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}

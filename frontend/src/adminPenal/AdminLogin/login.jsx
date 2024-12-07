@@ -4,26 +4,50 @@ import "./login.css";
 import { AdminContext } from "../../adminContext/adminContext";
 
 const LoginPage = () => {
-  const { setAdmin } = useContext(AdminContext);
+  const { setAdmin,handleLogin } = useContext(AdminContext);
   const [email, setemail] = useState(null);
   const [password, setpassword] = useState(null);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+
     const loginData = {
       email,
       isAdmin: email === "admin@gmail.com", 
     };
 
-    if (email == "admin@gmail.com" && password == "1234") {
-      setAdmin(email);
-      navigate("/collection");
-    } else if (email != "admin@gmail.com" || password != "1234") {
-      alert("Invalid email or password");
-    } else {
-      navigate("/home");
-    }
+      try {
+        const res = await fetch("http://localhost:5000/adminlogin", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(loginData),
+        });
+        const data = await res.json();
+        console.log(data);
+  
+        if (data.status === 202) {
+          localStorage.setItem("adminlogin", "1");
+          setAdmin(localStorage.getItem("adminlogin"));
+          setAdmin(data.data.Email)
+          navigate("/collection");
+        } else {
+          
+          console.log(data.message);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    ;
+
+    // if (email == "admin@gmail.com" && password == "1234") {
+    //   setAdmin(email);
+    //   navigate("/collection");
+    // } else if (email != "admin@gmail.com" || password != "1234") {
+    //   alert("Invalid email or password");
+    // } else {
+    //   navigate("/home");
+    // }
   };
 
   return (

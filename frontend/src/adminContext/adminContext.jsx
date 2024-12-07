@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
 
 export const AdminContext = createContext();
 
@@ -10,6 +9,7 @@ export const AuthAdminProvider = ({ children }) => {
   useEffect(() => {
     getalldata();
   }, []);
+
 
   const getalldata = async () => {
     await fetch("http://localhost:5000/alldata")

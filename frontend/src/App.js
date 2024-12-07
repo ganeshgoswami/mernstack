@@ -14,6 +14,7 @@ import LoginPage from "./adminPenal/AdminLogin/login";
 import Footer from "./component/Footer/footer";
 import AddCollection from "./adminPenal/AddCollection/addCollection";
 import PlayVideoSeprate from "./component/playVideo/playVideoSeprate";
+import Help from "./HelpAndSupport/help";
 
 function App() {
   const { admin } = useContext(AdminContext);
@@ -29,6 +30,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/home/:cate" element={<SaprateCategory />} />
           <Route path="/playVideo/:id" element={<PlayVideoSeprate />} />
+          <Route path="/help" element={<Help />} />
 
           <Route
             path="/addCollecion"

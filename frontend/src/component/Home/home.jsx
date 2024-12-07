@@ -10,10 +10,10 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [visibleBadges, setVisibleBadges] = useState(8);
   const initialLimit = 8;
-
   alldata.map((n) =>
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
-  );
+);
+console.log(alldata)
 
   // show releted video badge
 
@@ -69,6 +69,8 @@ const Home = () => {
 
   return (
     <>
+
+      <div className="container-fluid my-2" style={{ width: "94%" }}>
       <div className="d-flex m-1 d-flex flex-wrap">
         <h5 className="text-white">Related: </h5>
         {categoryData.slice(0, visibleBadges).map((category, index) => (
@@ -96,38 +98,36 @@ const Home = () => {
           )}
         </div>
       </div>
-
-      <div className="container-fluid my-2" style={{ width: "90%" }}>
         <div className="row justify-content-center g-3">
-          {currentData.length > 0 ? (
-            currentData.map((vd, index) => (
-              <div
-                className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex flex-column align-items-center"
-                key={index}
-              >
-                <Link to={`/home/${vd.Category}`} style={{ width: "90%" }}>
-                  <div className="card shadow-sm">
-                    <img
-                      src={vd.ImgUrl}
-                      alt={vd.Title}
-                      className="rounded w-100"
-                      style={{ height: "120px", objectFit: "cover" }}
-                    />
-                    <div className="play-icon">
-                      <i className="fa fa-play"></i>{" "}
-                      {/* FontAwesome Play Icon */}
-                    </div>
-                  </div>
-                </Link>
-                <h6
-                  href="#"
-                  className="text-decoration-none text-center text-white mt-2"
-                >
-                  {vd.Title}
-                </h6>
-              </div>
-            ))
-          ) : (
+        {alldata.length > 0 ? (
+    alldata.map((vd, index) => (
+      <div
+        className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex flex-column align-items-center"
+        key={index}
+      >
+        <Link
+          to={`/playVideo/${vd._id}`}
+          style={{ width: "90%", textDecoration: "none" }}
+        >
+          <div className="card shadow-sm position-relative">
+            <img
+              src={vd.ImgUrl}
+              alt={vd.Titel}
+              className="rounded w-100"
+              style={{ height: "120px", objectFit: "cover" }}
+            />
+            <div className="play-icon">
+              <i className="fa fa-play"></i>
+            </div>
+            <span className="time-overlay">{vd.Duration}</span>
+          </div>
+          <h4 className="text-decoration-none text-center text-white mt-2">
+            {vd.Titel}
+          </h4>
+        </Link>
+      </div>
+    ))
+  ) : (
             <div className="d-flex justify-content-center">
               <div className="spinner-border text-primary" role="status">
                 <span className="visually-hidden">Loading...</span>

@@ -8,7 +8,13 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 function UserNavbar() {
   const { alldata } = useContext(AdminContext);
   const [searchCountry, setSearchCountry] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
 
   const categoryData = [];
   alldata.map((n) =>
@@ -40,7 +46,7 @@ function UserNavbar() {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="ms-1 d-flex align-middle">
-              <Link to="/home" className="nav-link text-warning me-3 fw-bold ">
+              <Link to="/" className="nav-link text-warning me-3 fw-bold ">
                 <h3 className="text-danger">
                   <b>XMaster</b>
                 </h3>
@@ -67,16 +73,19 @@ function UserNavbar() {
           </div>
 
           <div className="col-2 ">
-            <div className="dropdown">
-              <i className="bi bi-gear text-white dropdown"></i>
-              <div class="dropdown-content">
-                <Link>
-                  {" "}
-                  <i class="bi bi-info-circle"></i>Help
-                </Link>
-                <Link>
-                  <i class="bi bi-chat-left"></i>Send Feedback
-                </Link>
+            <div className="btn-group">
+              <i
+                className="bi bi-gear text-white"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+
+              <div className="dropdown-menu dropdown-menu-end dropdown-menu-lg-start bg-dark">
+                <div className="dropdown-item bg-dark">
+                  <Link className="text-white" to={"/help"}>
+                    <i className="bi bi-info-circle m-1"></i>Help
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -114,7 +123,7 @@ function UserNavbar() {
           <div className="col-2">
             <button
               type="button"
-              className="btn-close"
+              className="btn-close btn-sm p-0 m-2"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             ></button>
@@ -154,18 +163,17 @@ function UserNavbar() {
                 <div className="accordion-body">
                   <ul style={{ listStyle: "None" }}>
                     <li>
-                      {/* <Link className="dropdown-item">Popular</Link> */}
-                      Popular
+                      <Link className="dropdown-item">Popular</Link>
                       <hr />
                     </li>
                     <li>
-                      {/* <Link className="dropdown-item">Letest Video</Link> */}
-                      Letest Video
+                      <Link className="dropdown-item">Letest Video</Link>
+
                       <hr />
                     </li>
                     <li>
-                      {/* <Link className="dropdown-item">  Red Alert</Link> */}
-                      Red Alert
+                      <Link className="dropdown-item"> Red Alert</Link>
+
                       <hr />
                     </li>
                   </ul>

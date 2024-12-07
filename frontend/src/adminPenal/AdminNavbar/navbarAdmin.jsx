@@ -38,27 +38,13 @@ const NavbarAdmin = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item me-3">
-              <Link
-                to="/adminTable"
-                className="nav-link"
-                style={({ isActive }) => ({
-                  textDecoration: "none",
-                  color: isActive ? "yellow" : "white",
-                })}
-              >
+              <Link to="/adminTable" className="nav-link">
                 Video Table Store
               </Link>
             </li>
 
             <li className="nav-item me-3">
-              <Link
-                to="/addCollecion"
-                className="nav-link"
-                style={({ isActive }) => ({
-                  textDecoration: "none",
-                  color: isActive ? "yellow" : "white",
-                })}
-              >
+              <Link to="/addCollecion" className="nav-link">
                 Add Video
               </Link>
             </li>
