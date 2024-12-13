@@ -5,7 +5,6 @@ exports.adminlogin = async (req, res) => {
     try {
         // Check if there's a admin with the provided email
         const loginAdmin = await Admin.findOne({ Email: email });
-        console.log(loginAdmin)
       if (loginAdmin !== null) {
         if (loginAdmin.password === password) {
           res.json({

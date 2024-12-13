@@ -25,14 +25,14 @@ const SaprateCategory = () => {
               key={vd._id}
             >
               <div className="position-relative">
-                <Link to={`/playVideo/${vd._id}`} className="text-decoration-none">
+                <Link to={`/playVideo/${vd._id}/${vd.Category}`} className="text-decoration-none">
                   <img
                     src={vd.ImgUrl}
                     alt={vd.Title} // Use the title or name property from your data
                     className="rounded w-100"
                     style={{ height: "130px", objectFit: "cover" }}
                   />
-                <h4 className="text-white">{vd.Titel}</h4>
+                <h4 className="text-white item-title">{vd.Titel}</h4>
                 </Link>
               </div>
             </div>

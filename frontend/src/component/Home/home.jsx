@@ -6,14 +6,14 @@ import "../Home/home.css";
 const Home = () => {
   const { alldata } = useContext(AdminContext);
   const categoryData = [];
-  const itemsPerPage = 6;
+  const itemsPerPage = 24;
   const [currentPage, setCurrentPage] = useState(1);
   const [visibleBadges, setVisibleBadges] = useState(8);
   const initialLimit = 8;
   alldata.map((n) =>
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
-);
-console.log(alldata)
+  );
+  console.log(alldata);
 
   // show releted video badge
 
@@ -25,10 +25,6 @@ console.log(alldata)
 
   const handleShowMore = () => {
     setVisibleBadges((prev) => Math.min(prev + 8, categoryData.length));
-  };
-
-  const handleShowLess = () => {
-    setVisibleBadges(initialLimit);
   };
 
   const firstVideoAndImage = [];
@@ -44,11 +40,11 @@ console.log(alldata)
   }
 
   // pagination use to next and Previous
-
+  
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentData = alldata.slice(indexOfFirstItem, indexOfLastItem);
-
+  
   const totalPages = Math.ceil(alldata.length / itemsPerPage);
 
   const handleNextPage = () => {
@@ -69,65 +65,56 @@ console.log(alldata)
 
   return (
     <>
-
       <div className="container-fluid my-2" style={{ width: "94%" }}>
-      <div className="d-flex m-1 d-flex flex-wrap">
-        <h5 className="text-white">Related: </h5>
-        {categoryData.slice(0, visibleBadges).map((category, index) => (
-          <Link
-            to={`/home/${category}`}
-            className="text-decoration-none"
-            key={index}
-          >
-            <span className="badge text-bg-secondary d-flex align-items-center m-1">
-              {category}
-            </span>
-          </Link>
-        ))}
+        <div className="d-flex m-1 d-flex flex-wrap">
+          <h5 className="text-white">Related: </h5>
+          {categoryData.slice(0, visibleBadges).map((category, index) => (
+            <Link
+              to={`/home/${category}`}
+              className="text-decoration-none"
+              key={index}
+            >
+              <span className="badge text-bg-secondary d-flex align-items-center m-1">
+                {category}
+              </span>
+            </Link>
+          ))}
 
-        <div className="d-flex align-items-center m-1">
-          {visibleBadges < categoryData.length && (
-            <button className="btn text-info" onClick={handleShowMore}>
-              ... Show More
-            </button>
-          )}
-          {visibleBadges > initialLimit && (
-            <button className="btn text-danger" onClick={handleShowLess}>
-              Show Less
-            </button>
-          )}
-        </div>
-      </div>
-        <div className="row justify-content-center g-3">
-        {alldata.length > 0 ? (
-    alldata.map((vd, index) => (
-      <div
-        className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex flex-column align-items-center"
-        key={index}
-      >
-        <Link
-          to={`/playVideo/${vd._id}`}
-          style={{ width: "90%", textDecoration: "none" }}
-        >
-          <div className="card shadow-sm position-relative">
-            <img
-              src={vd.ImgUrl}
-              alt={vd.Titel}
-              className="rounded w-100"
-              style={{ height: "120px", objectFit: "cover" }}
-            />
-            <div className="play-icon">
-              <i className="fa fa-play"></i>
-            </div>
-            <span className="time-overlay">{vd.Duration}</span>
+          <div className="d-flex align-items-center m-1">
+            {visibleBadges < categoryData.length && (
+              <button className="btn text-info" onClick={handleShowMore}>
+                ... Show More
+              </button>
+            )}
           </div>
-          <h4 className="text-decoration-none text-center text-white mt-2">
-            {vd.Titel}
-          </h4>
-        </Link>
-      </div>
-    ))
-  ) : (
+        </div>
+        <div className="row justify-content-center m-1 g-2">
+          {currentData.length > 0 ? (
+            currentData.map((vd, index) => (
+              <div
+                className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex flex-column align-items-center p-0"
+                key={index}
+              >
+                <Link
+                  to={`/playVideo/${vd._id}/${vd.Category}`}
+                  style={{ width: "90%", textDecoration: "none" }}
+                >
+                  <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark rounded">
+                    <img
+                      src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
+                      alt={vd.Titel}
+                      className="rounded w-100"
+                      style={{ height: "110px", objectFit: "cover" }}
+                    />
+                    <span className="time-overlay">{vd.Duration}</span>
+                  </div>
+                  <h4 className="text-decoration-none text-center text-white mt-2 item-title">
+                    My Name
+                  </h4>
+                </Link>
+              </div>
+            ))
+          ) : (
             <div className="d-flex justify-content-center">
               <div className="spinner-border text-primary" role="status">
                 <span className="visually-hidden">Loading...</span>

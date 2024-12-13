@@ -3,20 +3,6 @@
   overflow: hidden;
 }
 
-.play-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 24px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .time-overonImg {
   position: absolute;
@@ -28,4 +14,18 @@
   border-radius: 3px;
   font-size: 12px;
   font-weight: bold;
+}
+
+.item-title{
+  margin: 0; 
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    color: var(--link-color);
+    word-break: break-all;
 }

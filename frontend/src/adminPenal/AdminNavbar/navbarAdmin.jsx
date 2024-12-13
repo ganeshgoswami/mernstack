@@ -6,9 +6,9 @@ const NavbarAdmin = () => {
   const { setAdmin } = useContext(AdminContext);
   const navigate = useNavigate();
   const logout = () => {
-    localStorage.removeItem("admin");
+    localStorage.removeItem("adminlogin");
     setAdmin(null);
-    navigate("/admin");
+    navigate("/");
   };
   return (
     <nav

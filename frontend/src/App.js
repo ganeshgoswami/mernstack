@@ -25,37 +25,43 @@ function App() {
       <div className="App">
         {admin ? <NavbarAdmin /> : <UserNavbar />}
         <Routes>
-          {/* User Routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/home/:cate" element={<SaprateCategory />} />
-          <Route path="/playVideo/:id" element={<PlayVideoSeprate />} />
-          <Route path="/help" element={<Help />} />
+          {admin ? (
+            <>
+              <Route
+                path="/addCollecion"
+                element={
+                  <ProtectedRoute admin={admin}>
+                    <AddCollection />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/collection"
+                element={
+                  <ProtectedRoute admin={admin}>
+                    <Collections />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/adminTable"
+                element={
+                  <ProtectedRoute admin={admin}>
+                    <AdminTable />
+                  </ProtectedRoute>
+                }
+              />
+            </>
+          ) : (
+            <>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/home/:cate" element={<SaprateCategory />} />
+              <Route path="/playVideo/:id/:cate" element={<PlayVideoSeprate />} />
+              <Route path="/help" element={<Help />} />
+            </>
+          )}
 
-          <Route
-            path="/addCollecion"
-            element={
-              <ProtectedRoute admin={admin}>
-                <AddCollection />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/collection"
-            element={
-              <ProtectedRoute admin={admin}>
-                <Collections />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/adminTable"
-            element={
-              <ProtectedRoute admin={admin}>
-                <AdminTable />
-              </ProtectedRoute>
-            }
-          />
           {/* Admin-only USe */}
           <Route path="/admin/*" element={<LoginPage />} />
         </Routes>

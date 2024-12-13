@@ -250,6 +250,20 @@ const AdminTable = () => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="recipient-name" className="col-form-label">
+                    Video Url
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="recipient-name"
+                    value={videourl}
+                    onChange={(e) => {
+                      setVideourl(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="recipient-name" className="col-form-label">
                     Titel
                   </label>
                   <input
@@ -281,20 +295,7 @@ const AdminTable = () => {
                     ))}
                   </select>
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="recipient-name" className="col-form-label">
-                    Video Url
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="recipient-name"
-                    value={videourl}
-                    onChange={(e) => {
-                      setVideourl(e.target.value);
-                    }}
-                  />
-                </div>
+               
               </form>
             </div>
             <div className="modal-footer">

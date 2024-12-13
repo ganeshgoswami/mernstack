@@ -122,4 +122,10 @@
     right: -30px !important ;
     left: auto !important;
   }
+  .logoImage {
+    width: 140px !important;
+  }
+  .m-10{
+    margin-bottom: 10px;
+  }
 }

@@ -4,7 +4,7 @@ import "./login.css";
 import { AdminContext } from "../../adminContext/adminContext";
 
 const LoginPage = () => {
-  const { setAdmin,handleLogin } = useContext(AdminContext);
+  const { setAdmin } = useContext(AdminContext);
   const [email, setemail] = useState(null);
   const [password, setpassword] = useState(null);
   const navigate = useNavigate();
@@ -27,9 +27,9 @@ const LoginPage = () => {
         console.log(data);
   
         if (data.status === 202) {
-          localStorage.setItem("adminlogin", "1");
+          localStorage.setItem("adminlogin", data.data.Email);
           setAdmin(localStorage.getItem("adminlogin"));
-          setAdmin(data.data.Email)
+          // setAdmin(data.data.Email)
           navigate("/collection");
         } else {
           

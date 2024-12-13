@@ -31,3 +31,16 @@
   margin: 0;
 }
 
+.item-title{
+  margin: 0; 
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    color: var(--link-color);
+    word-break: break-all;
+}

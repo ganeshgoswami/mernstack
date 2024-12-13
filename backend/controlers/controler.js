@@ -4,7 +4,6 @@ exports.addCollection = async (req, res) => {
   try {
     const { imgUrl, titel, category, videourl,description, duration } = req.body;
     const userCheck = await StoreData.findOne({ Videourl: videourl });
- console.log(req.body)
     if (userCheck == null) {
       const record = new StoreData({
         ImgUrl: imgUrl,
@@ -16,7 +15,6 @@ exports.addCollection = async (req, res) => {
       });
 
       record.save();
-      console.log(req.body)
 
       res.json({
         statusCode: 202,
@@ -79,7 +77,7 @@ exports.allData = async (req, res) => {
     try {
       const id = req.params.id;
       const record = await StoreData.findByIdAndDelete(id);
-      console.log(record);
+  
       res.json({
         statusCode: 202,
         message: "data Deleted ",

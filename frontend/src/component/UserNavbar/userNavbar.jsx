@@ -4,7 +4,7 @@ import "../UserNavbar/userNavbar.css";
 import { AdminContext } from "../../adminContext/adminContext";
 import "../../css/SearchBar.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import logoImage from "../../assets/logoApp.png"
 function UserNavbar() {
   const { alldata } = useContext(AdminContext);
   const [searchCountry, setSearchCountry] = useState(null);
@@ -34,21 +34,17 @@ function UserNavbar() {
       >
         <div className="container-xxl p-2">
           <div className="col-2 d-flex">
-            <button
-              className="btn btn-primary navbar-toggler bg-white"
-              type="button"
-              aria-expanded="false"
+          <i className="fa-solid fa-bars navbar-toggler text-white"    aria-expanded="false"
               aria-label="Toggle navigation"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasScrolling"
-              aria-controls="offcanvasScrolling"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
+              aria-controls="offcanvasScrolling"></i>
             <div className="ms-1 d-flex align-middle">
               <Link to="/" className="nav-link text-warning me-3 fw-bold ">
                 <h3 className="text-danger">
-                  <b>XMaster</b>
+                  {/* <b>XMaster</b> */}
+                
+                  <img src={logoImage} alt=""  width={"180px"} className="logoImage"/>
                 </h3>
               </Link>
             </div>
@@ -72,7 +68,7 @@ function UserNavbar() {
             </div>
           </div>
 
-          <div className="col-2 ">
+          <div className="col-2 m-10">
             <div className="btn-group">
               <i
                 className="bi bi-gear text-white"
@@ -112,7 +108,7 @@ function UserNavbar() {
 
       {/* side navbar start */}
       <div
-        className="offcanvas offcanvas-start"
+        className="offcanvas offcanvas-start bg-secondary"
         data-bs-scroll="true"
         data-bs-backdrop="false"
         tabindex="-1"
@@ -132,7 +128,7 @@ function UserNavbar() {
             <div className="ms-1">
               <Link to="/home" className="nav-link text-warning me-3 fw-bold ">
                 <h3 className="text-danger">
-                  <b>X Master</b>
+                <img src={logoImage} alt=""  width={"160px"}/>
                 </h3>
               </Link>
             </div>
@@ -278,7 +274,7 @@ function UserNavbar() {
                   style={{ maxHeight: "190px", overflowY: "auto" }}
                 >
                   <li>
-                    <Link className="dropdown-item">Popular</Link>
+                    <Link className="dropdown-item" to={"/home/Popular Video"}>Popular Video</Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />

@@ -59,7 +59,7 @@ const Collections = () => {
                   />
                 </div>
               </Link>
-              <h4 className="text-decoration-none text-center text-white mt-2">
+              <h4 className="text-decoration-none text-center text-white mt-2 item-title">
                 {vd.Titel}
               </h4>
             </div>

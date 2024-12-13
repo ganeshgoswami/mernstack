@@ -10,9 +10,26 @@ const AddCollection = () => {
   const [videourl, setVideourl] = useState("");
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState("");
-
+ const {alldata} = useContext(AdminContext)
   const dropdow = [
-    "India",
+    "Hard Fuck",
+    "Mom",
+    "Indian",
+    "Teen",
+    "Big buddy",
+    "Russian",
+    "Japanese",
+    "Mia Khalifa",
+    "Crazy Porn",
+    "Hd Porn",
+    "Desi Sex",
+    "Hot Mom",
+    "Anal",
+    "Asian",
+    "Big Ass",
+    "Amateur",
+    "Popular Video",
+    "Letest Video",
     "USA",
     "South Africa",
     "Afghanistan",
@@ -44,7 +61,7 @@ const AddCollection = () => {
       duration,
     };
     console.log(productData);
-    navigate("/collection");
+    // navigate("/collection");
     addVdata(productData);
   }
 
@@ -52,6 +69,7 @@ const AddCollection = () => {
     <div className="container-fluid">
       <div className="row justify-content-center AddCollection-page">
         <div className="col-md-6 shadow p-3 mb-5 bg-body-tertiary rounded">
+        {alldata.length}
           <h2 className="text-center">Add Collection</h2>
           <form
             onSubmit={(e) => {

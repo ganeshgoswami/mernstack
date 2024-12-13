@@ -7,9 +7,9 @@ const Footer = () => {
       <footer className="footer bg-dark text-light py-4">
         <div className="container">
           <div className="row">
-            <div className="col-md-4 col-sm-12 mb-3 text-center text-md-start">
+            <div className="col-md-3 col-sm-8 mb-3 text-center text-md-start">
               <h6 className="footer-description">
-                Xmaster.COM is the Nr. 1 sou  rce for free VIDEOS. Millions of
+                Xquickly.COM is the Nr. 1 sou  rce for free VIDEOS. Millions of
                 movies aggregated from hundreds of sites, closely monitored to
                 give you a safe and pleasurable experience!
               </h6>
@@ -68,7 +68,7 @@ const Footer = () => {
             <div className="col-md-4 col-sm-12 text-center text-md-start">
               <h4 className="">Parents</h4>
               <p className="footer-description">
-                XMaster.com uses the (RTA) website label to better enable
+                Xquickly.com uses the (RTA) website label to better enable
                 parental filtering. content and block access to this site by
                 using parental controls.
               </p>
@@ -76,7 +76,7 @@ const Footer = () => {
           </div>
 
           <div className="text-center mt-3">
-            <p>© 2024 XMaster.com. All rights reserved.</p>
+            <p>© 2024 Xquickly.com. All rights reserved.</p>
           </div>
         </div>
       </footer>

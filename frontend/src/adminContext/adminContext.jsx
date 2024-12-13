@@ -5,9 +5,10 @@ export const AdminContext = createContext();
 export const AuthAdminProvider = ({ children }) => {
   const [alldata, setalldata] = useState([]);
   const [admin, setAdmin] = useState(null);
-
+  
   useEffect(() => {
     getalldata();
+    setAdmin(localStorage.getItem("adminlogin"))
   }, []);
 
 
@@ -32,6 +33,7 @@ export const AuthAdminProvider = ({ children }) => {
         if (data.data._id != null) {
           console.log("Data Add Succcessfully");
         } else {
+          alert("Same Video not Upload")
           console.log("Same Data not Add Same Database");
         }
       });
