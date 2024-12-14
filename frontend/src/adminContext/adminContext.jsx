@@ -33,7 +33,6 @@ export const AuthAdminProvider = ({ children }) => {
         if (data.data._id != null) {
           console.log("Data Add Succcessfully");
         } else {
-          alert("Same Video not Upload")
           console.log("Same Data not Add Same Database");
         }
       });
@@ -75,6 +74,30 @@ export const AuthAdminProvider = ({ children }) => {
       });
   };
 
+  const handleViewsCount = async (videoId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/viewsUpdate/${videoId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ videoId }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to update Views: ${response.statusText}`);
+      }
+      const data = await response.json();
+      getalldata()
+      console.log("Views Updated successfully:", data);
+    } catch (err) {
+      console.error("Error Updating views:", err);
+    }
+  };
+
   return (
     <AdminContext.Provider
       value={{
@@ -84,6 +107,8 @@ export const AuthAdminProvider = ({ children }) => {
         edit,
         admin,
         setAdmin,
+        getalldata,
+        handleViewsCount
       }}
     >
       {children}

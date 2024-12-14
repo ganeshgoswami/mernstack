@@ -55,23 +55,24 @@ exports.allData = async (req, res) => {
     }
   };
 
-  exports.setCategory = async (req, res) => {
-    try {
-      const id = req.params.id;
+  // exports.setCategory = async (req, res) => {
+  //   try {
+  //     const id = req.params.id;
    
-      const record = await StoreData.findById(id);
-      res.json({
-        statusCode: 202,
-        message: "Update Value",
-        data: record,
-      });
-    } catch (err) {
-      res.json({
-        statusCode: 500,
-        message: `Update API is not working: ${err.message}`,
-      });
-    }
-  };
+  //     const record = await StoreData.findById(id);
+  //     res.json({
+  //       statusCode: 202,
+  //       message: "Update Value",
+  //       data: record,
+  //     });
+  //   } catch (err) {
+  //     res.json({
+  //       statusCode: 500,
+  //       message: `Update API is not working: ${err.message}`,
+  //     });
+  //   }
+  // };
+
 
   exports.deleteVideo = async (req, res) => {
     try {
@@ -115,6 +116,35 @@ exports.allData = async (req, res) => {
       res.json({
         statusCode: 500,
         message: `Update API is not working: ${err.message}`,
+      });
+    }
+  };
+
+  exports.viewsUpdate = async (req, res) => {
+    const { videoId } = req.body;
+    try {
+      const video = await StoreData.findById(videoId);
+      // Find user
+      if (!video) {
+        return res.status(404).json({
+          statusCode: 404,
+          message: "Video not found",
+        });
+      }
+      
+      video.Views += 1; 
+
+    await video.save();
+  
+      res.status(202).json({
+        statusCode: 202,
+        message: "Views updated",
+        Views: video.Views,
+      });
+    } catch (err) {
+      res.status(500).json({
+        statusCode: 500,
+        message: `Error updating views: ${err.message}`,
       });
     }
   };

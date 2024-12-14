@@ -280,7 +280,7 @@ function UserNavbar() {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <Link className="dropdown-item">Letest Video</Link>
+                    <Link className="dropdown-item" to={"/home/Letest Video"}>Letest Video</Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />

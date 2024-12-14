@@ -5,7 +5,7 @@ import "../Home/home.css";
 import PlayVideoSeprate from "../playVideo/playVideoSeprate";
 
 const SaprateCategory = () => {
-  const { alldata } = useContext(AdminContext);
+  const { alldata,handleViewsCount } = useContext(AdminContext);
   
   const { cate } = useParams();
   const filtdata = alldata.filter((n) => n.Category == cate);
@@ -25,13 +25,19 @@ const SaprateCategory = () => {
               key={vd._id}
             >
               <div className="position-relative">
-                <Link to={`/playVideo/${vd._id}/${vd.Category}`} className="text-decoration-none">
-                  <img
-                    src={vd.ImgUrl}
-                    alt={vd.Title} // Use the title or name property from your data
-                    className="rounded w-100"
-                    style={{ height: "130px", objectFit: "cover" }}
-                  />
+                <Link to={`/playVideo/${vd._id}/${vd.Category}`} className="text-decoration-none" onClick={()=>handleViewsCount(vd._id)}>
+                <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
+                      <img
+                        src={vd.ImgUrl}
+                        alt={vd.Titel}
+                        className="rounded w-100"
+                        style={{ height: "120px", objectFit: "cover" }}
+                      />
+                       <span className="views-overonImg">
+                    <i class="bi bi-eye"></i> {vd.Views}
+                  </span>
+                      <span className="time-overlay">{vd.Duration}</span>
+                    </div>
                 <h4 className="text-white item-title">{vd.Titel}</h4>
                 </Link>
               </div>

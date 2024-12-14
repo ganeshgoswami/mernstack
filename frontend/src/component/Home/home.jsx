@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import "../Home/home.css";
 
 const Home = () => {
-  const { alldata } = useContext(AdminContext);
+  const { alldata,getalldata,handleViewsCount } = useContext(AdminContext);
   const categoryData = [];
   const itemsPerPage = 24;
   const [currentPage, setCurrentPage] = useState(1);
   const [visibleBadges, setVisibleBadges] = useState(8);
-  const initialLimit = 8;
+
   alldata.map((n) =>
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
   );
@@ -40,11 +40,11 @@ const Home = () => {
   }
 
   // pagination use to next and Previous
-  
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentData = alldata.slice(indexOfFirstItem, indexOfLastItem);
-  
+
   const totalPages = Math.ceil(alldata.length / itemsPerPage);
 
   const handleNextPage = () => {
@@ -63,9 +63,11 @@ const Home = () => {
     setCurrentPage(newPage);
   };
 
+  
+
   return (
     <>
-      <div className="container-fluid my-2" style={{ width: "94%" }}>
+      <div className="container-fluid my-2" style={{ width: "96%" }}>
         <div className="d-flex m-1 d-flex flex-wrap">
           <h5 className="text-white">Related: </h5>
           {categoryData.slice(0, visibleBadges).map((category, index) => (
@@ -98,20 +100,28 @@ const Home = () => {
                 <Link
                   to={`/playVideo/${vd._id}/${vd.Category}`}
                   style={{ width: "90%", textDecoration: "none" }}
+                  onClick={() => handleViewsCount(vd._id)}
                 >
-                  <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark rounded">
+                  <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                     <img
-                      src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
+                      src={vd.ImgUrl}
+                      // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJrT7MI9fsrc6mWRBJBwhrf4vwTL7S5B8CzQ&s"
                       alt={vd.Titel}
                       className="rounded w-100"
                       style={{ height: "110px", objectFit: "cover" }}
                     />
-                    <span className="time-overlay">{vd.Duration}</span>
+                    <span className="views-overonImg">
+                    <i class="bi bi-eye"></i> {vd.Views}
+                  </span>
+                    <span className="time-overlay">{vd.Duration || "00:00"}</span>
+           
                   </div>
                   <h4 className="text-decoration-none text-center text-white mt-2 item-title">
-                    My Name
+                    {vd.Titel}
+                    {/* My NAme */}
                   </h4>
                 </Link>
+                
               </div>
             ))
           ) : (

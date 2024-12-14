@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import "../playVideo/PlayVideoSeprate.css";
 
 const PlayVideoSeprate = () => {
-  const { alldata } = useContext(AdminContext);
+  const { alldata,handleViewsCount } = useContext(AdminContext);
   const { id,cate } = useParams();  
   const findData = alldata.find((n) => n._id == id);
   const filterData = alldata.filter((vd)=>vd.Category == cate)
@@ -54,16 +54,20 @@ const PlayVideoSeprate = () => {
                   key={index}
                 >
                   <Link
-                    to={`/playVideo/${vd._id}`}
+                    to={`/playVideo/${vd._id}/${vd.Category}`}
                     style={{ width: "90%", textDecoration: "none" }}
+                    onClick={()=>handleViewsCount(vd._id)}
                   >
-                    <div className="card shadow-sm position-relative">
+                    <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                       <img
                         src={vd.ImgUrl}
                         alt={vd.Titel}
                         className="rounded w-100"
                         style={{ width:"320px" , height: "120px", objectFit: "cover" }}
                       />
+                       <span className="views-overonImg">
+                    <i class="bi bi-eye"></i> {vd.Views}
+                  </span>
                       <span className="time-overlay">{vd.Duration}</span>
                     </div>
                     <h4 className="text-decoration-none text-center text-white mt-2 item-title">
