@@ -13,7 +13,6 @@ const Home = () => {
   alldata.map((n) =>
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
   );
-  console.log(alldata);
 
   // show releted video badge
 

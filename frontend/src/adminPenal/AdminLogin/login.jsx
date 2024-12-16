@@ -24,12 +24,10 @@ const LoginPage = () => {
           body: JSON.stringify(loginData),
         });
         const data = await res.json();
-        console.log(data);
   
         if (data.status === 202) {
           localStorage.setItem("adminlogin", data.data.Email);
           setAdmin(localStorage.getItem("adminlogin"));
-          // setAdmin(data.data.Email)
           navigate("/collection");
         } else {
           

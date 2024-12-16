@@ -2,12 +2,10 @@
 import React, { useContext, useState } from "react";
 import "../UserNavbar/userNavbar.css";
 import { AdminContext } from "../../adminContext/adminContext";
-import "../../css/SearchBar.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import logoImage from "../../assets/logoApp.png"
 function UserNavbar() {
   const { alldata } = useContext(AdminContext);
-  const [searchCountry, setSearchCountry] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -21,9 +19,7 @@ function UserNavbar() {
     categoryData.indexOf(n.Category) == -1 ? categoryData.push(n.Category) : ""
   );
 
-  const searchCountryName = () => {
-    console.log(searchCountry);
-  };
+ 
 
   return (
     <>
@@ -41,9 +37,7 @@ function UserNavbar() {
               aria-controls="offcanvasScrolling"></i>
             <div className="ms-1 d-flex align-middle">
               <Link to="/" className="nav-link text-warning me-3 fw-bold ">
-                <h3 className="text-danger">
-                  {/* <b>XMaster</b> */}
-                
+                <h3 className="text-danger">                
                   <img src={logoImage} alt=""  width={"180px"} className="logoImage"/>
                 </h3>
               </Link>
@@ -57,12 +51,11 @@ function UserNavbar() {
                 className="form-control p-3 border-0"
                 placeholder={"Search " + alldata.length + " Videos ..."}
                 aria-label="Search Videos"
-                value={searchCountry}
               />
               <span className="input-group-text bg-white border-0">
                 <i
                   className="bi bi-search"
-                  onClick={() => searchCountryName()}
+              
                 ></i>
               </span>
             </div>

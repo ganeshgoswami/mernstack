@@ -1,4 +1,4 @@
-/* src/Navbar.css */
+ /* Navbar.css  */
 .navbar {
     display: flex;
     align-items: center;
@@ -99,17 +99,6 @@
     text-decoration: none;
     display: block;
   }
-  
-
-  /* .dropdown-content Link:hover {
-    background-color: #f1f1f1;
-  } */
-  
-
-  /* .dropdown:hover .dropdown-content {
-    display: block;
-  } */
-  
 
 
   .dropdown-menu-end[data-bs-popper] {
@@ -128,4 +117,51 @@
   .m-10{
     margin-bottom: 10px;
   }
+}
+
+
+/* only search bar use  */
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 5px 10px;
+  background-color: #f8fdfc;
+  color: white;
+  max-width: 300px;
+  justify-content: center;
+}
+
+
+.search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: black;
+  padding: 5px 10px;
+  flex-grow: 1;
+  font-size: 16px;
+}
+
+.search-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+}
+
+.search-icon:hover {
+  color: #a29bfe;
+}
+
+
+@media (max-width: 600px) {
+  .search-bar {
+    max-width: 100%;
+  }
+  
 }

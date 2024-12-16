@@ -7,7 +7,8 @@ const PlayVideoSeprate = () => {
   const { alldata,handleViewsCount } = useContext(AdminContext);
   const { id,cate } = useParams();  
   const findData = alldata.find((n) => n._id == id);
-  const filterData = alldata.filter((vd)=>vd.Category == cate)
+  const filterData = alldata.filter((vd)=>vd.Category == cate);
+
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -26,7 +27,7 @@ const PlayVideoSeprate = () => {
           >
             <div className="image-container">
               <img
-                src={findData.ImgUrl}
+                src={findData.ImgUrl}    
                 alt={findData.Titel}
                 className="image"
               />
@@ -36,8 +37,14 @@ const PlayVideoSeprate = () => {
               <span className="time-overlay">{findData.Duration}</span>
             </div>
             <div className="m-3">
-              <h1 className="text-white">{findData.Titel}</h1>
-              <p className="text-white">{findData.Description}</p>
+              <h1 className="text-white">
+                {findData.Titel}
+
+              </h1>
+              <p className="text-white">
+                {findData.Description}
+
+              </p>
             </div>
             <hr className="text-white" />
             <hr className="text-white" />
@@ -56,7 +63,7 @@ const PlayVideoSeprate = () => {
                   <Link
                     to={`/playVideo/${vd._id}/${vd.Category}`}
                     style={{ width: "90%", textDecoration: "none" }}
-                    onClick={()=>handleViewsCount(vd._id)}
+                    onClick={()=>{handleViewsCount(vd._id); handleScrollToTop()}}
                   >
                     <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                       <img

@@ -11,23 +11,11 @@ const AdminTable = () => {
   const [videourl, setVideourl] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
-  const dropdow = [
-    "India",
-    "USA",
-    "South Africa",
-    "Afghanistan",
-    "Taiwan",
-    "Antarctica",
-    "Cuba",
-    "Iceland",
-    "Jamaica",
-    "Japan",
-    "Tajikistan",
-    "Sri Lanka",
-    "Russia",
-    "Poland",
-    "Pakistan",
-  ];
+  const categoryData = [];
+
+  alldata.map((n) =>
+    categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
+  );
 
   const searchIdForDelete = (id) => {
     const search = alldata.find((n) => n._id === id);
@@ -290,7 +278,7 @@ const AdminTable = () => {
                     <option value="" disabled>
                       Choose Category
                     </option>
-                    {dropdow.map((vl) => (
+                    {categoryData.map((vl) => (
                       <option value={vl}>{vl}</option>
                     ))}
                   </select>

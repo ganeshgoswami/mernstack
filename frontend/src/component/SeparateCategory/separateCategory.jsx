@@ -38,7 +38,11 @@ const SaprateCategory = () => {
                   </span>
                       <span className="time-overlay">{vd.Duration}</span>
                     </div>
-                <h4 className="text-white item-title">{vd.Titel}</h4>
+                <h4 className="text-white item-title">
+                  {vd.Titel}
+
+                  {/* Title */}
+                </h4>
                 </Link>
               </div>
             </div>
