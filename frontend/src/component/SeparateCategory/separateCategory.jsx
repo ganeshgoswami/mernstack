@@ -5,10 +5,17 @@ import "../Home/home.css";
 import PlayVideoSeprate from "../playVideo/playVideoSeprate";
 
 const SaprateCategory = () => {
-  const { alldata,handleViewsCount } = useContext(AdminContext);
+  const { alldata,handleViewsCount,searchCountry } = useContext(AdminContext);
   
   const { cate } = useParams();
   const filtdata = alldata.filter((n) => n.Category == cate);
+
+  const searchData = searchCountry ? filtdata.filter((vd)=>(
+    vd.Titel.toLowerCase().includes(searchCountry.toLowerCase())
+  )) : filtdata ;
+  
+  const showResultData = searchData.length > 0 ? searchData : filtdata ;
+  
 
   return (
     <div className="container my-4">
@@ -18,8 +25,8 @@ const SaprateCategory = () => {
       </div>
 
       <div className="row justify-content-center">
-        {filtdata.length > 0 ? (
-          filtdata.map((vd) => (
+        {showResultData.length > 0 ? (
+          showResultData.map((vd) => (
             <div
               className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
               key={vd._id}
@@ -40,8 +47,6 @@ const SaprateCategory = () => {
                     </div>
                 <h4 className="text-white item-title">
                   {vd.Titel}
-
-                  {/* Title */}
                 </h4>
                 </Link>
               </div>

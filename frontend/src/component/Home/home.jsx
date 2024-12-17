@@ -4,11 +4,21 @@ import { Link } from "react-router-dom";
 import "../Home/home.css";
 
 const Home = () => {
-  const { alldata,getalldata,handleViewsCount } = useContext(AdminContext);
+  const { alldata,getalldata,handleViewsCount,searchCountry } = useContext(AdminContext);
   const categoryData = [];
   const itemsPerPage = 24;
   const [currentPage, setCurrentPage] = useState(1);
   const [visibleBadges, setVisibleBadges] = useState(8);
+
+
+// seacrh result from input box 
+const searchData = searchCountry ? alldata.filter((vd)=>(
+  vd.Titel.toLowerCase().includes(searchCountry.toLowerCase())
+)) : alldata ;
+
+const showResultData = searchData.length > 0 ? searchData : alldata ;
+
+// set Categorys Save in Array
 
   alldata.map((n) =>
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
@@ -28,7 +38,7 @@ const Home = () => {
 
   const firstVideoAndImage = [];
   if (categoryData.length > 0) {
-    alldata.forEach((n) => {
+    showResultData.forEach((n) => {
       let index = firstVideoAndImage.findIndex(
         (q) => q.Category === n.Category
       );
@@ -42,9 +52,9 @@ const Home = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentData = alldata.slice(indexOfFirstItem, indexOfLastItem);
+  const currentData = showResultData.slice(indexOfFirstItem, indexOfLastItem);
 
-  const totalPages = Math.ceil(alldata.length / itemsPerPage);
+  const totalPages = Math.ceil(showResultData.length / itemsPerPage);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -104,10 +114,9 @@ const Home = () => {
                   <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                     <img
                       src={vd.ImgUrl}
-                      // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJrT7MI9fsrc6mWRBJBwhrf4vwTL7S5B8CzQ&s"
                       alt={vd.Titel}
                       className="rounded w-100"
-                      style={{ height: "110px", objectFit: "cover" }}
+                      style={{ height: "120px", objectFit: "cover" }}
                     />
                     <span className="views-overonImg">
                     <i class="bi bi-eye"></i> {vd.Views}
@@ -117,7 +126,6 @@ const Home = () => {
                   </div>
                   <h4 className="text-decoration-none text-center text-white mt-2 item-title">
                     {vd.Titel}
-                    {/* My NAme */}
                   </h4>
                 </Link>
                 

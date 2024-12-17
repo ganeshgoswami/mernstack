@@ -9,8 +9,10 @@ const AdminTable = () => {
   const [titel, setTitel] = useState("");
   const [category, setCategory] = useState("");
   const [videourl, setVideourl] = useState("");
+    const [description, setDescription] = useState("");
+    const [duration, setDuration] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 25;
   const categoryData = [];
 
   alldata.map((n) =>
@@ -28,9 +30,8 @@ const AdminTable = () => {
 
   const handelUpdateVideo = (id, e) => {
     e.preventDefault();
-    const formData = { imgUrl, titel, category, videourl };
+    const formData = { imgUrl, titel, category, videourl ,description,duration};
     edit(id, formData);
-    console.log(id);
   };
 
   const searchData = (id) => {
@@ -40,6 +41,8 @@ const AdminTable = () => {
     setTitel(updateNewData.Titel);
     setCategory(updateNewData.Category);
     setVideourl(updateNewData.Videourl);
+    setDescription(updateNewData.Description);
+    setDuration(updateNewData.Duration);
   };
 
   // page change
@@ -283,7 +286,37 @@ const AdminTable = () => {
                     ))}
                   </select>
                 </div>
-               
+          
+                <div className="mb-3">
+                  <label htmlFor="recipient-name" className="col-form-label">
+                   Duration
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="recipient-name"
+                    value={duration}
+                    onChange={(e) => {
+                      setDuration(e.target.value);
+                    }}
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="recipient-name" className="col-form-label">
+                    Description
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="recipient-name"
+                    value={description}
+                    onChange={(e) => {
+                      setDescription(e.target.value);
+                    }}
+                  />
+                </div>
+
               </form>
             </div>
             <div className="modal-footer">

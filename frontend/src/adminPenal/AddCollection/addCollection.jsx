@@ -30,20 +30,6 @@ const AddCollection = () => {
     "Amateur",
     "Popular Video",
     "Letest Video",
-    "USA",
-    "South Africa",
-    "Afghanistan",
-    "Taiwan",
-    "Antarctica",
-    "Cuba",
-    "Iceland",
-    "Jamaica",
-    "Japan",
-    "Tajikistan",
-    "Sri Lanka",
-    "Russia",
-    "Poland",
-    "Pakistan",
   ];
   const navigate = useNavigate();
 
@@ -60,8 +46,6 @@ const AddCollection = () => {
       description,
       duration,
     };
-    console.log(productData);
-    // navigate("/collection");
     addVdata(productData);
   }
 

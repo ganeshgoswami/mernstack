@@ -24,7 +24,7 @@ const Collections = () => {
   // pagination use to next and Previous
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 15;
+  const itemsPerPage = 48;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -50,7 +50,7 @@ const Collections = () => {
               key={index}
             >
               <Link to={`/home/${vd.Category}`} className="w-100">
-                <div className="card shadow-sm">
+                <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                   <img
                     src={vd.ImgUrl}
                     alt={vd.Title}

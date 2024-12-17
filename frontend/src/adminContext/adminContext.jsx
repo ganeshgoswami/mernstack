@@ -5,7 +5,8 @@ export const AdminContext = createContext();
 export const AuthAdminProvider = ({ children }) => {
   const [alldata, setalldata] = useState([]);
   const [admin, setAdmin] = useState(null);
-  
+    const [searchCountry, setSearchCountry] = useState(null);
+    
   useEffect(() => {
     getalldata();
     setAdmin(localStorage.getItem("adminlogin"))
@@ -108,7 +109,9 @@ export const AuthAdminProvider = ({ children }) => {
         admin,
         setAdmin,
         getalldata,
-        handleViewsCount
+        handleViewsCount,
+        searchCountry,
+        setSearchCountry
       }}
     >
       {children}

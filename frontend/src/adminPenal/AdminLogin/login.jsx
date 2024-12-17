@@ -38,14 +38,6 @@ const LoginPage = () => {
       }
     ;
 
-    // if (email == "admin@gmail.com" && password == "1234") {
-    //   setAdmin(email);
-    //   navigate("/collection");
-    // } else if (email != "admin@gmail.com" || password != "1234") {
-    //   alert("Invalid email or password");
-    // } else {
-    //   navigate("/home");
-    // }
   };
 
   return (

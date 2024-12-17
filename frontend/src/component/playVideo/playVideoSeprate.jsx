@@ -27,7 +27,7 @@ const PlayVideoSeprate = () => {
           >
             <div className="image-container">
               <img
-                src={findData.ImgUrl}    
+                src={findData.ImgUrl}
                 alt={findData.Titel}
                 className="image"
               />
@@ -37,23 +37,18 @@ const PlayVideoSeprate = () => {
               <span className="time-overlay">{findData.Duration}</span>
             </div>
             <div className="m-3">
-              <h1 className="text-white">
-                {findData.Titel}
-
-              </h1>
-              <p className="text-white">
-                {findData.Description}
-
-              </p>
+              <h1 className="text-white">{findData.Titel}</h1>
+              <p className="text-white">{findData.Description}</p>
             </div>
             <hr className="text-white" />
             <hr className="text-white" />
             <hr className="text-white" />
           </Link>
 
-
-          <div className="row justify-content-center g-3" >
-            <h2 className="text-white link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"> <u>Releted Video</u> </h2>
+          <div className="row justify-content-center g-3">
+            <h2 className="text-white link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+              <u>Releted Videos</u>
+            </h2>
             {filterData.length > 0 ? (
               filterData.map((vd, index) => (
                 <div
@@ -63,18 +58,25 @@ const PlayVideoSeprate = () => {
                   <Link
                     to={`/playVideo/${vd._id}/${vd.Category}`}
                     style={{ width: "90%", textDecoration: "none" }}
-                    onClick={()=>{handleViewsCount(vd._id); handleScrollToTop()}}
+                    onClick={() => {
+                      handleViewsCount(vd._id);
+                      handleScrollToTop();
+                    }}
                   >
                     <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                       <img
                         src={vd.ImgUrl}
                         alt={vd.Titel}
                         className="rounded w-100"
-                        style={{ width:"320px" , height: "120px", objectFit: "cover" }}
+                        style={{
+                          width: "320px",
+                          height: "120px",
+                          objectFit: "cover",
+                        }}
                       />
-                       <span className="views-overonImg">
-                    <i class="bi bi-eye"></i> {vd.Views}
-                  </span>
+                      <span className="views-overonImg">
+                        <i class="bi bi-eye"></i> {vd.Views}
+                      </span>
                       <span className="time-overlay">{vd.Duration}</span>
                     </div>
                     <h4 className="text-decoration-none text-center text-white mt-2 item-title">

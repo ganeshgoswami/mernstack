@@ -96,13 +96,15 @@ exports.allData = async (req, res) => {
   exports.editData = async (req, res) => {
     try {
       const id = req.params.id; 
-       const { imgUrl, titel, category, videourl } = req.body; // Assuming the updated data is coming from req.body
+       const { imgUrl, titel, category, videourl,duration,description } = req.body; // Assuming the updated data is coming from req.body
     
       const record = await StoreData.findByIdAndUpdate(id, {
         ImgUrl: imgUrl,
         Titel: titel,
         Category: category,
         Videourl: videourl,
+        Duration : duration,
+        Description: description
       });
   
      

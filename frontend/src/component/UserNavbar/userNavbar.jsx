@@ -3,23 +3,26 @@ import React, { useContext, useState } from "react";
 import "../UserNavbar/userNavbar.css";
 import { AdminContext } from "../../adminContext/adminContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import logoImage from "../../assets/logoApp.png"
+import logoImage from "../../assets/logoApp.png";
 function UserNavbar() {
-  const { alldata } = useContext(AdminContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const { alldata, setSearchCountry } = useContext(AdminContext);
+  const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
 
   const categoryData = [];
   alldata.map((n) =>
     categoryData.indexOf(n.Category) == -1 ? categoryData.push(n.Category) : ""
   );
 
- 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchCountry(inputValue);
+  };
+
+  const showAlldata = () => {
+    setSearchCountry(null);
+    setInputValue("");
+  };
 
   return (
     <>
@@ -30,98 +33,109 @@ function UserNavbar() {
       >
         <div className="container-xxl p-2">
           <div className="col-2 d-flex">
-          <i className="fa-solid fa-bars navbar-toggler text-white"    aria-expanded="false"
+            <i
+              className="fa-solid fa-bars navbar-toggler text-white"
+              aria-expanded="false"
               aria-label="Toggle navigation"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasScrolling"
-              aria-controls="offcanvasScrolling"></i>
+              aria-controls="offcanvasScrolling"
+            ></i>
             <div className="ms-1 d-flex align-middle">
-              <Link to="/" className="nav-link text-warning me-3 fw-bold ">
-                <h3 className="text-danger">                
-                  <img src={logoImage} alt=""  width={"180px"} className="logoImage"/>
+              <Link
+                to="/"
+                className="nav-link text-warning me-3 fw-bold"
+                onClick={showAlldata}
+              >
+                <h3 className="text-danger">
+                  <img
+                    src={logoImage}
+                    alt=""
+                    width={"180px"}
+                    className="logoImage"
+                  />
                 </h3>
               </Link>
             </div>
           </div>
 
           <div className="searchBarHide col-8">
-            <div className="input-group">
+            <form
+              className="input-group"
+              onSubmit={(e) => {
+                handleSearch(e);
+              }}
+            >
               <input
                 type="text"
                 className="form-control p-3 border-0"
                 placeholder={"Search " + alldata.length + " Videos ..."}
                 aria-label="Search Videos"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
               />
               <span className="input-group-text bg-white border-0">
-                <i
-                  className="bi bi-search"
-              
-                ></i>
+                <i type="submit" className="bi bi-search"></i>
               </span>
-            </div>
+            </form>
           </div>
 
-          <div className="col-2 m-10">
-            <div className="btn-group">
-              <i
-                className="bi bi-gear text-white"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              ></i>
-
-              <div className="dropdown-menu dropdown-menu-end dropdown-menu-lg-start bg-dark">
-                <div className="dropdown-item bg-dark">
-                  <Link className="text-white" to={"/help"}>
-                    <i className="bi bi-info-circle m-1"></i>Help
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div className="col-2 m-10"></div>
         </div>
 
-        <div className="input-group downShowSearchBar m-2">
+        <form
+          className="input-group downShowSearchBar m-2"
+          onSubmit={(e) => {
+            handleSearch(e);
+          }}
+        >
           <input
             type="text"
             className="form-control"
             placeholder={"Search " + alldata.length + " Videos ..."}
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
           />
-          <button
-            className="btn btn-sm btn-outline-light"
-            type="button"
-            id="button-addon2"
-          >
-            <i className="bi bi-search text-light"></i>
-          </button>
-        </div>
+          <span className="input-group-text bg-white border-0">
+            <i type="submit" className="bi bi-search"></i>
+          </span>
+        </form>
       </nav>
       {/* Navbar Finish */}
 
       {/* side navbar start */}
       <div
-        className="offcanvas offcanvas-start bg-secondary"
+        className="offcanvas offcanvas-start"
         data-bs-scroll="true"
         data-bs-backdrop="false"
         tabindex="-1"
         id="offcanvasScrolling"
         aria-labelledby="offcanvasScrollingLabel"
+        style={{ backgroundColor: "#15131b" }}
       >
         <div className="offcanvas-header container">
           <div className="col-2">
-            <button
-              type="button"
-              className="btn-close btn-sm p-0 m-2"
+            <i
+              class="bi bi-x-lg text-white"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
-            ></button>
+            ></i>
           </div>
           <div className="col-8 d-flex justify-content-center">
-            <div className="ms-1">
-              <Link to="/home" className="nav-link text-warning me-3 fw-bold ">
-                <h3 className="text-danger">
-                <img src={logoImage} alt=""  width={"160px"}/>
+            <div
+              className="ms-1"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            >
+              <Link
+                className="nav-link text-warning me-3 fw-bold"
+                to="/home"
+                onClick={showAlldata}
+              >
+                <h3 className="text-danger m-2">
+                  <img src={logoImage} alt="" width={"160px"} />
                 </h3>
               </Link>
             </div>
@@ -151,17 +165,44 @@ function UserNavbar() {
               >
                 <div className="accordion-body">
                   <ul style={{ listStyle: "None" }}>
-                    <li>
-                      <Link className="dropdown-item">Popular</Link>
+                    <li
+                      className="dropdown-item "
+                      aria-label="Close"
+                      data-bs-dismiss="offcanvas"
+                    >
+                      <Link
+                        className="text-decoration-none text-black"
+                        to={"/home/Popular Video"}
+                        onClick={showAlldata}
+                      >
+                        Popular Video
+                      </Link>
                       <hr />
                     </li>
-                    <li>
-                      <Link className="dropdown-item">Letest Video</Link>
+                    <li
+                      className="dropdown-item "
+                      aria-label="Close"
+                      data-bs-dismiss="offcanvas"
+                    >
+                      <Link
+                        className="text-decoration-none text-black"
+                        to={"/home/Letest Video"}
+                        onClick={showAlldata}
+                      >
+                        Letest Video
+                      </Link>
 
                       <hr />
                     </li>
                     <li>
-                      <Link className="dropdown-item"> Red Alert</Link>
+                      <Link
+                        className="dropdown-item"
+                        aria-label="Close"
+                        data-bs-dismiss="offcanvas"
+                        onClick={showAlldata}
+                      >
+                        Red Alert
+                      </Link>
 
                       <hr />
                     </li>
@@ -190,7 +231,10 @@ function UserNavbar() {
                 <div className="accordion-body">
                   <ul style={{ listStyle: "None" }}>
                     <li
-                      onClick={() => navigate(`/home`)}
+                      onClick={() => {
+                        navigate(`/home`);
+                        showAlldata();
+                      }}
                       data-bs-dismiss="offcanvas"
                       aria-label="Close"
                     >
@@ -200,7 +244,10 @@ function UserNavbar() {
                     {categoryData.map((n) => (
                       <>
                         <li
-                          onClick={() => navigate(`/home/${n}`)}
+                          onClick={() => {
+                            navigate(`/home/${n}`);
+                            showAlldata();
+                          }}
                           data-bs-dismiss="offcanvas"
                           aria-label="Close"
                           key={n}
@@ -267,19 +314,33 @@ function UserNavbar() {
                   style={{ maxHeight: "190px", overflowY: "auto" }}
                 >
                   <li>
-                    <Link className="dropdown-item" to={"/home/Popular Video"}>Popular Video</Link>
+                    <Link
+                      className="dropdown-item"
+                      to={"/home/Popular Video"}
+                      onClick={showAlldata}
+                    >
+                      Popular Video
+                    </Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <Link className="dropdown-item" to={"/home/Letest Video"}>Letest Video</Link>
+                    <Link
+                      className="dropdown-item"
+                      to={"/home/Letest Video"}
+                      onClick={showAlldata}
+                    >
+                      Letest Video
+                    </Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <Link className="dropdown-item">Red Alert</Link>
+                    <Link className="dropdown-item" onClick={showAlldata}>
+                      Red Alert
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -296,7 +357,12 @@ function UserNavbar() {
                   className="dropdown-menu dropdown-content"
                   style={{ maxHeight: "400px", overflowY: "auto" }}
                 >
-                  <li onClick={() => navigate(`/home`)}>
+                  <li
+                    onClick={() => {
+                      navigate(`/home`);
+                      showAlldata();
+                    }}
+                  >
                     <Link className="dropdown-item">All</Link>
                   </li>
                   {categoryData.map((n) => (
@@ -304,7 +370,12 @@ function UserNavbar() {
                       <li key={n}>
                         <hr className="dropdown-divider" />
                       </li>
-                      <li onClick={() => navigate(`/home/${n}`)}>
+                      <li
+                        onClick={() => {
+                          navigate(`/home/${n}`);
+                          showAlldata();
+                        }}
+                      >
                         <Link className="dropdown-item">{n}</Link>
                       </li>
                     </>
