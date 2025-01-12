@@ -12,10 +12,18 @@ router.put("/editData/:id",api.editData)
 // User Data 
 router.get("/allData",api.allData)
 router.post("/addCollection",api.addCollection)
-// router.post("/setCategory/:id",api.setCategory)
 
+router.get("/allCategorys",api.allCategorys)
 
-
+router.get("/findOneCategory",api.findOneCategory)
+router.get("/seprateCate",api.seprateCate)
 // views Update 
 router.post("/viewsUpdate/:videoId",api.viewsUpdate)
+
+// input search 
+router.get("/searchData",api.searchData)
+
+//models Search
+router.get("/findOneModelStar",api.findOneModelStar)
+
 module.exports = router;

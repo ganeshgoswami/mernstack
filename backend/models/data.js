@@ -7,6 +7,8 @@ const mongoschema = mongoose.Schema({
   Videourl: String,
   Description: String,
   Duration: String,
+  Models:String,
+  Alt:String,
   Views: {
     type: Number,
     default: 0,

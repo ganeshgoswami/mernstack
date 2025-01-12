@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-md-3 col-sm-8 mb-3 text-center text-md-start">
               <h6 className="footer-description">
-                Xquickly.COM is the Nr. 1 sou  rce for free VIDEOS. Millions of
+                Xquickly.COM is the NO. 1 source for free Fucking VIDEOS.
                 movies aggregated from hundreds of sites, closely monitored to
                 give you a safe and pleasurable experience!
               </h6>

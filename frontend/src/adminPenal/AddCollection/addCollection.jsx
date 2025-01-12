@@ -1,16 +1,18 @@
 import React, { useContext, useState } from "react";
 import { AdminContext } from "../../adminContext/adminContext";
 import { useNavigate } from "react-router-dom";
-import "../AddCollection/addCollection.css";
 
 const AddCollection = () => {
   const [imgUrl, setImgUrl] = useState("");
   const [titel, setTitel] = useState("");
+  const [alt, setAlt] = useState("");
+  const [models, setModels] = useState("");
   const [category, setCategory] = useState("");
   const [videourl, setVideourl] = useState("");
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState("");
- const {alldata} = useContext(AdminContext)
+  const { alldata } = useContext(AdminContext);
+
   const dropdow = [
     "Hard Fuck",
     "Mom",
@@ -31,35 +33,55 @@ const AddCollection = () => {
     "Popular Video",
     "Letest Video",
   ];
-  const navigate = useNavigate();
+  const pStar = ["Dillion Harper","Dani Daniels","Angelica Heaven","Alecia Fox","Hailey Rose","Kathryn Mae","Mia Khalifa","Nicole Aniston","Juniper Ren","Valentina Nappi","Amarna Miller","Karla Kush","Samantha Sin","Freya Dee","Janice Griffith","Adriana Chechik","Sonya blaze","Alys star","Angela White","Cory Chase","Elsa Jean","Other"]
 
   const { addVdata } = useContext(AdminContext);
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    const productData = {
+    const videoData = {
       imgUrl,
       titel,
       category,
       videourl,
       description,
       duration,
+      models,
+      alt
     };
-    addVdata(productData);
+    console.log(videoData);
+    addVdata(videoData);
   }
 
   return (
     <div className="container-fluid">
-      <div className="row justify-content-center AddCollection-page">
+      <div className="row justify-content-center">
         <div className="col-md-6 shadow p-3 mb-5 bg-body-tertiary rounded">
-        {alldata.length}
+          {alldata.length}
           <h2 className="text-center">Add Collection</h2>
           <form
             onSubmit={(e) => {
               handleSubmit(e);
             }}
           >
+            <div className="form-group mb-3">
+              <label>Models Names</label>
+              <select
+                name="models"
+                id=""
+                value={models}
+                className="form-control"
+                onChange={(e) => {
+                  setModels(e.target.value);
+                }}
+              >
+                <option value="">Choose Models</option>
+                {pStar.map((vl) => (
+                  <option value={vl}>{vl}</option>
+                ))}
+              </select>
+            </div>
+
             <div className="form-group mb-3">
               <label>Img Url</label>
               <input
@@ -86,6 +108,21 @@ const AddCollection = () => {
                 }}
               />
             </div>
+
+            <div className="form-group mb-3">
+              <label>Alt For Images</label>
+              <input
+                type="text"
+                name="alt"
+                className="form-control"
+                placeholder="Enter Alt For Images"
+                value={alt}
+                onChange={(e) => {
+                  setAlt(e.target.value);
+                }}
+              />
+            </div>
+
             <div className="form-group mb-3">
               <label>Titel</label>
               <input

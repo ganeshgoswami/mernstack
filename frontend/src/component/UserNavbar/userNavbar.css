@@ -55,17 +55,15 @@
     cursor: pointer;
   }
   
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1150px) {
     .searchBarHide {
       display: none !important;
     }
     .dropDownHide {
       display: none !important;
     }
-    
-
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 1150px) {
     .downShowSearchBar{
       display: none !important;
     }

@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AdminContext } from "../../adminContext/adminContext";
 import { Link, useParams } from "react-router-dom";
 import "../playVideo/PlayVideoSeprate.css";
 
 const PlayVideoSeprate = () => {
-  const { alldata,handleViewsCount } = useContext(AdminContext);
-  const { id,cate } = useParams();  
-  const findData = alldata.find((n) => n._id == id);
-  const filterData = alldata.filter((vd)=>vd.Category == cate);
+  const { handleViewsCount,currentPage,showResultData,fetchOneCategory ,viewBigVideo,createSlug} = useContext(AdminContext);
+  const { id,category } = useParams();
+  
+  useEffect(() => {   
+      fetchOneCategory(category, id, currentPage);
+  }, [id, category, currentPage]);
+  
 
   const handleScrollToTop = () => {
     window.scrollTo({
@@ -18,27 +21,27 @@ const PlayVideoSeprate = () => {
 
   return (
     <div className="container-fluid my-4">
-      {findData ? (
+      {viewBigVideo ? (
         <>
           <Link
-            to={findData.Videourl}
+            to={viewBigVideo.Videourl}
             target="_blank"
             className="text-decoration-none"
           >
             <div className="image-container">
               <img
-                src={findData.ImgUrl}
-                alt={findData.Titel}
+                src={viewBigVideo.ImgUrl}
+                alt={viewBigVideo.Titel}
                 className="image"
               />
               <div className="play-icon">
                 <i className="bi bi-play text-white"></i>
               </div>
-              <span className="time-overlay">{findData.Duration}</span>
+              <span className="time-overlay">{viewBigVideo.Duration}</span>
             </div>
             <div className="m-3">
-              <h1 className="text-white">{findData.Titel}</h1>
-              <p className="text-white">{findData.Description}</p>
+              <h1 className="text-white">{viewBigVideo.Titel}</h1>
+              <p className="text-white">{viewBigVideo.Description}</p>
             </div>
             <hr className="text-white" />
             <hr className="text-white" />
@@ -49,14 +52,14 @@ const PlayVideoSeprate = () => {
             <h2 className="text-white link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
               <u>Releted Videos</u>
             </h2>
-            {filterData.length > 0 ? (
-              filterData.map((vd, index) => (
+            {showResultData.length > 0 ? (
+              showResultData.map((vd, index) => (
                 <div
                   className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex flex-column align-items-center"
                   key={index}
                 >
                   <Link
-                    to={`/playVideo/${vd._id}/${vd.Category}`}
+                    to={`/playVideo/${vd._id}/${createSlug(vd.Category)}`}
                     style={{ width: "90%", textDecoration: "none" }}
                     onClick={() => {
                       handleViewsCount(vd._id);
@@ -79,9 +82,9 @@ const PlayVideoSeprate = () => {
                       </span>
                       <span className="time-overlay">{vd.Duration}</span>
                     </div>
-                    <h4 className="text-decoration-none text-center text-white mt-2 item-title">
+                    <h2 className="text-decoration-none text-center text-white mt-2 item-title">
                       {vd.Titel}
-                    </h4>
+                    </h2>
                   </Link>
                 </div>
               ))

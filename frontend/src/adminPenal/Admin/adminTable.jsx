@@ -2,18 +2,29 @@ import React, { useContext, useState } from "react";
 import { AdminContext } from "../../adminContext/adminContext";
 import "../AdminLogin/login.css";
 const AdminTable = () => {
-  const { alldata, deletedata, edit } = useContext(AdminContext);
+  const { alldata, deletedata, edit,
+    getalldata,
+    handleViewsCount,
+    categorys,
+    totalPages,
+    currentPage, } = useContext(AdminContext);
   const [deleteVideoName, setDeleteVideoName] = useState(null);
   const [updatedData, setUpdatedData] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [titel, setTitel] = useState("");
   const [category, setCategory] = useState("");
   const [videourl, setVideourl] = useState("");
-    const [description, setDescription] = useState("");
-    const [duration, setDuration] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [description, setDescription] = useState("");
+  const [duration, setDuration] = useState("");
+  const [models, setModels] = useState("");
+  const [alt, setAlt] = useState("");
+
+  
   const itemsPerPage = 25;
   const categoryData = [];
+
+  const pStar = ["Dillion Harper","Dani Daniels","Angelica Heaven","Alecia Fox","Hailey Rose","Kathryn Mae","Mia Khalifa","Nicole Aniston","Juniper Ren","Valentina Nappi","Amarna Miller","Karla Kush","Samantha Sin","Freya Dee","Janice Griffith","Adriana Chechik","Sonya blaze","Alys star","Angela White","Cory Chase","Elsa Jean","Other"]
+
 
   alldata.map((n) =>
     categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
@@ -30,7 +41,7 @@ const AdminTable = () => {
 
   const handelUpdateVideo = (id, e) => {
     e.preventDefault();
-    const formData = { imgUrl, titel, category, videourl ,description,duration};
+    const formData = { imgUrl, titel, category, videourl ,description,duration,models,alt};
     edit(id, formData);
   };
 
@@ -43,29 +54,15 @@ const AdminTable = () => {
     setVideourl(updateNewData.Videourl);
     setDescription(updateNewData.Description);
     setDuration(updateNewData.Duration);
+    setModels(updateNewData.Models);
+    setAlt(updateNewData.Alt);
   };
 
-  // page change
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentData = alldata.slice(indexOfFirstItem, indexOfLastItem);
-
-  const totalPages = Math.ceil(alldata.length / itemsPerPage);
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
 
   const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
+    if (newPage >= 1 && newPage <= totalPages) {
+      getalldata(newPage)
+    }
   };
 
   return (
@@ -83,7 +80,7 @@ const AdminTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {currentData.map((item) => (
+                {alldata.map((item) => (
                   <tr key={item._id}>
                     <td>{item._id}</td>
                     <td>{item.Category}</td>
@@ -123,33 +120,27 @@ const AdminTable = () => {
           </div>
 
           {/* pagination button click */}
-          <div className="d-flex justify-content-center flex-wrap mt-5">
-            <button
-              className="btn btn-light m-1"
-              onClick={handlePreviousPage}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </button>
-            {Array.from({ length: totalPages }, (_, index) => (
-              <button
-                key={index}
-                className={`btn ${
-                  currentPage === index + 1 ? "btn-primary" : "btn-light"
-                } m-1`}
-                onClick={() => handlePageChange(index + 1)}
-              >
-                {index + 1}
-              </button>
-            ))}
-            <button
-              className="btn btn-light m-1"
-              onClick={handleNextPage}
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </button>
-          </div>
+          <div className="pagination-controls mt-4">
+          <button
+            className="btn text-white"
+            style={{ backgroundColor: "#87341a" }}
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span className="mx-2 text-white">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            className="btn text-white"
+            style={{ backgroundColor: "#87341a" }}
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
         </div>
       ) : (
         <p>No data available.</p>
@@ -225,6 +216,25 @@ const AdminTable = () => {
             </div>
             <div className="modal-body">
               <form>
+              <div className="mb-3">
+                  <label>Model Name</label>
+                  <select
+                    name="models"
+                    id=""
+                    value={models}
+                    className="form-control"
+                    onChange={(e) => {
+                      setModels(e.target.value);
+                    }}
+                  >
+                    <option value="" disabled>
+                      Choose Category
+                    </option>
+                    {pStar.map((vl) => (
+                      <option value={vl}>{vl}</option>
+                    ))}
+                  </select>
+                </div>
                 <div className="mb-3">
                   <label htmlFor="recipient-name" className="col-form-label">
                     Image Url
@@ -253,6 +263,19 @@ const AdminTable = () => {
                     }}
                   />
                 </div>
+                <div className="mb-3">
+              <label>Alt For Images</label>
+              <input
+                type="text"
+                name="alt"
+                className="form-control"
+                placeholder="Enter Alt For Images"
+                value={alt}
+                onChange={(e) => {
+                  setAlt(e.target.value);
+                }}
+              />
+            </div>
                 <div className="mb-3">
                   <label htmlFor="recipient-name" className="col-form-label">
                     Titel
