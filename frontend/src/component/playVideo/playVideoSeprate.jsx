@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { AdminContext } from "../../adminContext/adminContext";
 import { Link, useParams } from "react-router-dom";
 import "../playVideo/PlayVideoSeprate.css";
+import { Helmet } from "react-helmet";
 
 const PlayVideoSeprate = () => {
   const { handleViewsCount,currentPage,showResultData,fetchOneCategory ,viewBigVideo,createSlug} = useContext(AdminContext);
@@ -20,6 +21,15 @@ const PlayVideoSeprate = () => {
   };
 
   return (
+   <>
+     <Helmet>
+        <title>HD Hole: The Ultimate Guide you in porn</title>
+        <meta
+          name="description"
+          content="hd hole is sex videos provider .it's give perfect and good quality sex or fucking videos.High Definition sex videos are available."
+        />
+         <meta name="keywords" content="HD Hole, guide, mastering HD Hole, tips, strategies" />
+      </Helmet>
     <div className="container-fluid my-4">
       {viewBigVideo ? (
         <>
@@ -102,7 +112,7 @@ const PlayVideoSeprate = () => {
           <span className="visually-hidden">Loading...</span>
         </div>
       )}
-    </div>
+    </div></>
   );
 };
 

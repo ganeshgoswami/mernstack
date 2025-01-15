@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { AdminContext } from "../../adminContext/adminContext";
 import { Link, useParams } from "react-router-dom";
 import "../Home/home.css";
+import { Helmet } from "react-helmet";
 
 const ModelSeprate = () => {
   const {
@@ -13,13 +14,22 @@ const ModelSeprate = () => {
   } = useContext(AdminContext);
 
   const model  = useParams();
-
+console.log(model)
 
 useEffect(()=>{
     modelSearch(model,currentPage)
 },[]);
 
   return (
+    <>
+     <Helmet>
+        <title>{`${model} blue sexy picture: HD xxx Videos`}</title>
+        <meta
+          name="description"
+          content="hd hole is sex videos provider .it's give perfect and good quality sex or fucking videos.High Definition sex videos are available."
+        />
+         <meta name="keywords" content="HD Hole, guide, mastering HD Hole, tips, strategies" />
+      </Helmet>
     <div className="container-fluid my-2" style={{ width: "96%" }}>
    
          <div className="row justify-content-center m-1 g-2">
@@ -69,6 +79,7 @@ useEffect(()=>{
                   )}
                 </div>
        </div>
+    </>
   );
 };
 

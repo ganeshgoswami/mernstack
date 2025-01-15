@@ -43,11 +43,12 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Home - Explore Videos and Categories</title>
+        <title>BF XX - 18+ Sex Video</title>
         <meta
           name="description"
-          content="Browse a variety of videos sorted by categories. Enjoy seamless navigation and find your favorite videos with ease!"
+          content="bf xx Ultimate Guide for sex. bf Xx is tell us how to do sex and know about sex. this search xxx , sex ,blue film, bf xx etc. sex relex your mind."
         />
+         <meta name="keywords" content="BF XX, guide, mastering BF XX, tips, strategies" />
       </Helmet>
 
       <div className="container-fluid my-2" style={{ width: "96%" }}>
