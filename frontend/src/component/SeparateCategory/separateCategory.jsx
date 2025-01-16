@@ -15,7 +15,7 @@ const SaprateCategory = () => {
   return (
     <>
       <Helmet>
-        <title>Blue Sexy Picture: Stunning Visuals That Captivate</title>
+        <title>`${category}:Blue Sexy Picture`</title>
         <meta
           name="description"
           content="blue sexy pictures that blend elegance and allure. blue sex picture is provieded fabulous sex video and good quality fucking video."
