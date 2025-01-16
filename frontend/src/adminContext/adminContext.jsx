@@ -89,11 +89,10 @@ export const AuthAdminProvider = ({ children }) => {
     try {
       const response = await fetch(`http://localhost:5000/seprateCate?category=${category}&page=${page}`);
       const data = await response.json();
-  
       if (response.ok) {
         setFilterCategoryData(data.data || []);
-        setCurrentPage(data.currentPage);  
-        setTotalPages(data.totalPages);  
+        setCurrentPage(data.currentPage || 1);  
+        setTotalPages(data.totalPages || 1);
         setMessage(data.message || "Category retrieved successfully.");
       } else {
         setShowResultData([]);
@@ -210,11 +209,11 @@ export const AuthAdminProvider = ({ children }) => {
             `http://localhost:5000/findOneModelStar?model=${encodeURIComponent(modelParam)}&page=${page}`
         );
         const data = await response.json();
-
+        
         if (response.ok) {
             setShowResultData(data.data || []);
-            setCurrentPage(data.currentPage);
-            setTotalPages(data.totalPages);
+            setCurrentPage(data.currentPage || 1);
+            setTotalPages(data.totalPages || 1);
             setViewBigVideo(data.idBaseData);
             setMessage(data.message || "Model retrieved successfully.");
         } else {
@@ -254,7 +253,8 @@ export const AuthAdminProvider = ({ children }) => {
         searchData,
         inputValue,
          setInputValue,
-         modelSearch
+         modelSearch,
+         setCurrentPage
       }}
     >
       {children}

@@ -5,17 +5,18 @@ import "../Home/home.css";
 import { Helmet } from "react-helmet";
 
 const SaprateCategory = () => {
-  const { handleViewsCount,currentPage,seprateCategory ,filterCategoryData,createSlug} = useContext(AdminContext); 
+  const {getalldata, handleViewsCount,currentPage,seprateCategory ,filterCategoryData,createSlug} = useContext(AdminContext); 
   const { category } = useParams();
 
   useEffect(()=>{
+    getalldata()
     seprateCategory(category,currentPage)
   },[])
 
   return (
     <>
       <Helmet>
-        <title>`${category}:Blue Sexy Picture`</title>
+        <title>{category}:Blue Sexy Picture</title>
         <meta
           name="description"
           content="blue sexy pictures that blend elegance and allure. blue sex picture is provieded fabulous sex video and good quality fucking video."

@@ -231,7 +231,7 @@ exports.allData = async (req, res) => {
           message: "Category name required.",
         });
       }
-
+      
       const findVideos = await StoreData.find({ Category: category })
         .skip(skip)
         .limit(limit);

@@ -10,10 +10,11 @@ const ModelSeprate = () => {
     currentPage,
     createSlug,
     modelSearch,
-    showResultData
+    showResultData,
+    getalldata
   } = useContext(AdminContext);
 
-  const model  = useParams();
+  const model  = useParams().model;
 console.log(model)
 
 useEffect(()=>{

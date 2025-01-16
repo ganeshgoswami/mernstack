@@ -1,11 +1,10 @@
-// src/Navbar.js
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../UserNavbar/userNavbar.css";
 import { AdminContext } from "../../adminContext/adminContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import logoImage from "../../assets/logoApp.png";
 function UserNavbar() {
-  const { alldata, setSearchCountry,categorys,currentPage,seprateCategory,createSlug,searchData,inputValue, setInputValue} = useContext(AdminContext);
+  const { alldata,modelSearch,setCurrentPage, setSearchCountry,categorys,currentPage,seprateCategory,createSlug,searchData,inputValue, setInputValue} = useContext(AdminContext);
  
   const navigate = useNavigate();
   const pornStar = [
@@ -108,6 +107,11 @@ function UserNavbar() {
     },
   ];
 
+  const model = useParams().model ;
+  useEffect(()=>{
+      modelSearch(model,currentPage)
+  },[]);
+
   const handleSearch = (e) => {
     e.preventDefault();
     searchData(inputValue,currentPage);
@@ -119,6 +123,12 @@ function UserNavbar() {
     searchData("",currentPage);
     setInputValue("");
   };
+
+  const handleCategoryClick = (category) => {
+    setCurrentPage(1);
+    seprateCategory(category, 1);
+  };
+
 
   return (
     <>
@@ -271,9 +281,10 @@ function UserNavbar() {
                       <Link
                         className="text-decoration-none text-black"
                         to={`/home/${createSlug("Popular Video")}`}
-                        onClick={() =>
+                        onClick={() =>{
                           showAlldata("Popular Video", currentPage)
-                        }
+                          handleCategoryClick("Popular Video")
+                        }}
                       >
                         Popular Video
                       </Link>
@@ -287,7 +298,7 @@ function UserNavbar() {
                       <Link
                         className="text-decoration-none text-black"
                         to={`/home/${createSlug("Letest Video")}`}
-                        onClick={() => showAlldata("Letest Video", currentPage)}
+                        onClick={() => {showAlldata("Letest Video", currentPage);handleCategoryClick("Letest Video")}}
                       >
                         Letest Video
                       </Link>
@@ -346,7 +357,7 @@ function UserNavbar() {
                         <li
                           onClick={() => {
                             navigate(`/home/${createSlug(n)}`);
-                            showAlldata(n, currentPage);
+                            showAlldata();
                           }}
                           data-bs-dismiss="offcanvas"
                           aria-label="Close"
@@ -416,6 +427,7 @@ function UserNavbar() {
                           onClick={() => {
                             navigate(`/pornStar/${createSlug(n.name)}`);
                             showAlldata(n, currentPage);
+                            handleCategoryClick(n)
                           }}
                           data-bs-dismiss="offcanvas"
                           aria-label="Close"
@@ -546,7 +558,7 @@ function UserNavbar() {
                 </ul>
               </li>
             <div className="d-flex align-items-center ms-3">
-            <p className="text-black m-0" onClick={()=>navigate("/pornStar")} style={{cursor:"pointer"}}>Porn Star</p>
+            <p className="text-black m-0" onClick={()=> {navigate("/pornStar") ; showAlldata()}} style={{cursor:"pointer"}}>Porn Star</p>
             </div>
             </ul>
           </div>

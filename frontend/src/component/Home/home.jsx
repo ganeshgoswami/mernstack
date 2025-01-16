@@ -14,12 +14,12 @@ const Home = () => {
     currentPage,
     createSlug,
     searchData,
-    inputValue
+    inputValue,
+    setCurrentPage,
+    seprateCategory
   } = useContext(AdminContext);
   const [visibleBadges, setVisibleBadges] = useState(8);
 
-  console.log(alldata)
-  console.log(currentPage)
 
   useEffect(()=>{
     getalldata(currentPage)
@@ -30,6 +30,22 @@ const Home = () => {
     setVisibleBadges((prev) => Math.min(prev + 8, categorys.length));
   };
 
+  // 1,2,3,4 show page 
+  const generatePageNumbers = () => {
+    const pageNumbers = [];
+    const maxPageButtons = 4;
+    let startPage = Math.max(currentPage - 2, 1);
+    let endPage = Math.min(startPage + maxPageButtons - 1, totalPages);
+
+    if (endPage - startPage < maxPageButtons - 1) {
+      startPage = Math.max(endPage - maxPageButtons + 1, 1);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  };
 
 
 
@@ -39,6 +55,11 @@ const Home = () => {
     }
   };
 
+
+  const handleCategoryClick = (category) => {
+    setCurrentPage(1);
+    seprateCategory(category, 1);
+  };
 
   return (
     <>
@@ -59,6 +80,7 @@ const Home = () => {
               to={`/home/${createSlug(category)}`}
               className="text-decoration-none"
               key={index}
+              onClick={()=>handleCategoryClick(category)}
             >
               <span className="badge text-bg-secondary d-flex align-items-center m-1">
                 {category}
@@ -121,29 +143,38 @@ const Home = () => {
           )}
         </div>
 
-        {/* Pagination */}
+        {/* next and  Previous */}
 
         <div className="pagination-controls mt-4">
-          <button
-            className="btn text-white"
-            style={{ backgroundColor: "#87341a" }}
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-          <span className="mx-2 text-white">
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            className="btn text-white"
-            style={{ backgroundColor: "#87341a" }}
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
-        </div>
+
+      <button
+        className="btn text-white button-size "
+        style={{ backgroundColor: "#87341a" }}
+        onClick={() => handlePageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
+        Previous
+      </button>
+
+      {generatePageNumbers().map((page) => (
+        <button
+          key={page}
+          className={`btn mx-1 ${page === currentPage ? 'btn-primary' : 'btn-light'} midel-btn-size`}
+          onClick={() => handlePageChange(page)}
+        >
+          {page}
+        </button>
+      ))}
+
+      <button
+        className="btn text-white button-size "
+        style={{ backgroundColor: "#87341a" }}
+        onClick={() => handlePageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      >
+        Next
+      </button>
+    </div>
       </div>
     </>
   );

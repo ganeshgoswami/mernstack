@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet";
 
 const PModels = () => {
   const {
-    handleViewsCount,
     createSlug,
   } = useContext(AdminContext);
   
@@ -132,7 +131,6 @@ const PModels = () => {
               <Link
                 to={`/pornStar/${createSlug(vd.name)}`}
                 style={{ width: "90%", textDecoration: "none" }}
-                onClick={() => handleViewsCount(vd._id)}
               >
                 <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                   <img

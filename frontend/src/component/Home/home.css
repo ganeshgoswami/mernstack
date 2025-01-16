@@ -3,8 +3,14 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .button-size {
+   width: 65px;
+   font-size: 12px;
+  }
+  .midel-btn-size{
+    width: 44px;
+    font-size: 10px;
+  }
 
-
-
-
-
+}
