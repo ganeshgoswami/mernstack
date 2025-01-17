@@ -281,9 +281,9 @@ function UserNavbar() {
                       <Link
                         className="text-decoration-none text-black"
                         to={`/home/${createSlug("Popular Video")}`}
-                        onClick={() =>{
-                          showAlldata("Popular Video", currentPage)
-                          handleCategoryClick("Popular Video")
+                        onClick={() => {
+                          showAlldata("Popular Video", currentPage);
+                          handleCategoryClick("Popular Video");
                         }}
                       >
                         Popular Video
@@ -298,7 +298,10 @@ function UserNavbar() {
                       <Link
                         className="text-decoration-none text-black"
                         to={`/home/${createSlug("Letest Video")}`}
-                        onClick={() => {showAlldata("Letest Video", currentPage);handleCategoryClick("Letest Video")}}
+                        onClick={() => {
+                          showAlldata("Letest Video", currentPage);
+                          handleCategoryClick("Letest Video");
+                        }}
                       >
                         Letest Video
                       </Link>
@@ -426,8 +429,7 @@ function UserNavbar() {
                         <li
                           onClick={() => {
                             navigate(`/pornStar/${createSlug(n.name)}`);
-                            showAlldata(n, currentPage);
-                            handleCategoryClick(n)
+                            modelSearch(n.name, 1)
                           }}
                           data-bs-dismiss="offcanvas"
                           aria-label="Close"
@@ -557,9 +559,18 @@ function UserNavbar() {
                   </li>
                 </ul>
               </li>
-            <div className="d-flex align-items-center ms-3">
-            <p className="text-black m-0" onClick={()=> {navigate("/pornStar") ; showAlldata()}} style={{cursor:"pointer"}}>Porn Star</p>
-            </div>
+              <div className="d-flex align-items-center ms-3">
+                <p
+                  className="text-black m-0"
+                  onClick={() => {
+                    navigate("/pornStar");
+                    showAlldata();
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  Porn Star
+                </p>
+              </div>
             </ul>
           </div>
         </div>

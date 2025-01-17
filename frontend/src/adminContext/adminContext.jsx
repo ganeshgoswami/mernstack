@@ -202,19 +202,26 @@ export const AuthAdminProvider = ({ children }) => {
     }
   };
 
-  const modelSearch = async (model, page) => {
+  const modelSearch = async (model, page = 1) => {
+    if (!model) {
+        console.error("Error: Model parameter is undefined or null.");
+        setMessage("Invalid model selected. Please try again.");
+        setShowResultData([]);
+        return;
+    }
+
     try {
         const modelParam = typeof model === "object" ? JSON.stringify(model) : model;
         const response = await fetch(
             `http://localhost:5000/findOneModelStar?model=${encodeURIComponent(modelParam)}&page=${page}`
         );
         const data = await response.json();
-        
+
         if (response.ok) {
             setShowResultData(data.data || []);
             setCurrentPage(data.currentPage || 1);
             setTotalPages(data.totalPages || 1);
-            setViewBigVideo(data.idBaseData);
+            setViewBigVideo(data.idBaseData || null);
             setMessage(data.message || "Model retrieved successfully.");
         } else {
             setShowResultData([]);
@@ -225,6 +232,7 @@ export const AuthAdminProvider = ({ children }) => {
         setMessage("An error occurred while fetching Models.");
     }
 };
+
 
 
   return (

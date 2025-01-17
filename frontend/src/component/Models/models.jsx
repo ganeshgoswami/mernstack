@@ -108,7 +108,7 @@ const PModels = () => {
       pImage: "https://s1.milffox.com/p/1/25/43940/pic1.jpg",
     },
   ];
-
+debugger
 
   return (
     <>
