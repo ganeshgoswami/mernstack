@@ -18,7 +18,7 @@ const NavbarAdmin = () => {
       <div className="container-fluid">
         <div>
           <Link
-            to="/collection"
+            to="/admin/collection"
             className="nav-link text-warning me-3 fw-bold "
           >
             <b>Admin Panel</b>
@@ -38,13 +38,13 @@ const NavbarAdmin = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item me-3">
-              <Link to="/adminTable" className="nav-link">
+              <Link to="/admin/adminTable" className="nav-link">
                 Video Table Store
               </Link>
             </li>
 
             <li className="nav-item me-3">
-              <Link to="/addCollecion" className="nav-link">
+              <Link to="/admin/addCollecion" className="nav-link">
                 Add Video
               </Link>
             </li>

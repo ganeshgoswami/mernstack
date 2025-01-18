@@ -181,7 +181,7 @@ function UserNavbar() {
                 onChange={(e) => setInputValue(e.target.value)}
               />
               <span className="input-group-text bg-white border-0">
-                <i type="submit" className="bi bi-search"></i>
+                <i type="submit" className="bi bi-search" onClick={(e)=>handleSearch(e)}></i>
               </span>
             </form>
           </div>
@@ -207,7 +207,7 @@ function UserNavbar() {
             onChange={(e) => setInputValue(e.target.value)}
           />
           <span className="input-group-text bg-white border-0">
-            <i type="submit" className="bi bi-search"></i>
+            <i type="submit" className="bi bi-search" onClick={(e)=>handleSearch(e)}></i>
           </span>
         </form>
       </nav>
@@ -360,6 +360,7 @@ function UserNavbar() {
                         <li
                           onClick={() => {
                             navigate(`/home/${createSlug(n)}`);
+                            handleCategoryClick(n)
                             showAlldata();
                           }}
                           data-bs-dismiss="offcanvas"
@@ -428,7 +429,7 @@ function UserNavbar() {
                       <>
                         <li
                           onClick={() => {
-                            navigate(`/pornStar/${createSlug(n.name)}`);
+                            navigate(`/pornstar/${createSlug(n.name)}`);
                             modelSearch(n.name, 1)
                           }}
                           data-bs-dismiss="offcanvas"
@@ -522,7 +523,7 @@ function UserNavbar() {
                   </li>
                   {categorys.map((n) => (
                     <>
-                      <li key={n}>
+                      <li >
                         <hr className="dropdown-divider" />
                       </li>
                       <li
@@ -530,6 +531,7 @@ function UserNavbar() {
                           navigate(`/home/${createSlug(n)}`);
                           showAlldata(n, currentPage);
                         }}
+                        key={n}
                       >
                         <Link className="dropdown-item">{n}</Link>
                       </li>
@@ -538,32 +540,32 @@ function UserNavbar() {
                 </ul>
               </li>
               <li className="nav-item dropdown">
-                <Link
-                  className="nav-link dropdown-toggle"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  New Addition
-                </Link>
-                <ul className="dropdown-menu dropdown-content">
-                  <li>
-                    <Link
-                      className="nav-link dropdown-toggle"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Update Soon
-                    </Link>
-                  </li>
-                </ul>
-              </li>
+  <Link
+    className="nav-link dropdown-toggle"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+    href="#"
+  >
+    New Addition
+  </Link>
+  <ul
+    className="dropdown-menu dropdown-content"
+    style={{ maxHeight: "400px", overflowY: "auto" }}
+  >
+    <li>
+      <Link className="dropdown-item" to="/home">
+        Update soon
+      </Link>
+    </li>
+  </ul>
+</li>
+
               <div className="d-flex align-items-center ms-3">
                 <p
                   className="text-black m-0"
                   onClick={() => {
-                    navigate("/pornStar");
+                    navigate("/pornstar");
                     showAlldata();
                   }}
                   style={{ cursor: "pointer" }}

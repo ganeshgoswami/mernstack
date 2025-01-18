@@ -49,7 +49,7 @@ const AddCollection = () => {
       models,
       alt
     };
-    console.log(videoData);
+    
     addVdata(videoData);
   }
 

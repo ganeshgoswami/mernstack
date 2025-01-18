@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: author
+Disallow: https://hexmy.com/admin
+Disallow: /404

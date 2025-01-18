@@ -16,21 +16,19 @@ const Home = () => {
     searchData,
     inputValue,
     setCurrentPage,
-    seprateCategory
+    seprateCategory,
   } = useContext(AdminContext);
   const [visibleBadges, setVisibleBadges] = useState(8);
 
-
-  useEffect(()=>{
-    getalldata(currentPage)
-  },[])
-
+  useEffect(() => {
+    getalldata(currentPage);
+  }, []);
 
   const handleShowMore = () => {
     setVisibleBadges((prev) => Math.min(prev + 8, categorys.length));
   };
 
-  // 1,2,3,4 show page 
+  // 1,2,3,4 show page
   const generatePageNumbers = () => {
     const pageNumbers = [];
     const maxPageButtons = 4;
@@ -47,14 +45,11 @@ const Home = () => {
     return pageNumbers;
   };
 
-
-
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
-      inputValue ? searchData(inputValue,newPage) : getalldata(newPage);
+      inputValue ? searchData(inputValue, newPage) : getalldata(newPage);
     }
   };
-
 
   const handleCategoryClick = (category) => {
     setCurrentPage(1);
@@ -69,7 +64,10 @@ const Home = () => {
           name="description"
           content="bf xx Ultimate Guide for sex. bf Xx is tell us how to do sex and know about sex. this search xxx , sex ,blue film, bf xx etc. sex relex your mind."
         />
-         <meta name="keywords" content="BF XX, guide, mastering BF XX, tips, strategies" />
+        <meta
+          name="keywords"
+          content="BF XX, guide, mastering BF XX, tips, strategies"
+        />
       </Helmet>
 
       <div className="container-fluid my-2" style={{ width: "96%" }}>
@@ -80,7 +78,7 @@ const Home = () => {
               to={`/home/${createSlug(category)}`}
               className="text-decoration-none"
               key={index}
-              onClick={()=>handleCategoryClick(category)}
+              onClick={() => handleCategoryClick(category)}
             >
               <span className="badge text-bg-secondary d-flex align-items-center m-1">
                 {category}
@@ -104,7 +102,7 @@ const Home = () => {
                 key={index}
               >
                 <Link
-                  to={`/playVideo/${vd._id}/${createSlug(vd.Category)}`}
+                  to={`/playvideo/${vd._id}`}
                   style={{ width: "90%", textDecoration: "none" }}
                   onClick={() => handleViewsCount(vd._id)}
                 >
@@ -112,8 +110,7 @@ const Home = () => {
                     <img
                       src={vd.ImgUrl}
                       alt={vd.Titel}
-                      className="rounded w-100"
-                      style={{ height: "120px", objectFit: "cover" }}
+                      className="rounded w-100 imageSize"
                     />
                     <span className="views-overonImg">
                       <i class="bi bi-eye"></i> {vd.Views}
@@ -146,35 +143,36 @@ const Home = () => {
         {/* next and  Previous */}
 
         <div className="pagination-controls mt-4">
+          <button
+            className="btn text-white button-size "
+            style={{ backgroundColor: "#87341a" }}
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
 
-      <button
-        className="btn text-white button-size "
-        style={{ backgroundColor: "#87341a" }}
-        onClick={() => handlePageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-        Previous
-      </button>
+          {generatePageNumbers().map((page) => (
+            <button
+              key={page}
+              className={`btn mx-1 ${
+                page === currentPage ? "btn-primary" : "btn-light"
+              } midel-btn-size`}
+              onClick={() => handlePageChange(page)}
+            >
+              {page}
+            </button>
+          ))}
 
-      {generatePageNumbers().map((page) => (
-        <button
-          key={page}
-          className={`btn mx-1 ${page === currentPage ? 'btn-primary' : 'btn-light'} midel-btn-size`}
-          onClick={() => handlePageChange(page)}
-        >
-          {page}
-        </button>
-      ))}
-
-      <button
-        className="btn text-white button-size "
-        style={{ backgroundColor: "#87341a" }}
-        onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-      >
-        Next
-      </button>
-    </div>
+          <button
+            className="btn text-white button-size "
+            style={{ backgroundColor: "#87341a" }}
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </>
   );

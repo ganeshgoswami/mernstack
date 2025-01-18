@@ -15,7 +15,6 @@ const ModelSeprate = () => {
   } = useContext(AdminContext);
 
   const model  = useParams().model;
-console.log(model)
 
 useEffect(()=>{
     modelSearch(model,currentPage)
@@ -41,7 +40,7 @@ useEffect(()=>{
                         key={index}
                       >
                         <Link
-                          to={`/playVideo/${vd._id}/${createSlug(vd.Category)}`}
+                          to={`/playvideo/${vd._id}`}
                           style={{ width: "90%", textDecoration: "none" }}
                           onClick={() => handleViewsCount(vd._id)}
                         >
@@ -49,8 +48,7 @@ useEffect(()=>{
                             <img
                               src={vd.ImgUrl}
                               alt={vd.Titel}
-                              className="rounded w-100"
-                              style={{ height: "120px", objectFit: "cover" }}
+                              className="rounded w-100 imageSize"
                             />
                             <span className="views-overonImg">
                               <i class="bi bi-eye"></i> {vd.Views}

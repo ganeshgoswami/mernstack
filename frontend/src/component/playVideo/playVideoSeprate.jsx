@@ -6,11 +6,11 @@ import { Helmet } from "react-helmet";
 
 const PlayVideoSeprate = () => {
   const { handleViewsCount,currentPage,showResultData,fetchOneCategory ,viewBigVideo,createSlug} = useContext(AdminContext);
-  const { id,category } = useParams();
-  
+  const { id } = useParams();
+
   useEffect(() => {   
-      fetchOneCategory(category, id, currentPage);
-  }, [id, category, currentPage]);
+      fetchOneCategory(id, currentPage);
+  }, [id, currentPage]);
   
 
   const handleScrollToTop = () => {
@@ -69,7 +69,7 @@ const PlayVideoSeprate = () => {
                   key={index}
                 >
                   <Link
-                    to={`/playVideo/${vd._id}/${createSlug(vd.Category)}`}
+                    to={`/playvideo/${vd._id}`}
                     style={{ width: "90%", textDecoration: "none" }}
                     onClick={() => {
                       handleViewsCount(vd._id);
@@ -80,12 +80,7 @@ const PlayVideoSeprate = () => {
                       <img
                         src={vd.ImgUrl}
                         alt={vd.Titel}
-                        className="rounded w-100"
-                        style={{
-                          width: "320px",
-                          height: "120px",
-                          objectFit: "cover",
-                        }}
+                        className="rounded w-100 imageSize"
                       />
                       <span className="views-overonImg">
                         <i class="bi bi-eye"></i> {vd.Views}

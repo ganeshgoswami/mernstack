@@ -8,7 +8,7 @@ import SaprateCategory from "./component/SeparateCategory/separateCategory";
 import NavbarAdmin from "./adminPenal/AdminNavbar/navbarAdmin";
 import { useContext, useEffect, useState } from "react";
 import AdminTable from "./adminPenal/Admin/adminTable";
-import ProtectedRoute from "./secure/protectRoute"; // Import the ProtectedRoute
+import ProtectedRoute from "./secure/protectRoute"; 
 import { AdminContext } from "./adminContext/adminContext";
 import LoginPage from "./adminPenal/AdminLogin/login";
 import Footer from "./component/Footer/footer";
@@ -19,7 +19,6 @@ import ModelSeprate from "./component/Models/modelSeprate";
 
 function App() {
   const { admin } = useContext(AdminContext);
-  console.log(admin);
 
   return (
     <>
@@ -29,7 +28,7 @@ function App() {
           {admin ? (
             <>
               <Route
-                path="/addCollecion"
+                path="/admin/addCollecion"
                 element={
                   <ProtectedRoute admin={admin}>
                     <AddCollection />
@@ -37,7 +36,7 @@ function App() {
                 }
               />
               <Route
-                path="/collection"
+                path="/admin/collection"
                 element={
                   <ProtectedRoute admin={admin}>
                     <Collections />
@@ -45,7 +44,7 @@ function App() {
                 }
               />
               <Route
-                path="/adminTable"
+                path="/admin/adminTable"
                 element={
                   <ProtectedRoute admin={admin}>
                     <AdminTable />
@@ -58,9 +57,9 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
               <Route path="/home/:category" element={<SaprateCategory />} />
-              <Route path="/playVideo/:id/:category" element={<PlayVideoSeprate />} />
-              <Route path="/pornStar" element={<PModels />} />
-              <Route path="/pornStar/:model" element={<ModelSeprate />} />
+              <Route path="/playvideo/:id" element={<PlayVideoSeprate />} />
+              <Route path="/pornstar" element={<PModels />} />
+              <Route path="/pornstar/:model" element={<ModelSeprate />} />
             </>
           )}
 

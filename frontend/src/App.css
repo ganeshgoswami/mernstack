@@ -66,3 +66,23 @@
   font-size: 10px;
   font-weight: bold;
 }
+
+.imageSize{
+  height: 130px ;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .button-size {
+   width: 65px;
+   font-size: 12px;
+  }
+  .midel-btn-size{
+    width: 30px;
+    font-size: 10px;
+  }
+.imageSize{
+  height: 160px !important;
+ object-fit: cover !important;
+}
+}

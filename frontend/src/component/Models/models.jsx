@@ -108,7 +108,6 @@ const PModels = () => {
       pImage: "https://s1.milffox.com/p/1/25/43940/pic1.jpg",
     },
   ];
-debugger
 
   return (
     <>
@@ -129,7 +128,7 @@ debugger
               key={index}
             >
               <Link
-                to={`/pornStar/${createSlug(vd.name)}`}
+                to={`/pornstar/${createSlug(vd.name)}`}
                 style={{ width: "90%", textDecoration: "none" }}
               >
                 <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">

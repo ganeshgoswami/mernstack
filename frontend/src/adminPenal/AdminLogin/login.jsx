@@ -28,7 +28,7 @@ const LoginPage = () => {
         if (data.status === 202) {
           localStorage.setItem("adminlogin", data.data.Email);
           setAdmin(localStorage.getItem("adminlogin"));
-          navigate("/collection");
+          navigate("/admin/collection");
         } else {
           
           console.log(data.message);

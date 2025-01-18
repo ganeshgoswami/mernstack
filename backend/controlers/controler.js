@@ -167,38 +167,46 @@ exports.allData = async (req, res) => {
 
   exports.findOneCategory = async (req, res) => {
     try {
-      let categoryName = req.query.category; // Use 'let' to allow reassignment
-      const id = req.query.id;
+      const { id } = req.body;
       const page = parseInt(req.query.page) || 1;
       const limit = 10;
       const skip = (page - 1) * limit;
-  
-      if (categoryName) {
-        categoryName = categoryName.replace(/-/g, " ");
-      } else {
-        return res.json({
+
+      if (!id) {
+        return res.status(400).json({
           statusCode: 400,
-          message: "Category name required.",
-        });
-      }
-  
-      const findVideos = await StoreData.find({ Category: categoryName })
-        .skip(skip)
-        .limit(limit);
-  
-      const idBaseVideo = id ? await StoreData.findById(id) : null;
-  
-      const totalCount = await StoreData.countDocuments({ Category: categoryName });
-  
-      if (findVideos.length === 0) {
-        return res.json({
-          statusCode: 404,
-          message: `No products found in this category: ${categoryName}`,
+          message: "Category ID is required.",
         });
       }
 
-      res.json({
-        statusCode: 202,
+      const idBaseVideo = await StoreData.findById(id);
+
+      if (!idBaseVideo) {
+        return res.status(404).json({
+          statusCode: 404,
+          message: `No video found with the given ID: ${id}`,
+        });
+      }
+
+      const categoryName = idBaseVideo.Category;
+
+      const findVideos = await StoreData.find({ Category: categoryName })
+        .skip(skip)
+        .limit(limit);
+
+      const totalCount = await StoreData.countDocuments({
+        Category: categoryName,
+      });
+
+      if (findVideos.length === 0) {
+        return res.status(404).json({
+          statusCode: 404,
+          message: `No videos found in this category: ${categoryName}`,
+        });
+      }
+
+      res.status(200).json({
+        statusCode: 200,
         message: `Videos in category: ${categoryName}`,
         currentPage: page,
         totalPages: Math.ceil(totalCount / limit),
@@ -206,12 +214,13 @@ exports.allData = async (req, res) => {
         data: findVideos,
       });
     } catch (err) {
-      res.json({
+      res.status(500).json({
         statusCode: 500,
         message: `Error in category: ${err.message}`,
       });
     }
   };
+
   
   
  
