@@ -18,7 +18,8 @@ const LoginPage = () => {
     };
 
       try {
-        const res = await fetch("http://localhost:5000/adminlogin", {
+        const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+        const res = await fetch(apiBaseUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(loginData),
