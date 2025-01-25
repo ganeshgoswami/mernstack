@@ -14,12 +14,12 @@ const LoginPage = () => {
 
     const loginData = {
       email,
-      isAdmin: email === "admin@gmail.com", 
+      isAdmin: email === "iamadmin@gmail.com", 
     };
 
       try {
-        const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-        const res = await fetch(apiBaseUrl, {
+         const apiUrl = process.env.REACT_APP_API_URL;
+        const res = await fetch(`${apiUrl}/adminlogin`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(loginData),

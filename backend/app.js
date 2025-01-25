@@ -15,10 +15,18 @@ mongoose.connect(DB_URI, {
 }).catch((err) => console.error("Failed to connect to MongoDB:", err));
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+    origin: ["http://localhost:3000", "https://badwap.fun"], // Allow these origins
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(ApiRouter);
+
+
 
 // server Start
 const PORT = process.env.PORT;

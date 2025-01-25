@@ -3,7 +3,6 @@ const { Admin } = require("../models/Admin");
 exports.adminlogin = async (req, res) => {
     const { email, password } = req.body;
     try {
-        // Check if there's a admin with the provided email
         const loginAdmin = await Admin.findOne({ Email: email });
       if (loginAdmin !== null) {
         if (loginAdmin.password === password) {

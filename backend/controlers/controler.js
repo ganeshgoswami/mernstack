@@ -43,11 +43,11 @@ exports.allData = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 18;
-
+    
     const startIndex = (page - 1) * limit;
-
+    
     const record = await StoreData.find().skip(startIndex).limit(limit);
-
+    
     const totalCount = await StoreData.countDocuments();
 
     res.json({

@@ -15,7 +15,7 @@ export const AuthAdminProvider = ({ children }) => {
    const [inputValue, setInputValue] = useState(""); 
   const itemsPerPage = 18;
     const [searchCountry, setSearchCountry] = useState(null);
-
+    const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     getalldata();
     allCategorys();
@@ -32,8 +32,7 @@ export const AuthAdminProvider = ({ children }) => {
 
   const getalldata = async (page) => {
     try { 
-      const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-      const response = await fetch(`${apiBaseUrl}/allData/?page=${page}`);
+      const response = await fetch(`${apiUrl}//allData/?page=${page}`);
       const data = await response.json();
       if (response.ok) {
         setAlldata(data.data || []);
@@ -49,8 +48,8 @@ export const AuthAdminProvider = ({ children }) => {
 
   const allCategorys = async () => {
     try { 
-      const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-      const response = await fetch(`${apiBaseUrl}/allCategorys`);
+      
+      const response = await fetch(`${apiUrl}/allCategorys`);
       const data = await response.json();
       if (response.ok) {
         setCategorys(data.data)
@@ -64,8 +63,8 @@ export const AuthAdminProvider = ({ children }) => {
   
   const fetchOneCategory = async (id, page) => {
     try {
-      const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-    const response = await fetch(`${apiBaseUrl}/findOneCategory/${id}?${page}`, { 
+      
+    const response = await fetch(`${apiUrl}/findOneCategory/${id}?${page}`, { 
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -98,9 +97,9 @@ export const AuthAdminProvider = ({ children }) => {
   
   const seprateCategory = async (category, page = 1) => {
     try {
-        const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+        
 
-        const response = await fetch(`${apiBaseUrl}/seprateCate?category=${category}&page=${page}`);
+        const response = await fetch(`${apiUrl}/seprateCate?category=${category}&page=${page}`);
         const data = await response.json();
 
         if (response.ok) {
@@ -123,9 +122,9 @@ export const AuthAdminProvider = ({ children }) => {
 
   const addVdata = async (vdata) => {
     try{
-      const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+      
 
-      await fetch(`${apiBaseUrl}/addCollection`, {
+      await fetch(`${apiUrl}/addCollection`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -148,8 +147,8 @@ export const AuthAdminProvider = ({ children }) => {
 
   const deletedata = async (id) => {
     try{
-      const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-      await fetch(`${apiBaseUrl}/deleteVideo/${id}`, {
+      
+      await fetch(`${apiUrl}/deleteVideo/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       })
@@ -176,8 +175,8 @@ export const AuthAdminProvider = ({ children }) => {
 
   const edit = async (id, formData) => {
     try{
-      const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-      await fetch(`${apiBaseUrl}/editData/${id}`, {
+      
+      await fetch(`${apiUrl}/editData/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -196,9 +195,9 @@ export const AuthAdminProvider = ({ children }) => {
 
   const handleViewsCount = async (videoId) => {
     try {
-      const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+      
       const response = await fetch(
-        `${apiBaseUrl}/viewsUpdate/${videoId}`,
+        `${apiUrl}/viewsUpdate/${videoId}`,
         {
           method: "POST",
           headers: {
@@ -221,9 +220,9 @@ export const AuthAdminProvider = ({ children }) => {
 
   const searchData = async (query,page) => {
     try {
-      const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+      
       const response = await fetch(
-        `${apiBaseUrl}/searchData?query=${query}&page=${page}`
+        `${apiUrl}/searchData?query=${query}&page=${page}`
       );
       const result = await response.json();
   
@@ -246,10 +245,10 @@ export const AuthAdminProvider = ({ children }) => {
     }
 
     try {
-      const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+      
         const modelParam = typeof model === "object" ? JSON.stringify(model) : model;
         const response = await fetch(
-            `${apiBaseUrl}/findOneModelStar?model=${encodeURIComponent(modelParam)}&page=${page}`
+            `${apiUrl}/findOneModelStar?model=${encodeURIComponent(modelParam)}&page=${page}`
         );
         const data = await response.json();
 
