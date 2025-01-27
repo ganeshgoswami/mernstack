@@ -16,6 +16,8 @@ export const AuthAdminProvider = ({ children }) => {
   const itemsPerPage = 18;
     const [searchCountry, setSearchCountry] = useState(null);
     const apiUrl = process.env.REACT_APP_API_URL;
+    console.log(apiUrl)
+    
   useEffect(() => {
     getalldata();
     allCategorys();
@@ -32,7 +34,7 @@ export const AuthAdminProvider = ({ children }) => {
 
   const getalldata = async (page) => {
     try { 
-      const response = await fetch(`${apiUrl}//allData/?page=${page}`);
+      const response = await fetch(`${apiUrl}/allData/?page=${page}`);
       const data = await response.json();
       if (response.ok) {
         setAlldata(data.data || []);
@@ -92,8 +94,7 @@ export const AuthAdminProvider = ({ children }) => {
     } 
 };
 
-  
-  
+ 
   
   const seprateCategory = async (category, page = 1) => {
     try {
