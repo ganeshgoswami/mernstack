@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 
+const apiUrl = process.env.REACT_APP_API_URL;
 export const AdminContext = createContext();
 
 export const AuthAdminProvider = ({ children }) => {
@@ -32,7 +33,7 @@ export const AuthAdminProvider = ({ children }) => {
 
   const getalldata = async (page) => {
     try { 
-      const response = await fetch(`http://localhost:5000/allData/?page=${page}`);
+      const response = await fetch(`${apiUrl}/allData/?page=${page}`);
       const data = await response.json();
       if (response.ok) {
         setAlldata(data.data || []);
@@ -48,7 +49,7 @@ export const AuthAdminProvider = ({ children }) => {
 
   const allCategorys = async () => {
     try { 
-      const response = await fetch(`http://localhost:5000/allCategorys`);
+      const response = await fetch(`${apiUrl}/allCategorys`);
       const data = await response.json();
       if (response.ok) {
         setCategorys(data.data)
@@ -63,7 +64,7 @@ export const AuthAdminProvider = ({ children }) => {
   const fetchOneCategory = async (category,id,page) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/findOneCategory?category=${category}&id=${id}&page=${page}`
+        `${apiUrl}/findOneCategory?category=${category}&id=${id}&page=${page}`
       ); 
       const data = await response.json();
 
@@ -87,7 +88,7 @@ export const AuthAdminProvider = ({ children }) => {
   
   const seprateCategory = async (category,page) => {
     try {
-      const response = await fetch(`http://localhost:5000/seprateCate?category=${category}&page=${page}`);
+      const response = await fetch(`${apiUrl}/seprateCate?category=${category}&page=${page}`);
       const data = await response.json();
       if (response.ok) {
         setFilterCategoryData(data.data || []);
@@ -106,7 +107,7 @@ export const AuthAdminProvider = ({ children }) => {
   
 
   const addVdata = async (vdata) => {
-    await fetch("http://localhost:5000/addCollection", {
+    await fetch(`${apiUrl}/addCollection`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -124,7 +125,7 @@ export const AuthAdminProvider = ({ children }) => {
   };
 
   const deletedata = async (id) => {
-    await fetch(`http://localhost:5000/deleteVideo/${id}`, {
+    await fetch(`${apiUrl}/deleteVideo/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })
@@ -146,7 +147,7 @@ export const AuthAdminProvider = ({ children }) => {
   };
 
   const edit = async (id, formData) => {
-    await fetch(`http://localhost:5000/editData/${id}`, {
+    await fetch(`${apiUrl}/editData/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -162,7 +163,7 @@ export const AuthAdminProvider = ({ children }) => {
   const handleViewsCount = async (videoId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/viewsUpdate/${videoId}`,
+        `${apiUrl}/viewsUpdate/${videoId}`,
         {
           method: "POST",
           headers: {
@@ -186,7 +187,7 @@ export const AuthAdminProvider = ({ children }) => {
   const searchData = async (query,page) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/searchData?query=${query}&page=${page}`
+        `${apiUrl}/searchData?query=${query}&page=${page}`
       );
       const result = await response.json();
   
@@ -213,7 +214,7 @@ export const AuthAdminProvider = ({ children }) => {
     try {
         const modelParam = typeof model === "object" ? JSON.stringify(model) : model;
         const response = await fetch(
-            `http://localhost:5000/findOneModelStar?model=${encodeURIComponent(modelParam)}&page=${page}`
+            `${apiUrl}/findOneModelStar?model=${encodeURIComponent(modelParam)}&page=${page}`
         );
         const data = await response.json();
 
