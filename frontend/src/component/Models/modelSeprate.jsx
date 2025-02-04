@@ -46,6 +46,7 @@ useEffect(()=>{
                         >
                           <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                             <img
+                            loading="lazy"
                               src={vd.ImgUrl}
                               alt={vd.Titel}
                               className="rounded w-100 imageSize"

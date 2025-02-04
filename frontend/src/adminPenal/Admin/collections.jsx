@@ -52,6 +52,7 @@ const Collections = () => {
               <Link to={`/home/${vd.Category}`} className="w-100">
                 <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                   <img
+                  loading="lazy"
                     src={vd.ImgUrl}
                     alt={vd.Title}
                     className="rounded w-100"

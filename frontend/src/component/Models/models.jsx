@@ -133,6 +133,7 @@ const PModels = () => {
               >
                 <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                   <img
+                  loading="lazy"
                     src={vd.pImage}
                     alt={vd.name}
                     className="rounded w-100 object-fit-cover img-responsive"

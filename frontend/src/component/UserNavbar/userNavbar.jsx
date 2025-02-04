@@ -155,6 +155,7 @@ function UserNavbar() {
               >
                 <h3 className="text-danger">
                   <img
+                  loading="lazy"
                     src={logoImage}
                     alt=""
                     width={"180px"}
@@ -243,7 +244,7 @@ function UserNavbar() {
                 onClick={() => showAlldata()}
               >
                 <h3 className="text-danger m-2">
-                  <img src={logoImage} alt="" width={"160px"} />
+                  <img loading="lazy" src={logoImage} alt="" width={"160px"} />
                 </h3>
               </Link>
             </div>

@@ -86,6 +86,7 @@ const AdminTable = () => {
                     <td>{item.Category}</td>
                     <td>
                       <img
+loading="lazy"
                         src={item.ImgUrl}
                         alt={item.Titel}
                         style={{ width: "100px", height: "auto" }}
