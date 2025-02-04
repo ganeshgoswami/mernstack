@@ -17,7 +17,6 @@ export const AuthAdminProvider = ({ children }) => {
   const itemsPerPage = 18;
     const [searchCountry, setSearchCountry] = useState(null);
     const apiUrl = process.env.REACT_APP_API_URL;
-    console.log(apiUrl)
     
   useEffect(() => {
     getalldata();
