@@ -59,10 +59,10 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>BF XX - 18+ Sex Video</title>
+        <title>BF XX - 18+ Sex(सेक्स) or xx Videos</title>
         <meta
           name="description"
-          content="bf xx Ultimate Guide for sex. bf Xx is tell us how to do sex and know about sex. this search xxx , sex ,blue film, bf xx etc. sex relex your mind."
+          content="bf xx Ultimate Guide for sex. bf Xx is tell us how to do sex and know about sex. this search xxx , sex ,blue film, bf xx etc. blue film picture show Sex Video"
         />
         <meta
           name="keywords"
@@ -108,7 +108,7 @@ const Home = () => {
                 >
                   <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                     <img
-loading="lazy"
+                    loading="lazy"
                       src={vd.ImgUrl}
                       alt={vd.Titel}
                       className="rounded w-100 imageSize"
