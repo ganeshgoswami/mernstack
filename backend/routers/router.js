@@ -15,7 +15,7 @@ router.post("/addCollection",api.addCollection)
 
 router.get("/allCategorys",api.allCategorys)
 
-router.post("/findOneCategory/:id",api.findOneCategory)
+router.get("/findOneCategory/:id",api.findOneCategory)
 router.get("/seprateCate",api.seprateCate)
 // views Update 
 router.post("/viewsUpdate/:videoId",api.viewsUpdate)

@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 
+const apiUrl = process.env.REACT_APP_API_URL;
 export const AdminContext = createContext();
 
 export const AuthAdminProvider = ({ children }) => {
@@ -50,7 +51,6 @@ export const AuthAdminProvider = ({ children }) => {
 
   const allCategorys = async () => {
     try { 
-      
       const response = await fetch(`${apiUrl}/allCategorys`);
       const data = await response.json();
       if (response.ok) {
@@ -65,32 +65,25 @@ export const AuthAdminProvider = ({ children }) => {
   
   const fetchOneCategory = async (id, page) => {
     try {
-      
-    const response = await fetch(`${apiUrl}/findOneCategory/${id}?${page}`, { 
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id: id }),
-    })
-  
-    
-        const data = await response.json();
+      const response = await fetch(
+        `${apiUrl}/findOneCategory/${id}?page=${page}`
+      );
+      const data = await response.json();
 
-        if (response.ok) {
-            setShowResultData(data.data || []);
-            setCurrentPage(data.currentPage || 1);
-            setTotalPages(data.totalPages || 1);
-            setViewBigVideo(data.idBaseData || null);
-            setMessage(data.message || "Category retrieved successfully.");
-        } else {
-            setShowResultData([]);
-            setMessage(data.message || "Error fetching Category.");
-        }
-    } catch (error) {
-        console.error("Error fetching category:", error);
+      if (response.ok) {
+        setShowResultData(data.data || []);
+        setCurrentPage(data.currentPage || 1);
+        setTotalPages(data.totalPages || 1);
+        setViewBigVideo(data.idBaseData || null);
+        setMessage(data.message || "Category retrieved successfully.");
+      } else {
         setShowResultData([]);
-        setMessage("An error occurred while fetching Category.");
+        setMessage(data.message || "Error fetching Category.");
+      }
+    } catch (error) {
+      console.error("Error fetching category:", error);
+      setShowResultData([]);
+      setMessage("An error occurred while fetching Category.");
     } 
 };
 
@@ -98,20 +91,17 @@ export const AuthAdminProvider = ({ children }) => {
   
   const seprateCategory = async (category, page = 1) => {
     try {
-        
-
-        const response = await fetch(`${apiUrl}/seprateCate?category=${category}&page=${page}`);
-        const data = await response.json();
-
-        if (response.ok) {
-            setFilterCategoryData(data.data || []);
-            setCurrentPage(data.currentPage || 1);  
-            setTotalPages(data.totalPages || 1);
-            setMessage(data.message || "Category retrieved successfully.");
-        } else {
-            setFilterCategoryData([]);
-            setMessage(data.message || "Error fetching Separate Category.");
-        }
+      const response = await fetch(`${apiUrl}/seprateCate?category=${category}&page=${page}`);
+      const data = await response.json();
+      if (response.ok) {
+        setFilterCategoryData(data.data || []);
+        setCurrentPage(data.currentPage || 1);  
+        setTotalPages(data.totalPages || 1);
+        setMessage(data.message || "Category retrieved successfully.");
+      } else {
+        setShowResultData([]);
+        setMessage(data.message || "Error fetching Saprate Category.");
+      }
     } catch (error) {
         console.error("Error fetching category:", error);
         setFilterCategoryData([]);
@@ -122,76 +112,57 @@ export const AuthAdminProvider = ({ children }) => {
   
 
   const addVdata = async (vdata) => {
-    try{
-      
-
-      await fetch(`${apiUrl}/addCollection`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(vdata),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.data._id != null) {
-            console.log("Data Add Succcessfully");
-          } else {
-            console.log("Same Data not Add Same Database");
-          }
-        });
-    }catch (error) {
-      setShowResultData([]);
-      setMessage("An error occurred while fetching add Video.");
-    }
+    await fetch(`${apiUrl}/addCollection`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(vdata),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data._id != null) {
+          console.log("Data Add Succcessfully");
+        } else {
+          console.log("Same Data not Add Same Database");
+        }
+      });
   };
 
   const deletedata = async (id) => {
-    try{
-      
-      await fetch(`${apiUrl}/deleteVideo/${id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
+    await fetch(`${apiUrl}/deleteVideo/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
       })
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          if (id) {
-            getalldata();
-          }
-          console.log("Delete response:", data);
-        })
-        .catch((err) => {
-          console.log("Error:", err);
-        });
-    }catch (error) {
-      setShowResultData([]);
-      setMessage("An error occurred while fetching delete Video.");
-    }
+      .then((data) => {
+        if (id) {
+          getalldata();
+        }
+        console.log("Delete response:", data);
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+      });
   };
 
   const edit = async (id, formData) => {
-    try{
-      
-      await fetch(`${apiUrl}/editData/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+    await fetch(`${apiUrl}/editData/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        return res.json();
       })
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          getalldata(currentPage);
-        });
-    }catch (error) {
-      setShowResultData([]);
-      setMessage("An error occurred while fetching Edit Video.");
-    }
+      .then((data) => {
+        getalldata(currentPage);
+      });
   };
 
   const handleViewsCount = async (videoId) => {

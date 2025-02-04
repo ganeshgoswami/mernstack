@@ -1,0 +1,26 @@
+# Enable Rewrite Engine
+RewriteEngine On
+RewriteBase /
+
+# Redirect www to non-www
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://badwap.fun//$1 [L,R=301]
+
+# Redirect HTTP to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+
+# Set Content-Type for XML files
+<FilesMatch "\.xml$">
+    ForceType application/xml
+    Header set Content-Type "application/xml"
+</FilesMatch>
+
+# Exclude sitemap.xml and robots.txt from SPA
+RewriteCond %{REQUEST_URI} !^/sitemap\.xml$ [NC]
+RewriteCond %{REQUEST_URI} !^/robots\.txt$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# SPA Configuration
+RewriteRule . /index.html [L]

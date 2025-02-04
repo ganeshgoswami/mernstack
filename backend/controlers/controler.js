@@ -167,7 +167,8 @@ exports.allData = async (req, res) => {
 
   exports.findOneCategory = async (req, res) => {
     try {
-      const { id } = req.body;
+      const { id } = req.params;
+      console.log(id)
       const page = parseInt(req.query.page) || 1;
       const limit = 10;
       const skip = (page - 1) * limit;
