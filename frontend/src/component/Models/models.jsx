@@ -117,6 +117,7 @@ const PModels = () => {
           name="description"
           content="xxxhd fucking videos available .it's give perfect and good quality sex or fucking videos. High Definition sex videos are available."
         />
+        <link rel="canonical" href="pornstar"/>
          <meta name="keywords" content="HD Hole, guide, mastering HD Hole, tips, strategies" />
       </Helmet>
     <div className="container-fluid my-2" style={{ width: "96%" }}>

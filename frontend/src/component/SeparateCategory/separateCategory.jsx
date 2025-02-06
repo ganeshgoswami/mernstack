@@ -21,6 +21,7 @@ const SaprateCategory = () => {
           name="description"
           content="blue sexy pictures that blend elegance and allure. blue sex picture is provieded fabulous sex video and good quality fucking video."
         />
+        <link rel="canonical" href={`${category}`}/>
          <meta name="keywords" content="Blue Sexy Picture, guide, mastering Blue Sexy Picture, tips, strategies" />
       </Helmet>
       <div className="container-fluid my-2" style={{ width: "96%" }}>

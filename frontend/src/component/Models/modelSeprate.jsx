@@ -28,6 +28,7 @@ useEffect(()=>{
           name="description"
           content="por n star  is a single girl sex and fucking videos .you need specific and special video a porn girl. Here hard fucking Por n Star videos available."
         />
+        <link rel="canonical" href={`${model}`}/>
          <meta name="keywords" content="HD Hole, guide, mastering HD Hole, tips, strategies" />
       </Helmet>
     <div className="container-fluid my-2" style={{ width: "96%" }}>

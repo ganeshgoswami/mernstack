@@ -64,6 +64,7 @@ const Home = () => {
           name="description"
           content="bf xx Ultimate Guide for sex. bf Xx is tell us how to do sex and know about sex. this search xxx , sex ,blue film, bf xx etc. blue film picture show Sex Video"
         />
+        <link rel="canonical" href="badwap.fun"/>
         <meta
           name="keywords"
           content="BF XX, guide, mastering BF XX, tips, strategies"
