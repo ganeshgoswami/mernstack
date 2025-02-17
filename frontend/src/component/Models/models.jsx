@@ -13,7 +13,7 @@ const PModels = () => {
     {
       name: "Dillion Harper",
       pImage:
-        "https://zazzybabes.com/girls/dillion-harper/dillion-harper-pornstar-4214.jpg",
+        "https://www.yourdailygirls.com/galleries/digital-desire/digital-desire-dillion-harper-nude-in-bed/digital-desire-3.jpg",
     },
     {
       name: "Dani Daniels",
@@ -65,7 +65,7 @@ const PModels = () => {
     {
       name: "Karla Kush",
       pImage:
-        "https://img2.badoink.com/content/casts/48123/karla-kush-48123.jpg?q=80&w=720",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROH0o38fl6m2sRfZi0D6qdSv3g93PHeCShnA&s",
     },
     {
       name: "Samantha Sin",
@@ -78,7 +78,7 @@ const PModels = () => {
     {
       name: "Janice Griffith",
       pImage:
-        "https://zazzybabes.com/girls/janice-griffith/janice-griffith-babe-77716.jpg",
+        "https://media.lustgalleries.com/thumbs/5/8/6/d/b/586dbbd55ce51/1180x660/391.jpg",
     },
     {
       name: "Adriana Chechik",
