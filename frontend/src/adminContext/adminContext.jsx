@@ -34,7 +34,7 @@ export const AuthAdminProvider = ({ children }) => {
 
   const getalldata = async (page) => {
     try { 
-      const response = await fetch(`${apiUrl}/allData/?page=${page}`);
+      const response = await fetch(`${apiUrl}/alldata?page=${page}`);
       const data = await response.json();
       if (response.ok) {
         setAlldata(data.data || []);
@@ -62,21 +62,21 @@ export const AuthAdminProvider = ({ children }) => {
     }
   };
   
-  const fetchOneCategory = async (id, page) => {
+
+
+
+  const getbigVideo = async (id) => {
     try {
       const response = await fetch(
-        `${apiUrl}/findOneCategory/${id}?page=${page}`
+        `${apiUrl}/bigvideofind/${id}`
       );
       const data = await response.json();
 
       if (response.ok) {
-        setShowResultData(data.data || []);
-        setCurrentPage(data.currentPage || 1);
-        setTotalPages(data.totalPages || 1);
-        setViewBigVideo(data.idBaseData || null);
-        setMessage(data.message || "Category retrieved successfully.");
+        setViewBigVideo(data.data || null);
+        setMessage(data.message || "This Id Data retrieved successfully.");
       } else {
-        setShowResultData([]);
+        // setShowResultData([]);
         setMessage(data.message || "Error fetching Category.");
       }
     } catch (error) {
@@ -86,6 +86,28 @@ export const AuthAdminProvider = ({ children }) => {
     } 
 };
 
+const getreletedData = async (reletedCategory, page) => {
+  try {
+    const response = await fetch(
+      `${apiUrl}/findrelatedData/${reletedCategory}?page=${page}`
+    );
+    const data = await response.json();
+
+    if (response.ok) {
+      setShowResultData(data.data || []);
+      setCurrentPage(data.currentPage || 1);
+      setTotalPages(data.totalPages || 1);
+      setMessage(data.message || "Category retrieved successfully.");
+    } else {
+      setShowResultData([]);
+      setMessage(data.message || "Error fetching Category.");
+    }
+  } catch (error) {
+    console.error("Error fetching category:", error);
+    setShowResultData([]);
+    setMessage("An error occurred while fetching Category.");
+  } 
+};
  
   
   const seprateCategory = async (category, page = 1) => {
@@ -254,7 +276,6 @@ export const AuthAdminProvider = ({ children }) => {
         handleViewsCount,
         searchCountry,
         setSearchCountry,
-        fetchOneCategory,
         viewBigVideo,
         showResultData,
         seprateCategory,
@@ -268,7 +289,9 @@ export const AuthAdminProvider = ({ children }) => {
         inputValue,
          setInputValue,
          modelSearch,
-         setCurrentPage
+         setCurrentPage,
+         getbigVideo,
+         getreletedData
       }}
     >
       {children}

@@ -138,6 +138,7 @@ exports.allData = async (req, res) => {
   // Show Views and Update
   exports.viewsUpdate = async (req, res) => {
     const { videoId } = req.body;
+    
     try {
       const video = await StoreData.findById(videoId);
       if (!video) {
@@ -165,65 +166,7 @@ exports.allData = async (req, res) => {
   };
 
 
-  exports.findOneCategory = async (req, res) => {
-    try {
-      const { id } = req.params;
-      const page = parseInt(req.query.page) || 1;
-      const limit = 10;
-      const skip = (page - 1) * limit;
-
-      if (!id) {
-        return res.status(400).json({
-          statusCode: 400,
-          message: "Category ID is required.",
-        });
-      }
-
-      const idBaseVideo = await StoreData.findById(id);
-
-      if (!idBaseVideo) {
-        return res.status(404).json({
-          statusCode: 404,
-          message: `No video found with the given ID: ${id}`,
-        });
-      }
-
-      const categoryName = idBaseVideo.Category;
-
-      const findVideos = await StoreData.find({ Category: categoryName })
-        .skip(skip)
-        .limit(limit);
-
-      const totalCount = await StoreData.countDocuments({
-        Category: categoryName,
-      });
-
-      if (findVideos.length === 0) {
-        return res.status(404).json({
-          statusCode: 404,
-          message: `No videos found in this category: ${categoryName}`,
-        });
-      }
-
-      res.status(200).json({
-        statusCode: 200,
-        message: `Videos in category: ${categoryName}`,
-        currentPage: page,
-        totalPages: Math.ceil(totalCount / limit),
-        idBaseData: idBaseVideo,
-        data: findVideos,
-      });
-    } catch (err) {
-      res.status(500).json({
-        statusCode: 500,
-        message: `Error in category: ${err.message}`,
-      });
-    }
-  };
-
   
-  
- 
   exports.seprateCate = async (req, res) => {
     const limit = 18;
 
@@ -301,6 +244,7 @@ exports.allData = async (req, res) => {
     }
   };
   
+  // find model 
   exports.findOneModelStar = async (req, res) => {
     try {
       const { model } = req.query;
@@ -359,3 +303,82 @@ exports.allData = async (req, res) => {
     }
   };
   
+
+//  view big Video 
+  exports.bigvideofind = async (req, res) => {
+    try {
+      const { videoId } = req.params;
+
+      if (!videoId) {
+        return res.status(400).json({
+          statusCode: 400,
+          message: "Category ID is required.",
+        });
+      }
+
+      const idBaseVideo = await StoreData.findById(videoId);
+
+      if (!idBaseVideo) {
+        return res.status(404).json({
+          statusCode: 404,
+          message: `No video found with the given ID: ${videoId}`,
+        });
+      }
+
+      res.status(200).json({
+        statusCode: 200,
+        message: `Videos in: ${videoId}`,
+        data: idBaseVideo,
+      });
+    } catch (err) {
+      res.status(500).json({
+        statusCode: 500,
+        message: `Error in category: ${err.message}`,
+      });
+    }
+  };
+
+  // search releted video with big video 
+  exports.findrelatedData = async (req, res) => {
+    try {
+      const { reletedcategory } = req.params;
+      const page = parseInt(req.query.page) || 1;
+      const limit = 10;
+      const skip = (page - 1) * limit;
+
+      if (!reletedcategory) {
+        return res.status(400).json({
+          statusCode: 400,
+          message: "Category is required.",
+        });
+      }
+
+      const findVideos = await StoreData.find({ Category: reletedcategory })
+        .skip(skip)
+        .limit(limit);
+
+      const totalCount = await StoreData.countDocuments({
+        Category: reletedcategory,
+      });
+
+      if (findVideos.length === 0) {
+        return res.status(404).json({
+          statusCode: 404,
+          message: `No videos found in this category: ${reletedcategory}`,
+        });
+      }
+
+      res.status(200).json({
+        statusCode: 200,
+        message: `Videos in category: ${reletedcategory}`,
+        currentPage: page,
+        totalPages: Math.ceil(totalCount / limit),
+        data: findVideos,
+      });
+    } catch (err) {
+      res.status(500).json({
+        statusCode: 500,
+        message: `Error in category: ${err.message}`,
+      });
+    }
+  };

@@ -15,7 +15,6 @@ router.post("/addCollection",api.addCollection)
 
 router.get("/allCategorys",api.allCategorys)
 
-router.get("/findOneCategory/:id",api.findOneCategory)
 router.get("/seprateCate",api.seprateCate)
 // views Update 
 router.post("/viewsUpdate/:videoId",api.viewsUpdate)
@@ -25,5 +24,12 @@ router.get("/searchData",api.searchData)
 
 //models Search
 router.get("/findOneModelStar",api.findOneModelStar)
+
+// big Video
+router.get("/bigvideofind/:videoId",api.bigvideofind)
+
+// releted video with big video 
+router.get("/findrelatedData/:reletedcategory",api.findrelatedData)
+
 
 module.exports = router;

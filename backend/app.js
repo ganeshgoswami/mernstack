@@ -24,9 +24,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/api',ApiRouter);
-
-
+app.use("/api",ApiRouter);
 
 // server Start
 const PORT = process.env.PORT;

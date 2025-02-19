@@ -5,12 +5,13 @@ import "../playVideo/PlayVideoSeprate.css";
 import { Helmet } from "react-helmet";
 
 const PlayVideoSeprate = () => {
-  const { handleViewsCount,currentPage,showResultData,fetchOneCategory ,viewBigVideo,createSlug} = useContext(AdminContext);
+  const { handleViewsCount,currentPage,showResultData,getreletedData,viewBigVideo,getbigVideo} = useContext(AdminContext);
   const { id } = useParams();
 
-  useEffect(() => {   
-      fetchOneCategory(id, currentPage);
-  }, [id, currentPage]);
+  useEffect(() => {
+    getbigVideo(id);
+    getreletedData(viewBigVideo.Category,currentPage)
+  }, [viewBigVideo.Category, currentPage]);
   
 
   const handleScrollToTop = () => {

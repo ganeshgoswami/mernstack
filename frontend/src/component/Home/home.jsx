@@ -18,6 +18,7 @@ const Home = () => {
     setCurrentPage,
     seprateCategory,
   } = useContext(AdminContext);
+  
   const [visibleBadges, setVisibleBadges] = useState(8);
 
   useEffect(() => {
