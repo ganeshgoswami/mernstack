@@ -342,6 +342,7 @@ exports.allData = async (req, res) => {
   exports.findrelatedData = async (req, res) => {
     try {
       const { reletedcategory } = req.params;
+    
       const page = parseInt(req.query.page) || 1;
       const limit = 10;
       const skip = (page - 1) * limit;
@@ -356,6 +357,7 @@ exports.allData = async (req, res) => {
       const findVideos = await StoreData.find({ Category: reletedcategory })
         .skip(skip)
         .limit(limit);
+
 
       const totalCount = await StoreData.countDocuments({
         Category: reletedcategory,

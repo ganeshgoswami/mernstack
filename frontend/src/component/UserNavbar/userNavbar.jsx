@@ -4,7 +4,7 @@ import { AdminContext } from "../../adminContext/adminContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import logoImage from "../../assets/logoApp.png";
 function UserNavbar() {
-  const { alldata,modelSearch,setCurrentPage, setSearchCountry,categorys,currentPage,seprateCategory,createSlug,searchData,inputValue, setInputValue} = useContext(AdminContext);
+  const { modelSearch,setCurrentPage, setSearchCountry,categorys,currentPage,seprateCategory,createSlug,searchData,inputValue, setInputValue} = useContext(AdminContext);
  
   const navigate = useNavigate();
   const pornStar = [

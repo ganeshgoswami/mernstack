@@ -5,13 +5,13 @@ import "../Home/home.css";
 import { Helmet } from "react-helmet";
 
 const SaprateCategory = () => {
-  const {getalldata, handleViewsCount,currentPage,seprateCategory ,filterCategoryData,createSlug} = useContext(AdminContext); 
+  const {getalldata, handleViewsCount,currentPage,seprateCategory ,filterCategoryData} = useContext(AdminContext); 
   const { category } = useParams();
 
   useEffect(()=>{
     getalldata()
     seprateCategory(category,currentPage)
-  },[])
+  },[category,currentPage])
 
   return (
     <>

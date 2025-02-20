@@ -86,7 +86,7 @@ export const AuthAdminProvider = ({ children }) => {
     } 
 };
 
-const getreletedData = async (reletedCategory, page) => {
+const getreletedData = async (reletedCategory,page=1) => {
   try {
     const response = await fetch(
       `${apiUrl}/findrelatedData/${reletedCategory}?page=${page}`

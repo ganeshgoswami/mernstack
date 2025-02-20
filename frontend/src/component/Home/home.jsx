@@ -17,6 +17,7 @@ const Home = () => {
     inputValue,
     setCurrentPage,
     seprateCategory,
+    getreletedData
   } = useContext(AdminContext);
   
   const [visibleBadges, setVisibleBadges] = useState(8);
@@ -106,7 +107,7 @@ const Home = () => {
                 <Link
                   to={`/playvideo/${vd._id}`}
                   style={{ width: "90%", textDecoration: "none" }}
-                  onClick={() => handleViewsCount(vd._id)}
+                  onClick={() => {handleViewsCount(vd._id); getreletedData(vd.Category)}}
                 >
                   <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                     <img
