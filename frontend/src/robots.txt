@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: author
-Disallow: https://hexmy.com/admin
+Disallow: https://badwap.fun/admin
 Disallow: /404

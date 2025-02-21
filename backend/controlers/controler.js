@@ -305,38 +305,42 @@ exports.allData = async (req, res) => {
   
 
 //  view big Video 
-  exports.bigvideofind = async (req, res) => {
-    try {
-      const { videoId } = req.params;
+exports.bigvideofind = async (req, res) => {
+  try {
+    const { videoId } = req.params;
 
-      if (!videoId) {
-        return res.status(400).json({
-          statusCode: 400,
-          message: "Category ID is required.",
-        });
-      }
-
-      const idBaseVideo = await StoreData.findById(videoId);
-
-      if (!idBaseVideo) {
-        return res.status(404).json({
-          statusCode: 404,
-          message: `No video found with the given ID: ${videoId}`,
-        });
-      }
-
-      res.status(200).json({
-        statusCode: 200,
-        message: `Videos in: ${videoId}`,
-        data: idBaseVideo,
-      });
-    } catch (err) {
-      res.status(500).json({
-        statusCode: 500,
-        message: `Error in category: ${err.message}`,
+  
+    if (!videoId) {
+      return res.status(400).json({
+        statusCode: 400,
+        message: "Video ID is required.",
       });
     }
-  };
+  
+    const idBaseVideo = await StoreData.findById(videoId);
+
+ 
+    if (!idBaseVideo) {
+      return res.status(404).json({
+        statusCode: 404,
+        message: `No video found with the given ID: ${videoId}`,
+      });
+    }
+
+    res.status(200).json({
+      statusCode: 200,
+      message: `Video found for ID: ${videoId}`,
+      data: idBaseVideo,
+    });
+
+  } catch (err) {
+    console.error("Error fetching video:", err);
+    res.status(500).json({
+      statusCode: 500,
+      message: `Server error: ${err.message}`,
+    });
+  }
+};
 
   // search releted video with big video 
   exports.findrelatedData = async (req, res) => {

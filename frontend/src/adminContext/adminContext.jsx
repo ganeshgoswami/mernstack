@@ -19,7 +19,7 @@ export const AuthAdminProvider = ({ children }) => {
     const apiUrl = process.env.REACT_APP_API_URL;
     
   useEffect(() => {
-    getalldata();
+    getalldata(currentPage);
     allCategorys();
     setAdmin(localStorage.getItem("adminlogin"))
   }, []);
@@ -68,7 +68,9 @@ export const AuthAdminProvider = ({ children }) => {
   const getbigVideo = async (id) => {
     try {
       const response = await fetch(
-        `${apiUrl}/bigvideofind/${id}`
+        `${apiUrl}/bigvideofind/${id}`,{
+          mode: "cors",
+        }
       );
       const data = await response.json();
 
@@ -298,3 +300,5 @@ const getreletedData = async (reletedCategory,page=1) => {
     </AdminContext.Provider>
   );
 };
+
+      

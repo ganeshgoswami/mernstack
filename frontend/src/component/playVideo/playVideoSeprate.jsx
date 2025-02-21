@@ -35,7 +35,7 @@ const PlayVideoSeprate = () => {
           />
           <link
             rel="canonical"
-            href={`https://yourwebsite.com/video/${viewBigVideo._id}`}
+            href={`${viewBigVideo._id}`}
           />
           <meta
             name="keywords"
@@ -86,7 +86,6 @@ const PlayVideoSeprate = () => {
                       to={`/playvideo/${vd._id}`}
                       style={{ width: "90%", textDecoration: "none" }}
                       onClick={() => {
-                        getbigVideo(vd._id);
                         handleViewsCount(vd._id);
                         handleScrollToTop();
                       }}
