@@ -10,8 +10,6 @@ const ModelSeprate = () => {
     currentPage,
     modelSearch,
     showResultData,
-    getreletedData,
-
   } = useContext(AdminContext);
 
   const model = useParams().model;
@@ -47,7 +45,6 @@ const ModelSeprate = () => {
                   style={{ width: "90%", textDecoration: "none" }}
                   onClick={() => {
                     handleViewsCount(vd._id);
-                    getreletedData(vd.Category, currentPage);
                   }}
                 >
                   <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">

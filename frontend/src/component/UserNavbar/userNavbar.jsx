@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "../UserNavbar/userNavbar.css";
 import { AdminContext } from "../../adminContext/adminContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import logoImage from "../../assets/logoApp.png";
+import logoImage from "../../assets/logoApp.webp";
 function UserNavbar() {
   const { modelSearch,setCurrentPage, setSearchCountry,categorys,currentPage,seprateCategory,createSlug,searchData,inputValue, setInputValue} = useContext(AdminContext);
  
@@ -359,6 +359,7 @@ function UserNavbar() {
                     {categorys.map((n) => (
                       <>
                         <li
+                         key={n}
                           onClick={() => {
                             navigate(`/home/${createSlug(n)}`);
                             handleCategoryClick(n)
@@ -366,7 +367,7 @@ function UserNavbar() {
                           }}
                           data-bs-dismiss="offcanvas"
                           aria-label="Close"
-                          key={n}
+                          
                         >
                           {n}
                           <hr />
@@ -429,13 +430,14 @@ function UserNavbar() {
                     {pornStar.map((n) => (
                       <>
                         <li
+                        key={n.name}
                           onClick={() => {
                             navigate(`/pornstar/${createSlug(n.name)}`);
                             modelSearch(n.name, 1)
                           }}
                           data-bs-dismiss="offcanvas"
                           aria-label="Close"
-                          key={n.name}
+                          
                         >
                           {n.name}
                           <hr />
@@ -524,15 +526,16 @@ function UserNavbar() {
                   </li>
                   {categorys.map((n) => (
                     <>
-                      <li >
+                      <li key={n}>
                         <hr className="dropdown-divider" />
                       </li>
                       <li
+                      key={n}
                         onClick={() => {
                           navigate(`/home/${createSlug(n)}`);
                           showAlldata(n, currentPage);
                         }}
-                        key={n}
+                        
                       >
                         <Link className="dropdown-item">{n}</Link>
                       </li>

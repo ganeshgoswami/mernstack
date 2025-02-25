@@ -5,7 +5,7 @@ import "../Home/home.css";
 import { Helmet } from "react-helmet";
 
 const SaprateCategory = () => {
-  const {getalldata, handleViewsCount,currentPage,seprateCategory ,filterCategoryData,getreletedData} = useContext(AdminContext); 
+  const {getalldata, handleViewsCount,currentPage,seprateCategory ,filterCategoryData} = useContext(AdminContext); 
   const { category } = useParams();
 
   useEffect(()=>{
@@ -37,7 +37,6 @@ const SaprateCategory = () => {
                   style={{ width: "90%", textDecoration: "none" }}
                   onClick={() => {
                     handleViewsCount(vd._id);
-                    getreletedData(vd.Category, currentPage);
                   }}
                 >
                   <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">

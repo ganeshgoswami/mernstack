@@ -63,8 +63,6 @@ export const AuthAdminProvider = ({ children }) => {
   };
   
 
-
-
   const getbigVideo = async (id) => {
     try {
       const response = await fetch(
@@ -76,9 +74,9 @@ export const AuthAdminProvider = ({ children }) => {
 
       if (response.ok) {
         setViewBigVideo(data.data || null);
+        getreletedData(data.data.Category,currentPage)
         setMessage(data.message || "This Id Data retrieved successfully.");
       } else {
-        // setShowResultData([]);
         setMessage(data.message || "Error fetching Category.");
       }
     } catch (error) {
@@ -88,10 +86,10 @@ export const AuthAdminProvider = ({ children }) => {
     } 
 };
 
-const getreletedData = async (reletedCategory,page=1) => {
+const getreletedData = async (reletedCategoryData,page=1) => {
   try {
     const response = await fetch(
-      `${apiUrl}/findrelatedData/${reletedCategory}?page=${page}`
+      `${apiUrl}/findrelatedData/${reletedCategoryData}?page=${page}`
     );
     const data = await response.json();
 

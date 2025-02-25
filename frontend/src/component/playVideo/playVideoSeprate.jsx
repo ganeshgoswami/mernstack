@@ -8,8 +8,8 @@ const PlayVideoSeprate = () => {
   const {
     handleViewsCount,
     showResultData,
-    viewBigVideo,
-    getbigVideo,
+    viewBigVideo, //Video Data
+    getbigVideo, // get Video Function
   } = useContext(AdminContext);
   const { id } = useParams();
 
