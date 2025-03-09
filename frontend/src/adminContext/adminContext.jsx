@@ -1,11 +1,12 @@
 import { createContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const apiUrl = process.env.REACT_APP_API_URL;
 export const AdminContext = createContext();
 
 export const AuthAdminProvider = ({ children }) => {
   const [alldata, setAlldata] = useState([]);
   const [admin, setAdmin] = useState(null);
+  const [categoryVideo , setCategoryVideo] = useState([])
   const [categorys,setCategorys] = useState([])
  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -18,11 +19,24 @@ export const AuthAdminProvider = ({ children }) => {
     const [searchCountry, setSearchCountry] = useState(null);
     const apiUrl = process.env.REACT_APP_API_URL;
     
+  // React Router Hooks
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Extract page number from URL
+  const getPageFromUrl = () => {
+    const params = new URLSearchParams(location.search);
+    return parseInt(params.get("page")) || 1;
+  };
+    
   useEffect(() => {
+    const page = getPageFromUrl();
+    setCurrentPage(page);
     getalldata(currentPage);
     allCategorys();
+    categorySection();
     setAdmin(localStorage.getItem("adminlogin"))
-  }, []);
+  }, [location]);
 
   // chang url with hyphan 
   const createSlug = (text) => {
@@ -32,14 +46,13 @@ export const AuthAdminProvider = ({ children }) => {
   };
 
 
-  const getalldata = async (page) => {
+  const getalldata = async (currentPage) => {
     try { 
-      const response = await fetch(`${apiUrl}/alldata?page=${page}`);
+      const response = await fetch(`${apiUrl}/alldata?page=${currentPage}`);
       const data = await response.json();
       if (response.ok) {
         setAlldata(data.data || []);
         setTotalPages(data.totalPages || 0);
-        setCurrentPage(data.currentPage || 1);
       } else {
         console.error(data.message);
       }
@@ -95,7 +108,6 @@ const getreletedData = async (reletedCategoryData,page=1) => {
 
     if (response.ok) {
       setShowResultData(data.data || []);
-      setCurrentPage(data.currentPage || 1);
       setTotalPages(data.totalPages || 1);
       setMessage(data.message || "Category retrieved successfully.");
     } else {
@@ -110,13 +122,12 @@ const getreletedData = async (reletedCategoryData,page=1) => {
 };
  
   
-  const seprateCategory = async (category, page = 1) => {
+  const seprateCategory = async (category, currentPage) => {
     try {
-      const response = await fetch(`${apiUrl}/seprateCate?category=${category}&page=${page}`);
+      const response = await fetch(`${apiUrl}/seprateCate?category=${category}&page=${currentPage}`);
       const data = await response.json();
       if (response.ok) {
         setFilterCategoryData(data.data || []);
-        setCurrentPage(data.currentPage || 1);  
         setTotalPages(data.totalPages || 1);
         setMessage(data.message || "Category retrieved successfully.");
       } else {
@@ -211,18 +222,16 @@ const getreletedData = async (reletedCategoryData,page=1) => {
     }
   };
 
-  const searchData = async (query,page) => {
+  const searchData = async (query,currentPage) => {
     try {
-      
       const response = await fetch(
-        `${apiUrl}/searchData?query=${query}&page=${page}`
+        `${apiUrl}/searchData?query=${query}&page=${currentPage}`
       );
       const result = await response.json();
   
       if (response.ok) {
         setAlldata(result.data);
         setTotalPages(result.totalPages || 0);
-        setCurrentPage(result.currentPage || 1);
       } else {
         console.error("Error fetching search results:", result.message);
       }
@@ -247,7 +256,6 @@ const getreletedData = async (reletedCategoryData,page=1) => {
 
         if (response.ok) {
             setShowResultData(data.data || []);
-            setCurrentPage(data.currentPage || 1);
             setTotalPages(data.totalPages || 1);
             setViewBigVideo(data.idBaseData || null);
             setMessage(data.message || "Model retrieved successfully.");
@@ -261,6 +269,19 @@ const getreletedData = async (reletedCategoryData,page=1) => {
     }
 };
 
+const categorySection = async () =>{
+  try { 
+    const response = await fetch(`${apiUrl}/categorysection`);
+    const data = await response.json();
+    if (response.ok) {
+      setCategoryVideo(data.data || []);
+    } else {
+      console.error(data.message);
+    }
+  } catch (err) {
+    console.error("Error fetching All Data:", err);
+  }
+}
 
 
   return (
@@ -287,6 +308,7 @@ const getreletedData = async (reletedCategoryData,page=1) => {
         createSlug,
         searchData,
         inputValue,
+        categoryVideo, //saprate category Video
          setInputValue,
          modelSearch,
          setCurrentPage,

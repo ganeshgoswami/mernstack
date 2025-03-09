@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import logoImage from "../../assets/logoApp.webp";
 function UserNavbar() {
   const { modelSearch,setCurrentPage, setSearchCountry,categorys,currentPage,seprateCategory,createSlug,searchData,inputValue, setInputValue} = useContext(AdminContext);
- 
+  const [visibleItems, setVisibleItems] = useState(6);
   const navigate = useNavigate();
   const pornStar = [
     {
@@ -504,45 +504,56 @@ function UserNavbar() {
                 </ul>
               </li>
               <li className="nav-item dropdown">
-                <Link
-                  className="nav-link dropdown-toggle"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Category
-                </Link>
-                <ul
-                  className="dropdown-menu dropdown-content"
-                  style={{ maxHeight: "400px", overflowY: "auto" }}
-                >
-                  <li
-                    onClick={() => {
-                      navigate(`/home`);
-                      showAlldata();
-                    }}
-                  >
-                    <Link className="dropdown-item">All</Link>
-                  </li>
-                  {categorys.map((n) => (
-                    <>
-                      <li key={n}>
-                        <hr className="dropdown-divider" />
-                      </li>
-                      <li
-                      key={n}
-                        onClick={() => {
-                          navigate(`/home/${createSlug(n)}`);
-                          showAlldata(n, currentPage);
-                        }}
-                        
-                      >
-                        <Link className="dropdown-item">{n}</Link>
-                      </li>
-                    </>
-                  ))}
-                </ul>
-              </li>
+      <Link
+        className="nav-link dropdown-toggle"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Category
+      </Link>
+      <ul
+        className="dropdown-menu dropdown-content"
+        style={{ maxHeight: "400px", overflowY: "auto" }}
+      >
+        <li
+          onClick={() => {
+            navigate(`/home`);
+            showAlldata();
+          }}
+        >
+          <Link className="dropdown-item">All</Link>
+        </li>
+
+        {categorys.slice(0, visibleItems).map((n, index) => (
+          <React.Fragment key={index}>
+            <li>
+              <hr className="dropdown-divider" />
+            </li>
+            <li
+              onClick={() => {
+                navigate(`/home/${createSlug(n)}`);
+                showAlldata(n);
+              }}
+            >
+              <Link className="dropdown-item">{n}</Link>
+            </li>
+          </React.Fragment>
+        ))}
+
+        {visibleItems < categorys.length && (
+          <li className="d-flex justify-content-center bg-secondary text-center">
+          
+            <button
+              className="btn text-white me-2"
+              onClick={() => navigate("/allcategorys")}
+            >
+              Show More...
+            </button>
+          </li>
+        )}
+      </ul>
+    </li>
               <li className="nav-item dropdown">
   <Link
     className="nav-link dropdown-toggle"

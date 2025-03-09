@@ -43,7 +43,6 @@ exports.allData = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 18;
-    
     const startIndex = (page - 1) * limit;
     
     const record = await StoreData.find().skip(startIndex).limit(limit);
@@ -66,7 +65,7 @@ exports.allData = async (req, res) => {
   }
 };
 
-// find all Categorys in  arr
+// find all Categorys name
   exports.allCategorys =async (req,res) => {
     try {
       const categories = await StoreData.distinct("Category");
@@ -385,6 +384,33 @@ exports.bigvideofind = async (req, res) => {
       res.status(500).json({
         statusCode: 500,
         message: `Error in category: ${err.message}`,
+      });
+    }
+  };
+
+
+  exports.categorySection = async (req, res) => {
+    try {
+      const record = await StoreData.aggregate([
+        { $sort: { createdAt: -1 } },
+        {
+          $group: {
+            _id: "$Category",
+            latestRecord: { $first: "$$ROOT" }, 
+          },
+        },
+        { $replaceRoot: { newRoot: "$latestRecord" } },
+      ]);
+
+      res.json({
+        statusCode: 202,
+        message: "Data Category retrieved successfully",
+        data: record,
+      });
+    } catch (err) {
+      res.json({
+        statusCode: 404,
+        message: `Error in Find Api ${err}`,
       });
     }
   };

@@ -15,6 +15,7 @@ import AddCollection from "./adminPenal/AddCollection/addCollection";
 import PlayVideoSeprate from "./component/playVideo/playVideoSeprate";
 import PModels from "./component/Models/models";
 import ModelSeprate from "./component/Models/modelSeprate";
+import CategorySection from "./allCategorys/categorySection";
 
 function App() {
   const { admin } = useContext(AdminContext);
@@ -59,6 +60,7 @@ function App() {
               <Route path="/playvideo/:id" element={<PlayVideoSeprate />} />
               <Route path="/pornstar" element={<PModels />} />
               <Route path="/pornstar/:model" element={<ModelSeprate />} />
+              <Route path="/allcategorys" element={<CategorySection />} />
             </>
           )}
 

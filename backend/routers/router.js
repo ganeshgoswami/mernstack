@@ -31,5 +31,7 @@ router.get("/bigvideofind/:videoId",api.bigvideofind)
 // releted video with big video 
 router.get("/findrelatedData/:reletedcategory",api.findrelatedData)
 
+// all cAtegory Data 
+router.get("/categorysection",api.categorySection)
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../../adminContext/adminContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import "../Home/home.css";
 
@@ -20,7 +20,7 @@ const Home = () => {
   } = useContext(AdminContext);
   
   const [visibleBadges, setVisibleBadges] = useState(8);
-
+const navigate = useNavigate()
   useEffect(() => {
     getalldata(currentPage);
   }, []);
@@ -49,7 +49,10 @@ const Home = () => {
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
       inputValue ? searchData(inputValue, newPage) : getalldata(newPage);
+      if(newPage) navigate(`?page=${newPage}`)
     }
+    
+    if(inputValue) navigate(`?Search=${inputValue}`)
   };
 
   const handleCategoryClick = (category) => {
@@ -157,11 +160,12 @@ const Home = () => {
 
           {generatePageNumbers().map((page) => (
             <button
+            
               key={page}
               className={`btn mx-1 ${
                 page === currentPage ? "btn-primary" : "btn-light"
               } midel-btn-size`}
-              onClick={() => handlePageChange(page)}
+              onClick={() => handlePageChange(page) }
             >
               {page}
             </button>

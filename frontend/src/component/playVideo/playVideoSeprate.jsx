@@ -64,8 +64,9 @@ const PlayVideoSeprate = () => {
                 <span className="time-overlay">{viewBigVideo.Duration}</span>
               </div>
               <div className="m-3">
+                <h3 className="text-white">Porn Model : {viewBigVideo.Models}</h3>
                 <h1 className="text-white">{viewBigVideo.Titel}</h1>
-                <p className="text-white">{viewBigVideo.Description}</p>
+                <p className="text-white">Description : {viewBigVideo.Description}</p>
               </div>
               <hr className="text-white" />
               <hr className="text-white" />
