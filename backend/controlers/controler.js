@@ -345,9 +345,8 @@ exports.bigvideofind = async (req, res) => {
   exports.findrelatedData = async (req, res) => {
     try {
       const { reletedcategory } = req.params;
-    
-      const page = parseInt(req.query.page) || 1;
-      const limit = 10;
+      const { page = 1 } = req.query; 
+      const limit = 18;
       const skip = (page - 1) * limit;
 
       if (!reletedcategory) {
@@ -361,6 +360,7 @@ exports.bigvideofind = async (req, res) => {
         .skip(skip)
         .limit(limit);
 
+        console.log(reletedcategory)
 
       const totalCount = await StoreData.countDocuments({
         Category: reletedcategory,

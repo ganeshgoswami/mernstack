@@ -30,7 +30,7 @@ const Footer = () => {
               <div>
                 <h4>Advertisers</h4>
                 <ul className="footer-links list-unstyled">
-                  <Link className="text-light">Buy Traffic / Get Listed</Link>
+                  <Link className="text-light" to={"/our-network"}>Our Network</Link>
                 </ul>
               </div>
             </div>

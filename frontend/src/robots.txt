@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: author
-Disallow: https://badwap.fun/admin
-Disallow: /404

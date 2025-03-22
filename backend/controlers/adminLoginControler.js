@@ -4,8 +4,9 @@ exports.adminlogin = async (req, res) => {
     const { email, password } = req.body;
     try {
         const loginAdmin = await Admin.findOne({ Email: email });
-      if (loginAdmin !== null) {
-        if (loginAdmin.password === password) {
+       
+        if (loginAdmin !== null) {
+          if (loginAdmin.Password == password) {
           res.json({
             message: "Successfully login",
             status: 202,
@@ -15,7 +16,7 @@ exports.adminlogin = async (req, res) => {
           res.json({
             message: "Password not matched",
             status: 404,
-            data: loginAdmin,
+            data: null
           });
         }
       } else {

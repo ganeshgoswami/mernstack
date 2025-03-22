@@ -16,6 +16,8 @@ import PlayVideoSeprate from "./component/playVideo/playVideoSeprate";
 import PModels from "./component/Models/models";
 import ModelSeprate from "./component/Models/modelSeprate";
 import CategorySection from "./allCategorys/categorySection";
+import Backlinks from "./AddBacklink/backlink";
+import NotFound from "./Pagenotfound/pagenotfound";
 
 function App() {
   const { admin } = useContext(AdminContext);
@@ -55,17 +57,18 @@ function App() {
           ) : (
             <>
               <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
               <Route path="/home/:category" element={<SaprateCategory />} />
               <Route path="/playvideo/:id" element={<PlayVideoSeprate />} />
               <Route path="/pornstar" element={<PModels />} />
               <Route path="/pornstar/:model" element={<ModelSeprate />} />
               <Route path="/allcategorys" element={<CategorySection />} />
+              <Route path="/our-network" element={<Backlinks />} />
             </>
           )}
 
           {/* Admin-only USe */}
           <Route path="/admin/*" element={<LoginPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         {!admin && <Footer />}

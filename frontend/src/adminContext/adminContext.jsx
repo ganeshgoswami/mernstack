@@ -32,11 +32,14 @@ export const AuthAdminProvider = ({ children }) => {
   useEffect(() => {
     const page = getPageFromUrl();
     setCurrentPage(page);
-    getalldata(currentPage);
+    getalldata(page);
+    if (viewBigVideo && viewBigVideo.Category) {
+      getreletedData(viewBigVideo.Category);
+    }
     allCategorys();
     categorySection();
     setAdmin(localStorage.getItem("adminlogin"))
-  }, [location]);
+  }, [viewBigVideo,location]);
 
   // chang url with hyphan 
   const createSlug = (text) => {
@@ -87,7 +90,7 @@ export const AuthAdminProvider = ({ children }) => {
 
       if (response.ok) {
         setViewBigVideo(data.data || null);
-        getreletedData(data.data.Category,currentPage)
+        
         setMessage(data.message || "This Id Data retrieved successfully.");
       } else {
         setMessage(data.message || "Error fetching Category.");
@@ -99,10 +102,10 @@ export const AuthAdminProvider = ({ children }) => {
     } 
 };
 
-const getreletedData = async (reletedCategoryData,page=1) => {
+const getreletedData = async (reletedCategoryData) => {
   try {
     const response = await fetch(
-      `${apiUrl}/findrelatedData/${reletedCategoryData}?page=${page}`
+      `${apiUrl}/findrelatedData/${reletedCategoryData}`
     );
     const data = await response.json();
 

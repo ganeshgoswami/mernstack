@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
 import { AdminContext } from "../../adminContext/adminContext";
 import "../AdminLogin/login.css";
+import { useNavigate } from "react-router-dom";
 const AdminTable = () => {
   const { alldata, deletedata, edit,
     getalldata,
-    handleViewsCount,
-    categorys,
     totalPages,
     currentPage, } = useContext(AdminContext);
   const [deleteVideoName, setDeleteVideoName] = useState(null);
@@ -22,12 +21,12 @@ const AdminTable = () => {
   
   const itemsPerPage = 25;
   const categoryData = [];
-
-  const pStar = ["Dillion Harper","Dani Daniels","Angelica Heaven","Alecia Fox","Hailey Rose","Kathryn Mae","Mia Khalifa","Nicole Aniston","Juniper Ren","Valentina Nappi","Amarna Miller","Karla Kush","Samantha Sin","Freya Dee","Janice Griffith","Adriana Chechik","Sonya blaze","Alys star","Angela White","Cory Chase","Elsa Jean","Other"]
+const navigate =useNavigate()
+const pStar = ["Emily Willis","Dillion Harper","Abella Danger","Dani Daniels","Angelica Heaven","Alecia Fox","Hailey Rose","Kathryn Mae","Mia Khalifa","Nicole Aniston","Juniper Ren","Valentina Nappi","Amarna Miller","Karla Kush","Samantha Sin","Freya Dee","Janice Griffith","Adriana Chechik","Sonya blaze","Alys star","Angela White","Cory Chase","Elsa Jean","Other"]
 
 
   alldata.map((n) =>
-    categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : ""
+    categoryData.indexOf(n.Category) === -1 ? categoryData.push(n.Category) : "" 
   );
 
   const searchIdForDelete = (id) => {
@@ -62,6 +61,7 @@ const AdminTable = () => {
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
       getalldata(newPage)
+      if(newPage) navigate(`?page=${newPage}`)
     }
   };
 

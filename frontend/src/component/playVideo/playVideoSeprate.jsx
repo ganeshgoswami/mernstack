@@ -10,6 +10,8 @@ const PlayVideoSeprate = () => {
     showResultData,
     viewBigVideo, //Video Data
     getbigVideo, // get Video Function
+    getreletedData,
+    currentPage
   } = useContext(AdminContext);
   const { id } = useParams();
 

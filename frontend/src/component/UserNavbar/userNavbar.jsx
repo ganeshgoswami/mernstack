@@ -155,7 +155,7 @@ function UserNavbar() {
               >
                 <h3 className="text-danger">
                   <img
-                  loading="lazy"
+                    loading="lazy"
                     src={logoImage}
                     alt=""
                     width={"180px"}
@@ -182,7 +182,11 @@ function UserNavbar() {
                 onChange={(e) => setInputValue(e.target.value)}
               />
               <span className="input-group-text bg-white border-0">
-                <i type="submit" className="bi bi-search" onClick={(e)=>handleSearch(e)}></i>
+                <i
+                  type="submit"
+                  className="bi bi-search"
+                  onClick={(e) => handleSearch(e)}
+                ></i>
               </span>
             </form>
           </div>
@@ -208,7 +212,11 @@ function UserNavbar() {
             onChange={(e) => setInputValue(e.target.value)}
           />
           <span className="input-group-text bg-white border-0">
-            <i type="submit" className="bi bi-search" onClick={(e)=>handleSearch(e)}></i>
+            <i
+              type="submit"
+              className="bi bi-search"
+              onClick={(e) => handleSearch(e)}
+            ></i>
           </span>
         </form>
       </nav>
@@ -240,7 +248,7 @@ function UserNavbar() {
             >
               <Link
                 className="nav-link text-warning me-3 fw-bold"
-                to="/home"
+                to="/"
                 onClick={() => showAlldata()}
               >
                 <h3 className="text-danger m-2">
@@ -309,12 +317,12 @@ function UserNavbar() {
 
                       <hr />
                     </li>
-                    <li onClick={() => navigate("/home")}>
+                    <li onClick={() => navigate("/")}>
                       <Link
                         className="dropdown-item"
                         aria-label="Close"
                         data-bs-dismiss="offcanvas"
-                        to={"/home"}
+                        to={"/"}
                       >
                         Red Alert
                       </Link>
@@ -347,7 +355,7 @@ function UserNavbar() {
                   <ul style={{ listStyle: "None" }}>
                     <li
                       onClick={() => {
-                        navigate(`/home`);
+                        navigate(`/`);
                         showAlldata();
                       }}
                       data-bs-dismiss="offcanvas"
@@ -359,15 +367,14 @@ function UserNavbar() {
                     {categorys.map((n) => (
                       <>
                         <li
-                         key={n}
+                          key={n}
                           onClick={() => {
                             navigate(`/home/${createSlug(n)}`);
-                            handleCategoryClick(n)
+                            handleCategoryClick(n);
                             showAlldata();
                           }}
                           data-bs-dismiss="offcanvas"
                           aria-label="Close"
-                          
                         >
                           {n}
                           <hr />
@@ -398,6 +405,10 @@ function UserNavbar() {
               >
                 <div className="accordion-body">
                   <ul style={{ listStyle: "None" }}>
+                    <li data-bs-dismiss="offcanvas" aria-label="Close">
+                      <Link to={"/our-network"} className="text-dark text-decoration-none"> Our Network</Link>
+                      <hr />
+                    </li>
                     <li>
                       Update Soon
                       <hr />
@@ -430,14 +441,13 @@ function UserNavbar() {
                     {pornStar.map((n) => (
                       <>
                         <li
-                        key={n.name}
+                          key={n.name}
                           onClick={() => {
                             navigate(`/pornstar/${createSlug(n.name)}`);
-                            modelSearch(n.name, 1)
+                            modelSearch(n.name, 1);
                           }}
                           data-bs-dismiss="offcanvas"
                           aria-label="Close"
-                          
                         >
                           {n.name}
                           <hr />
@@ -497,84 +507,83 @@ function UserNavbar() {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <Link className="dropdown-item" to={"/home"}>
+                    <Link className="dropdown-item" to={"/"}>
                       Red Alert
                     </Link>
                   </li>
                 </ul>
               </li>
               <li className="nav-item dropdown">
-      <Link
-        className="nav-link dropdown-toggle"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        Category
-      </Link>
-      <ul
-        className="dropdown-menu dropdown-content"
-        style={{ maxHeight: "400px", overflowY: "auto" }}
-      >
-        <li
-          onClick={() => {
-            navigate(`/home`);
-            showAlldata();
-          }}
-        >
-          <Link className="dropdown-item">All</Link>
-        </li>
+                <Link
+                  className="nav-link dropdown-toggle"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Category
+                </Link>
+                <ul
+                  className="dropdown-menu dropdown-content"
+                  style={{ maxHeight: "400px", overflowY: "auto" }}
+                >
+                  <li
+                    onClick={() => {
+                      navigate(`/`);
+                      showAlldata();
+                    }}
+                  >
+                    <Link className="dropdown-item">All</Link>
+                  </li>
 
-        {categorys.slice(0, visibleItems).map((n, index) => (
-          <React.Fragment key={index}>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <li
-              onClick={() => {
-                navigate(`/home/${createSlug(n)}`);
-                showAlldata(n);
-              }}
-            >
-              <Link className="dropdown-item">{n}</Link>
-            </li>
-          </React.Fragment>
-        ))}
+                  {categorys.slice(0, visibleItems).map((n, index) => (
+                    <React.Fragment key={index}>
+                      <li>
+                        <hr className="dropdown-divider" />
+                      </li>
+                      <li
+                        onClick={() => {
+                          navigate(`/home/${createSlug(n)}`);
+                          showAlldata(n);
+                        }}
+                      >
+                        <Link className="dropdown-item">{n}</Link>
+                      </li>
+                    </React.Fragment>
+                  ))}
 
-        {visibleItems < categorys.length && (
-          <li className="d-flex justify-content-center bg-secondary text-center">
-          
-            <button
-              className="btn text-white me-2"
-              onClick={() => navigate("/allcategorys")}
-            >
-              Show More...
-            </button>
-          </li>
-        )}
-      </ul>
-    </li>
+                  {visibleItems < categorys.length && (
+                    <li className="d-flex justify-content-center bg-secondary text-center">
+                      <button
+                        className="btn text-white me-2"
+                        onClick={() => navigate("/allcategorys")}
+                      >
+                        Show More...
+                      </button>
+                    </li>
+                  )}
+                </ul>
+              </li>
               <li className="nav-item dropdown">
-  <Link
-    className="nav-link dropdown-toggle"
-    role="button"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
-    href="#"
-  >
-    New Addition
-  </Link>
-  <ul
-    className="dropdown-menu dropdown-content"
-    style={{ maxHeight: "400px", overflowY: "auto" }}
-  >
-    <li>
-      <Link className="dropdown-item" to="/home">
-        Update soon
-      </Link>
-    </li>
-  </ul>
-</li>
+                <Link
+                  className="nav-link dropdown-toggle"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  href="#"
+                >
+                  New Addition
+                </Link>
+                <ul
+                  className="dropdown-menu dropdown-content"
+                  style={{ maxHeight: "400px", overflowY: "auto" }}
+                >
+                  <li>
+                    <Link className="dropdown-item" to="/">
+                      Update soon
+                    </Link>
+                  </li>
+                </ul>
+              </li>
 
               <div className="d-flex align-items-center ms-3">
                 <p

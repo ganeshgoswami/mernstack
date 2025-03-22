@@ -4,6 +4,7 @@ import "./login.css";
 import { AdminContext } from "../../adminContext/adminContext";
 
 const LoginPage = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const { setAdmin } = useContext(AdminContext);
   const [email, setemail] = useState(null);
   const [password, setpassword] = useState(null);
@@ -11,14 +12,13 @@ const LoginPage = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-
     const loginData = {
       email,
-      isAdmin: email === "iamadmin@gmail.com", 
+      password
+      // isAdmin: email === "iamadmin@gmail.com", 
     };
-
+  
       try {
-         const apiUrl = process.env.REACT_APP_API_URL;
         const res = await fetch(`${apiUrl}/adminlogin`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -30,9 +30,9 @@ const LoginPage = () => {
           localStorage.setItem("adminlogin", data.data.Email);
           setAdmin(localStorage.getItem("adminlogin"));
           navigate("/admin/collection");
-        } else {
           
-          console.log(data.message);
+        } else {
+          alert("Wrong Password")
         }
       } catch (error) {
         console.error("Error:", error);
@@ -43,7 +43,7 @@ const LoginPage = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row justify-content-center login-page">
+      <div className="row justify-content-center login-page                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ">
         <div
           className="col-6 shadow p-3 mb-5 bg-body-tertiary rounded rotate-card"
           style={{

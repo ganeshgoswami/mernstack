@@ -14,7 +14,10 @@ const AddCollection = () => {
   const { alldata } = useContext(AdminContext);
 
   const dropdow = [
+    "Milfnut",
     "Hard Fuck",
+    "Cowgirl",
+    "Gang Fuck",
     "Mom",
     "Indian",
     "Teen",
@@ -22,6 +25,8 @@ const AddCollection = () => {
     "Russian",
     "Japanese",
     "Mia Khalifa",
+    "Lesbian sex",
+    "Threesome",
     "Crazy Porn",
     "Hd Porn",
     "Desi Sex",
@@ -33,7 +38,7 @@ const AddCollection = () => {
     "Popular Video",
     "Letest Video",
   ];
-  const pStar = ["Dillion Harper","Dani Daniels","Angelica Heaven","Alecia Fox","Hailey Rose","Kathryn Mae","Mia Khalifa","Nicole Aniston","Juniper Ren","Valentina Nappi","Amarna Miller","Karla Kush","Samantha Sin","Freya Dee","Janice Griffith","Adriana Chechik","Sonya blaze","Alys star","Angela White","Cory Chase","Elsa Jean","Other"]
+  const pStar = ["Emily Willis","Dillion Harper","Abella Danger","Dani Daniels","Angelica Heaven","Alecia Fox","Hailey Rose","Kathryn Mae","Mia Khalifa","Nicole Aniston","Juniper Ren","Valentina Nappi","Amarna Miller","Karla Kush","Samantha Sin","Freya Dee","Janice Griffith","Adriana Chechik","Sonya blaze","Alys star","Angela White","Cory Chase","Elsa Jean","Other"]
 
   const { addVdata } = useContext(AdminContext);
 
