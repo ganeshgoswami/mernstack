@@ -16,13 +16,13 @@ const SaprateCategory = () => {
   return (
     <>
       <Helmet>
-        <title>Blue Sexy Picture : 💋💋{category} xxx</title>
+        <title>pornvideo : 💋💋{category} Free HD Porn Videos</title>
         <meta
           name="description"
-          content="blue sexy pictures that blend elegance and allure. blue sex picture is provieded fabulous sex video and good quality fucking video."
+          content="Watch the best HD porn videos for free on PornVideo. Enjoy high-quality streaming of the hottest adult content, updated daily with new videos. Unlimited access anytime!"
         />
         <link rel="canonical" href={`${category}`}/>
-         <meta name="keywords" content="Blue Sexy Picture, guide, mastering Blue Sexy Picture, tips, strategies" />
+         <meta name="keywords" content="pornvideo" />
       </Helmet>
       <div className="container-fluid my-2" style={{ width: "96%" }}>
         <div className="row justify-content-center m-1 g-2">
@@ -33,7 +33,7 @@ const SaprateCategory = () => {
                 key={index}
               >
                 <Link
-                  to={`/playvideo/${vd._id}`}
+                  to={`/viewplayvideo/${vd._id}`}
                   style={{ width: "90%", textDecoration: "none" }}
                   onClick={() => {
                     handleViewsCount(vd._id);

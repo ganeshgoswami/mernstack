@@ -30,7 +30,7 @@ function App() {
           {admin ? (
             <>
               <Route
-                path="/admin/addCollecion"
+                path="/admin/addvideos"
                 element={
                   <ProtectedRoute admin={admin}>
                     <AddCollection />
@@ -38,7 +38,7 @@ function App() {
                 }
               />
               <Route
-                path="/admin/collection"
+                path="/admin/collectvideos"
                 element={
                   <ProtectedRoute admin={admin}>
                     <Collections />
@@ -46,7 +46,7 @@ function App() {
                 }
               />
               <Route
-                path="/admin/adminTable"
+                path="/admin/tabledata"
                 element={
                   <ProtectedRoute admin={admin}>
                     <AdminTable />
@@ -57,17 +57,17 @@ function App() {
           ) : (
             <>
               <Route path="/" element={<Home />} />
-              <Route path="/home/:category" element={<SaprateCategory />} />
-              <Route path="/playvideo/:id" element={<PlayVideoSeprate />} />
-              <Route path="/pornstar" element={<PModels />} />
-              <Route path="/pornstar/:model" element={<ModelSeprate />} />
-              <Route path="/allcategorys" element={<CategorySection />} />
-              <Route path="/our-network" element={<Backlinks />} />
+              <Route path="/:category" element={<SaprateCategory />} />
+              <Route path="/viewplayvideo/:id" element={<PlayVideoSeprate />} />
+              <Route path="/porn/pornstar" element={<PModels />} />
+              <Route path="/porn/pornstar/:model" element={<ModelSeprate />} />
+              <Route path="/totalcategorys" element={<CategorySection />} />
+              <Route path="/ournetwork" element={<Backlinks />} />
             </>
           )}
 
           {/* Admin-only USe */}
-          <Route path="/admin/*" element={<LoginPage />} />
+          <Route path="/admin" element={<LoginPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 

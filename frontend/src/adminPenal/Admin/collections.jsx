@@ -49,7 +49,7 @@ const Collections = () => {
               className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-flex flex-column align-items-center"
               key={index}
             >
-              <Link to={`/home/${vd.Category}`} className="w-100">
+              <Link to={`/${vd.Category}`} className="w-100">
                 <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                   <img
                   loading="lazy"

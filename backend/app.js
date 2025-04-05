@@ -16,7 +16,7 @@ mongoose.connect(DB_URI, {
 
 // Middleware
 const corsOptions = {
-    origin: ["http://localhost:3000", "https://badwap.fun"], // Allow these origins
+    origin: ["http://localhost:3000", "https://badwap.fun","xbadwap.com"], // Allow these origins
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],

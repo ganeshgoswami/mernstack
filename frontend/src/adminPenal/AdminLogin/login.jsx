@@ -29,7 +29,7 @@ const LoginPage = () => {
         if (data.status === 202) {
           localStorage.setItem("adminlogin", data.data.Email);
           setAdmin(localStorage.getItem("adminlogin"));
-          navigate("/admin/collection");
+          navigate("/admin/collectvideos");
           
         } else {
           alert("Wrong Password")

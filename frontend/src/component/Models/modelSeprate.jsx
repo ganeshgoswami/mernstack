@@ -21,15 +21,15 @@ const ModelSeprate = () => {
   return (
     <>
       <Helmet>
-        <title>{`${model} por n star : HD xxx Videos`}</title>
+        <title>{`${model} porn stars : HD Porn Videos`}</title>
         <meta
           name="description"
-          content="por n star  is a single girl sex and fucking videos .you need specific and special video a porn girl. Here hard fucking Por n Star videos available."
+          content="Watch the hottest porn stars in stunning HD quality. Enjoy free streaming of the best adult videos featuring your favorite stars. New high-definition content added daily for endless pleasure!"
         />
         <link rel="canonical" href={`${model}`} />
         <meta
           name="keywords"
-          content="HD Hole, guide, mastering HD Hole, tips, strategies"
+          content="porn stars"
         />
       </Helmet>
       <div className="container-fluid my-2" style={{ width: "96%" }}>
@@ -41,7 +41,7 @@ const ModelSeprate = () => {
                 key={index}
               >
                 <Link
-                  to={`/playvideo/${vd._id}`}
+                  to={`/viewplayvideo/${vd._id}`}
                   style={{ width: "90%", textDecoration: "none" }}
                   onClick={() => {
                     handleViewsCount(vd._id);

@@ -117,13 +117,13 @@ const PModels = () => {
   return (
     <>
      <Helmet>
-        <title>xxxhd : Free Porn Star Videos clip</title>
+        <title>Porn Stars - Watch Free HD Porn Videos Featuring Top Stars</title>
         <meta
           name="description"
-          content="xxxhd fucking videos available .it's give perfect and good quality sex or fucking videos. High Definition sex videos are available."
+          content="Watch the hottest pornstars in action with our free collection of top-rated adult videos. Enjoy high-quality streaming of sexy performances from the most popular stars in the industry. New videos added daily!"
         />
-        <link rel="canonical" href="pornstar"/>
-         <meta name="keywords" content="HD Hole, guide, mastering HD Hole, tips, strategies" />
+        <link rel="canonical" href="/porn/pornstar"/>
+         <meta name="keywords" content="por n star" />
       </Helmet>
     <div className="container-fluid my-2" style={{ width: "96%" }}>
       <div className="row justify-content-center m-1 g-2">
@@ -134,7 +134,7 @@ const PModels = () => {
               key={index}
             >
               <Link
-                to={`/pornstar/${createSlug(vd.name)}`}
+                to={`/porn/pornstar/${createSlug(vd.name)}`}
                 style={{ width: "90%", textDecoration: "none" }}
               >
                 <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">

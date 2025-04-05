@@ -18,9 +18,9 @@ const Home = () => {
     setCurrentPage,
     seprateCategory,
   } = useContext(AdminContext);
-  
+
   const [visibleBadges, setVisibleBadges] = useState(8);
-const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     getalldata(currentPage);
   }, []);
@@ -49,10 +49,10 @@ const navigate = useNavigate()
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
       inputValue ? searchData(inputValue, newPage) : getalldata(newPage);
-      if(newPage) navigate(`?page=${newPage}`)
+      if (newPage) navigate(`?page=${newPage}`);
     }
-    
-    if(inputValue) navigate(`?Search=${inputValue}`)
+
+    if (inputValue) navigate(`?Search=${inputValue}`);
   };
 
   const handleCategoryClick = (category) => {
@@ -63,16 +63,13 @@ const navigate = useNavigate()
   return (
     <>
       <Helmet>
-        <title>BF XX - 18+ Sex(सेक्स) or xx Videos</title>
+        <title>sex videos - xxx or porn videos - free porn videos</title>
         <meta
           name="description"
-          content="bf xx Ultimate Guide for sex. bf Xx is tell us how to do sex and know about sex. this search xxx , sex ,blue film, bf xx etc. blue film picture show Sex Video"
+          content="Enjoy the best free sex videos in high definition. Stream and download the hottest adult content featuring top stars and amateur performers. Updated daily with fresh, high-quality videos!"
         />
-        <link rel="canonical" href="/"/>
-        <meta
-          name="keywords"
-          content="BF XX, guide, mastering BF XX, tips, strategies"
-        />
+        <link rel="canonical" href="" />
+        <meta name="keywords" content="xxxhd" />
       </Helmet>
 
       <div className="container-fluid my-2" style={{ width: "96%" }}>
@@ -80,7 +77,7 @@ const navigate = useNavigate()
           <h5 className="text-white">Related: </h5>
           {categorys.slice(0, visibleBadges).map((category, index) => (
             <Link
-              to={`/home/${createSlug(category)}`}
+              to={`/${createSlug(category)}`}
               className="text-decoration-none"
               key={index}
               onClick={() => handleCategoryClick(category)}
@@ -107,13 +104,15 @@ const navigate = useNavigate()
                 key={index}
               >
                 <Link
-                  to={`/playvideo/${vd._id}`}
+                  to={`/viewplayvideo/${vd._id}`}
                   style={{ width: "90%", textDecoration: "none" }}
-                  onClick={() => {handleViewsCount(vd._id);}}
+                  onClick={() => {
+                    handleViewsCount(vd._id);
+                  }}
                 >
                   <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">
                     <img
-                    loading="lazy"
+                      loading="lazy"
                       src={vd.ImgUrl}
                       alt={vd.Titel}
                       className="rounded w-100 imageSize"
@@ -146,7 +145,7 @@ const navigate = useNavigate()
           )}
         </div>
 
-        {/* next and  Previous */}
+        {/* next and  Previous buttons*/}
 
         <div className="pagination-controls mt-4">
           <button
@@ -160,12 +159,11 @@ const navigate = useNavigate()
 
           {generatePageNumbers().map((page) => (
             <button
-            
               key={page}
               className={`btn mx-1 ${
-                page === currentPage ? "btn-primary" : "btn-light"
+                page === currentPage ? "btn-danger" : "btn-light"
               } midel-btn-size`}
-              onClick={() => handlePageChange(page) }
+              onClick={() => handlePageChange(page)}
             >
               {page}
             </button>

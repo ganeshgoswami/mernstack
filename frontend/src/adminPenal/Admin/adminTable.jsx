@@ -22,7 +22,7 @@ const AdminTable = () => {
   const itemsPerPage = 25;
   const categoryData = [];
 const navigate =useNavigate()
-const pStar = ["Emily Willis","Dillion Harper","Abella Danger","Dani Daniels","Angelica Heaven","Alecia Fox","Hailey Rose","Kathryn Mae","Mia Khalifa","Nicole Aniston","Juniper Ren","Valentina Nappi","Amarna Miller","Karla Kush","Samantha Sin","Freya Dee","Janice Griffith","Adriana Chechik","Sonya blaze","Alys star","Angela White","Cory Chase","Elsa Jean","Other"]
+const pStar = ["Emily Willis","Dillion Harper","Abella Danger","Dani Daniels","Angelica Heaven","Alecia Fox","Hailey Rose","Kathryn Mae","Mia Khalifa","Nicole Aniston","Juniper Ren","Valentina Nappi","Amarna Miller","Karla Kush","Samantha Sin","Freya Dee","Janice Griffith","Adriana Chechik","Sonya blaze","Alys star","Angela White","Cory Chase","Elsa Jean","Desi Bhabhi","Sister","Sexy Girl","Other","18+ Sex"]
 
 
   alldata.map((n) =>

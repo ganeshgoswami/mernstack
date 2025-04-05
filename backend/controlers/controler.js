@@ -360,8 +360,6 @@ exports.bigvideofind = async (req, res) => {
         .skip(skip)
         .limit(limit);
 
-        console.log(reletedcategory)
-
       const totalCount = await StoreData.countDocuments({
         Category: reletedcategory,
       });

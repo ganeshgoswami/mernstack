@@ -30,7 +30,7 @@ const CategorySection = () => {
           name="description"
           content="x ham star fucking videos available  .it's give perfect and good quality sex or fucking videos. High Definition sex videos are available."
         />
-        <link rel="canonical" href="allcategorys" />
+        <link rel="canonical" href="totalcategorys" />
         <meta
           name="keywords"
           content="HD Hole, guide, mastering HD Hole, tips, strategies"
@@ -42,7 +42,7 @@ const CategorySection = () => {
             categoryVideo.map((n, index) => (
               <div className="col-md-3">
                 <Link
-                  to={`/home/${createSlug(n.Category)}`}
+                  to={`/${createSlug(n.Category)}`}
                   className="text-decoration-none"
                 >
                   <div className="card shadow-sm bg-body-tertiary rounded object-fit-none border-dark">
@@ -50,7 +50,7 @@ const CategorySection = () => {
                       loading="lazy"
                       src={n.ImgUrl}
                       alt={n.Titel}
-                      className="rounded w-100 imageSize"
+                      className="rounded w-100 categoryimagesize"
                     />
                   </div>
                   {index == 0 ? (

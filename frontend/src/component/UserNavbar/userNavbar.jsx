@@ -289,7 +289,7 @@ function UserNavbar() {
                     >
                       <Link
                         className="text-decoration-none text-black"
-                        to={`/home/${createSlug("Popular Video")}`}
+                        to={`/${createSlug("Popular Video")}`}
                         onClick={() => {
                           showAlldata("Popular Video", currentPage);
                           handleCategoryClick("Popular Video");
@@ -306,7 +306,7 @@ function UserNavbar() {
                     >
                       <Link
                         className="text-decoration-none text-black"
-                        to={`/home/${createSlug("Letest Video")}`}
+                        to={`/${createSlug("Letest Video")}`}
                         onClick={() => {
                           showAlldata("Letest Video", currentPage);
                           handleCategoryClick("Letest Video");
@@ -369,7 +369,7 @@ function UserNavbar() {
                         <li
                           key={n}
                           onClick={() => {
-                            navigate(`/home/${createSlug(n)}`);
+                            navigate(`/${createSlug(n)}`);
                             handleCategoryClick(n);
                             showAlldata();
                           }}
@@ -406,7 +406,7 @@ function UserNavbar() {
                 <div className="accordion-body">
                   <ul style={{ listStyle: "None" }}>
                     <li data-bs-dismiss="offcanvas" aria-label="Close">
-                      <Link to={"/our-network"} className="text-dark text-decoration-none"> Our Network</Link>
+                      <Link to={"/ournetwork"} className="text-dark text-decoration-none"> Our Network</Link>
                       <hr />
                     </li>
                     <li>
@@ -443,7 +443,7 @@ function UserNavbar() {
                         <li
                           key={n.name}
                           onClick={() => {
-                            navigate(`/pornstar/${createSlug(n.name)}`);
+                            navigate(`/porn/pornstar/${createSlug(n.name)}`);
                             modelSearch(n.name, 1);
                           }}
                           data-bs-dismiss="offcanvas"
@@ -485,7 +485,7 @@ function UserNavbar() {
                   <li>
                     <Link
                       className="dropdown-item"
-                      to={`/home/${createSlug("Popular Video")}`}
+                      to={`/${createSlug("Popular Video")}`}
                       onClick={() => showAlldata("Popular Video", currentPage)}
                     >
                       Popular Video
@@ -497,7 +497,7 @@ function UserNavbar() {
                   <li>
                     <Link
                       className="dropdown-item"
-                      to={`/home/${createSlug("Letest Video")}`}
+                      to={`/${createSlug("Letest Video")}`}
                       onClick={() => showAlldata("Letest Video", currentPage)}
                     >
                       Letest Video
@@ -542,7 +542,7 @@ function UserNavbar() {
                       </li>
                       <li
                         onClick={() => {
-                          navigate(`/home/${createSlug(n)}`);
+                          navigate(`/${createSlug(n)}`);
                           showAlldata(n);
                         }}
                       >
@@ -555,7 +555,7 @@ function UserNavbar() {
                     <li className="d-flex justify-content-center bg-secondary text-center">
                       <button
                         className="btn text-white me-2"
-                        onClick={() => navigate("/allcategorys")}
+                        onClick={() => navigate("/totalcategorys")}
                       >
                         Show More...
                       </button>
@@ -589,7 +589,7 @@ function UserNavbar() {
                 <p
                   className="text-black m-0"
                   onClick={() => {
-                    navigate("/pornstar");
+                    navigate("/porn/pornstar");
                     showAlldata();
                   }}
                   style={{ cursor: "pointer" }}

@@ -30,11 +30,11 @@ const PlayVideoSeprate = () => {
     <>
       {viewBigVideo ? (
         <Helmet>
-          <title>{`HD Hole: ${viewBigVideo.Titel}`}</title>
+          <title>{`xxxhd : ${viewBigVideo.Titel}`}</title>
           <meta
             name="description"
-            content="hd hole is a sex videos provider. It gives perfect and good quality sex or fucking videos. High Definition sex videos are available."
-          />
+             content="Watch the best XXX and porn videos in ultra-high quality on xxxhd. Enjoy free streaming of the hottest adult content anytime, anywhere. Fast, secure, and always updated with the latest videos!"
+             />
           <link
             rel="canonical"
             href={`${viewBigVideo._id}`}
@@ -86,7 +86,7 @@ const PlayVideoSeprate = () => {
                     key={index}
                   >
                     <Link
-                      to={`/playvideo/${vd._id}`}
+                      to={`/viewplayvideo/${vd._id}`}
                       style={{ width: "90%", textDecoration: "none" }}
                       onClick={() => {
                         handleViewsCount(vd._id);
