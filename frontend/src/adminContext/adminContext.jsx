@@ -51,7 +51,7 @@ export const AuthAdminProvider = ({ children }) => {
 
   const getalldata = async (currentPage) => {
     try { 
-      const response = await fetch(`${apiUrl}/alldata?page=${currentPage}`);
+      const response = await fetch(`${apiUrl}/allData?page=${currentPage}`);
       const data = await response.json();
       if (response.ok) {
         setAlldata(data.data || []);
@@ -145,24 +145,34 @@ const getreletedData = async (reletedCategoryData) => {
 };
 
   
-
-  const addVdata = async (vdata) => {
-    await fetch(`${apiUrl}/addCollection`, {
+const addVdata = async (vdata, setItems) => {
+  try {
+    const response = await fetch(`${apiUrl}/addCollection`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(vdata),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.data._id != null) {
-          console.log("Data Add Succcessfully");
-        } else {
-          console.log("Same Data not Add Same Database");
-        }
-      });
-  };
+    });
+
+    const data = await response.json();
+
+    if (data?.data?._id) {
+      console.log("Data added successfully");
+
+      // नया वीडियो लिस्ट के शुरुआत में जोड़ें
+      if (setItems) {
+        setItems((prevItems) => [data.data, ...prevItems]);
+      }
+    } else {
+      console.log("Same data not added to the database");
+    }
+  } catch (err) {
+    console.error("Error adding data:", err);
+  }
+};
+
+
 
   const deletedata = async (id) => {
     await fetch(`${apiUrl}/deleteVideo/${id}`, {
@@ -219,7 +229,6 @@ const getreletedData = async (reletedCategoryData) => {
       }
       const data = await response.json();
       getalldata()
-      console.log("Views Updated successfully:", data);
     } catch (err) {
       console.error("Error Updating views:", err);
     }

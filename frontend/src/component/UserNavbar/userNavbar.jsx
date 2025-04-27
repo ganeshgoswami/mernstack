@@ -235,7 +235,7 @@ function UserNavbar() {
         <div className="offcanvas-header container">
           <div className="col-2">
             <i
-              class="bi bi-x-lg text-white"
+              className="bi bi-x-lg text-white"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             ></i>
@@ -427,7 +427,7 @@ function UserNavbar() {
                   aria-expanded="false"
                   aria-controls="collapseFour"
                 >
-                  <i class="fa-solid fa-ribbon me-2"></i> Porn Stars
+                  <i className="fa-solid fa-ribbon me-2"></i> Porn Stars
                 </button>
               </h2>
               <div

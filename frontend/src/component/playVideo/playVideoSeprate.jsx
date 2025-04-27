@@ -30,10 +30,10 @@ const PlayVideoSeprate = () => {
     <>
       {viewBigVideo ? (
         <Helmet>
-          <title>{`xxxhd : ${viewBigVideo.Titel}`}</title>
+          <title>{`${viewBigVideo.Titel} - XBadWap`}</title>
           <meta
             name="description"
-             content="Watch the best XXX and porn videos in ultra-high quality on xxxhd. Enjoy free streaming of the hottest adult content anytime, anywhere. Fast, secure, and always updated with the latest videos!"
+             content={viewBigVideo.Description}
              />
           <link
             rel="canonical"

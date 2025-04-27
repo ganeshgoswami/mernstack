@@ -21,7 +21,7 @@ const ModelSeprate = () => {
   return (
     <>
       <Helmet>
-        <title>{`${model} porn stars : HD Porn Videos`}</title>
+        <title>{`${model} porn stars : HD Porn Videos - Xbadwap`}</title>
         <meta
           name="description"
           content="Watch the hottest porn stars in stunning HD quality. Enjoy free streaming of the best adult videos featuring your favorite stars. New high-definition content added daily for endless pleasure!"

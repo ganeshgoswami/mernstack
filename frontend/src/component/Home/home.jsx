@@ -25,6 +25,13 @@ const Home = () => {
     getalldata(currentPage);
   }, []);
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const handleShowMore = () => {
     setVisibleBadges((prev) => Math.min(prev + 8, categorys.length));
   };
@@ -63,7 +70,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>sex videos - xxx or porn videos - free porn videos</title>
+        <title>sex videos - xxx or free porn videos - XBadWap </title>
         <meta
           name="description"
           content="Enjoy the best free sex videos in high definition. Stream and download the hottest adult content featuring top stars and amateur performers. Updated daily with fresh, high-quality videos!"
@@ -108,6 +115,7 @@ const Home = () => {
                   style={{ width: "90%", textDecoration: "none" }}
                   onClick={() => {
                     handleViewsCount(vd._id);
+                    handleScrollToTop();
                   }}
                 >
                   <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">

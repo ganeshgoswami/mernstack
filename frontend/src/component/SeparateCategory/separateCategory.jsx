@@ -13,10 +13,17 @@ const SaprateCategory = () => {
     seprateCategory(category,currentPage)
   },[category,currentPage])
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <Helmet>
-        <title>pornvideo : 💋💋{category} Free HD Porn Videos</title>
+        <title>pornvideos : 💋💋{category} Free HD Porn Videos - XBadWap</title>
         <meta
           name="description"
           content="Watch the best HD porn videos for free on PornVideo. Enjoy high-quality streaming of the hottest adult content, updated daily with new videos. Unlimited access anytime!"
@@ -37,6 +44,7 @@ const SaprateCategory = () => {
                   style={{ width: "90%", textDecoration: "none" }}
                   onClick={() => {
                     handleViewsCount(vd._id);
+                    handleScrollToTop();
                   }}
                 >
                   <div className="card shadow-sm bg-body-tertiary rounded position-relative object-fit-none border-dark">

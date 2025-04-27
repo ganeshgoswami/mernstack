@@ -12,10 +12,11 @@ const AddCollection = () => {
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState("");
   const { alldata } = useContext(AdminContext);
-
+  const [items, setItems] = useState([]);
   const dropdow = [
     "Pussy",
-    "18+ Sex",
+    "Love Sex",
+    "Bisexual",
     "69",
     "Sister",
     "College",
@@ -44,7 +45,7 @@ const AddCollection = () => {
     "Popular Video",
     "Letest Video",
   ];
-  const pStar = ["Emily Willis","Dillion Harper","Abella Danger","Dani Daniels","Angelica Heaven","Alecia Fox","Hailey Rose","Kathryn Mae","Mia Khalifa","Nicole Aniston","Juniper Ren","Valentina Nappi","Amarna Miller","Karla Kush","Samantha Sin","Freya Dee","Janice Griffith","Adriana Chechik","Sonya blaze","Alys star","Angela White","Cory Chase","Elsa Jean","Desi Bhabhi","Sister","Sexy Girl","Other","18+ Sex"]
+  const pStar = ["Riley Reid","Lana Rhoades","Mia Malkova","Eva Elfie","Johnny Sins","Violet Myers","Brandi Love" ,"bus","Emily Willis","Dillion Harper","Abella Danger","Dani Daniels","Angelica Heaven","Alecia Fox","Hailey Rose","Kathryn Mae","Mia Khalifa","Nicole Aniston","Juniper Ren","Valentina Nappi","Amarna Miller","Karla Kush","Samantha Sin","Freya Dee","Janice Griffith","Adriana Chechik","Sonya blaze","Alys star","Angela White","Cory Chase","Elsa Jean","Desi Bhabhi","Sister","Sexy Girl","Other","18+ Sex"]
 
   const { addVdata } = useContext(AdminContext);
 
@@ -61,7 +62,7 @@ const AddCollection = () => {
       alt
     };
     
-    addVdata(videoData);
+    addVdata(videoData,setItems);
   }
 
   return (
